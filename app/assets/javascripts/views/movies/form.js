@@ -12,7 +12,15 @@ GoodFlicks.Views.MovieForm = Backbone.View.extend({
 
   submitForm: function(event) {
     event.preventDefault();
-    console.log(event);
+    var formData = this.$el.serializeJSON();
+
+    this.model.set(formData.movie)
+    this.model.save({}, {
+      success: function() {
+        this.collection.add(this.model) // merge false??
+        Backbone.history.navigate("#movies/" + this.model.id, {trigger: true})
+      }.bind(this)
+    })
   },
 
   render: function() {

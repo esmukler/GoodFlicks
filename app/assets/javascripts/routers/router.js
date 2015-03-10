@@ -13,11 +13,10 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
   },
 
   home: function() {
-    console.log("home")
-    // var homeView = new GoodFlicks.Views.HomeView()
+    var homeView = new GoodFlicks.Views.HomeView()
 
 
-    // this._swapView(homeView);
+    this._swapView(homeView);
   },
 
   movieShow: function(id) {
@@ -32,10 +31,10 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
 
   movieNew: function() {
     var movie = new GoodFlicks.Models.Movie();
-// this.collection.getOrFetch();
+
     var movieForm = new GoodFlicks.Views.MovieForm({
       model: movie,
-      collection: movies
+      collection: this.collection
     });
 
     this._swapView(movieForm);

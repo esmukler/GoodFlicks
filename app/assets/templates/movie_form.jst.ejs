@@ -6,7 +6,7 @@
    and have not found it before adding it to the database.
 </p>
 
-  <label>Title:
+  <label>Title (required):
     <input type="text" name="movie[title]" value="<%= movie.escape("title") %>"></input>
   </label><br>
 
@@ -17,6 +17,10 @@
   <label>Year:
     <input type="number" name="movie[year]" min="1800" max="2030"
            value="<%= movie.escape("year") %>"></input>
+  </label><br><br>
+
+  <label>Description:
+    <textarea></textarea>
   </label><br>
 
   <label>Poster Image HTML:

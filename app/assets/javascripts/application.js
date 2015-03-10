@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require serializejson
 //= require good_flicks
 //= require_tree ../templates
 //= require_tree ./models
