@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GoodFlicks</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if @current_user %>
+  <form action="<%= session_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Log Out</button>
+  </form>
+  <p>Hello, <%= @current_user.username %>. Welcome to...</p>
+<% end %>
+
+<h1>GoodFlicks</h1>
+
+<% if flash.now[:errors] %>
+  <p class="errors"><%= flash.now[:errors] %></p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
