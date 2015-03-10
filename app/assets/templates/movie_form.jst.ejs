@@ -1,0 +1,29 @@
+<h1>Add a New Movie</h1>
+
+<p>Note: GoodFlicks has a LARGE database of movies.
+   Please make sure you have already
+   <a href="javascript:void(0)">searched</a> for the movie you want
+   and have not found it before adding it to the database.
+</p>
+
+  <label>Title:
+    <input type="text" name="movie[title]" value="<%= movie.escape("title") %>"></input>
+  </label><br>
+
+  <label>Director:
+    <input type="text" name="movie[director]" value="<%= movie.escape("director") %>"></input>
+  </label><br>
+
+  <label>Year:
+    <input type="number" name="movie[year]" min="1800" max="2030"
+           value="<%= movie.escape("year") %>"></input>
+  </label><br>
+
+  <label>Poster Image HTML:
+    <input type="text" name="movie[poster_img]" value="<%= movie.escape("poster_img") %>"></input>
+  </label><br>
+
+  <button>Add Movie!</button>
+
+
+<a href="#">Home</a>
