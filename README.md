@@ -38,12 +38,12 @@ pages.
 
 [Details][phase-one]
 
-### Phase 2: Creating Libraries and Adding Movies (~2 days)
-I will add API routes to serve movie data as JSON, then add Backbone models and collections that fetch data from those routes. By the end of this phase, users will be able to create libraries that will show up on their own user show page. They will then be able to add movies to individual libraries from an individual movie's show page. The user show page will have links to all a user's libraries and all movies contained in those libraries.
+### Phase 2: Creating Libraries and Adding Movies (~1 days)
+I will add API routes to serve movie data as JSON, then add Backbone models and collections that fetch data from those routes. By the end of this phase, users will be able to create libraries that will show up on their own user show page. They will be able to find movies from a movie index. They will then be able to add movies to individual libraries from an individual movie's show page. The user show page will have links to all a user's libraries and all movies contained in those libraries.
 [Details][phase-two]
 
 ### Phase 3: Adding movie reviews and ratings (~1 days)
-I will add more features to the user/movie relationship. When users add a movie to a library they will also be prompted to give the movie a star rating (by clicking on an image of stars under the movie's poster image) and write a text review of the movie. This information will appear next to the movie in the library.
+I will add more features to the user/movie relationship. When users add a movie to a library they will also be prompted to give the movie a star rating (by clicking on an image of stars under the movie's poster image) and write a text review of the movie. This information will appear next to the movie in the library and on the movie's show page.
 
 [Details][phase-three]
 
