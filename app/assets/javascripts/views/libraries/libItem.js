@@ -12,7 +12,8 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
   },
 
   events: {
-    "click button": "editLibrary"
+    "click button.edit": "editLibrary",
+    "click button.delete": "deleteLibrary"
   },
 
   editLibrary: function(event) {
@@ -20,6 +21,10 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
     this.subViews.push(libForm);
 
     this.$el.html(libForm.render().$el)
+  },
+
+  deleteLibrary: function(event) {
+    console.log("are you sure you want to delete this?")
   },
 
   render: function() {

@@ -11,25 +11,24 @@ GoodFlicks.Views.LibForm = Backbone.View.extend({
   },
 
   submitForm: function(event) {
+    var isNew = this.isNew();
     event.preventDefault();
     var formData = this.$el.serializeJSON();
-
-    var isNew = (this.model.id) ? false : true;
 
     this.model.set(formData.library)
     this.model.save({}, {
       success: function() {
-        if (isNew) {
-          this.collection.add(this.model, {merge: true})
-        }
+        if (isNew) this.collection.add(this.model, {merge: true});
       }.bind(this)
     })
+  },
 
-
+  isNew: function() {
+    return (this.model.id) ? false : true;
   },
 
   render: function() {
-    var content = this.template({ library: this.model })
+    var content = this.template({ library: this.model, isNew: this.isNew() })
 
     this.$el.html(content);
     return this

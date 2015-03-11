@@ -17,10 +17,11 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
 
     var addLib = new GoodFlicks.Views.LibForm({
       collection: this.collection,
-      model: model
+      model: model,
     })
+    this.subViews.push(addLib);
     $(event.currentTarget).parent().html(addLib.render().$el);
-    
+
   },
 
   render: function() {
