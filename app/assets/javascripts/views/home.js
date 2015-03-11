@@ -2,7 +2,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
 
   initialize: function() {
     this.subViews = [];
-    this.listenTo(this.collection, "sync", this.render)
+    this.listenTo(this.collection, "sync destroy", this.render)
   },
 
   template: JST['home'],

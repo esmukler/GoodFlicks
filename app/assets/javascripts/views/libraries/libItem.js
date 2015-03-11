@@ -24,7 +24,11 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
   },
 
   deleteLibrary: function(event) {
-    console.log("are you sure you want to delete this?")
+    if (confirm("Are you sure you want to delete the whole library '" +
+                    this.model.escape("title") + "'?")) {
+      this.model.destroy();
+      Backbone.history.navigate("", {trigger: true});
+    }
   },
 
   render: function() {
