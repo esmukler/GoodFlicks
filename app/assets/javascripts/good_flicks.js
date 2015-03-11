@@ -3,10 +3,8 @@ window.GoodFlicks = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function(options) {
+  initialize: function() {
     var $rootEl = $("#content");
-
-    var cuid = options.cuid;
 
     var movies = new GoodFlicks.Collections.Movies()
     movies.fetch();

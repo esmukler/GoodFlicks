@@ -12,15 +12,17 @@
 
 <%= yield %>
 
-<%= render partial: "layouts/footer" %>
+<% if current_user %>
+  <%= render partial: "layouts/footer" %>
+<% end %>
+
+
 <script>
-$(document).ready(function(){
-  GoodFlicks.initialize({ cuid:
-    <% if current_user %>
-      <%= current_user.id %>
-    <% end %>
-    });
-});
+<% if current_user %>
+  $(document).ready(function(){
+    GoodFlicks.initialize();
+  });
+<% end %>
 </script>
 
 </body>

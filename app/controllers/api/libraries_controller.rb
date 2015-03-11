@@ -1,8 +1,10 @@
 class Api::LibrariesController < ApplicationController
 
   def index
-    @libraries = current_user.libraries
-    render json: @libraries
+    if current_user
+      @libraries = current_user.libraries
+      render json: @libraries
+    end
   end
 
   def new
