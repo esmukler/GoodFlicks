@@ -15,7 +15,7 @@
   </label><br>
 
   <label>Year:
-    <input type="number" name="movie[year]" min="1800" max="2030"
+    <input type="number" name="movie[year]" min="1896" max="<%= new Date().getFullYear() + 2%>"
            value="<%= movie.escape("year") %>"></input>
   </label><br><br>
 

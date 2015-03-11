@@ -1,6 +1,8 @@
 GoodFlicks.Collections.Movies = Backbone.Collection.extend({
   url: "/api/movies",
 
+  comparator: "updated_at",
+
   model: GoodFlicks.Models.Movie,
 
   getOrFetch: function(id) {

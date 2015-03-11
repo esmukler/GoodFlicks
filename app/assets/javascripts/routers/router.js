@@ -19,6 +19,14 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
     this._swapView(homeView);
   },
 
+  movieIndex: function() {
+    var movieIndex = new GoodFlicks.Views.MovieIndex({
+      collection: this.collection
+    });
+
+    this._swapView(movieIndex)
+  },
+
   movieShow: function(id) {
     var movie = this.collection.getOrFetch(id);
 

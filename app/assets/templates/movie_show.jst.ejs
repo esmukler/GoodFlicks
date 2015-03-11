@@ -2,6 +2,6 @@
 
 <h4 class="director">Director: <%= movie.escape("director")%></h4><br>
 
-<p class="director">Description: <%= movie.escape("description")%></p><br>
+<p class="description">Description: <%= movie.escape("description")%></p><br>
 
-<a href="#">There's no place like home</a>
+<img class="poster" src="<%= movie.escape("poster_img") %>">
