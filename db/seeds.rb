@@ -16,3 +16,8 @@ movie1 = Movie.create!(title: "Chinatown", description: "A private detective hir
 movie2 = Movie.create!(title: "Office Space", description: "Three company workers who hate their jobs and decide to rebel against their greedy boss.",
                         year: 1999, director: "Mike Judge",
                         poster_img: "https://www.movieposter.com/posters/archive/main/58/MPW-29049")
+
+library1 = Library.create!(title: "Seen", user_id: user1.id)
+library2 = Library.create!(title: "Want to See", user_id: user1.id)
+library3 = Library.create!(title: "Favorites", user_id: user1.id)
+library4 = Library.create!(title: "Guilty Pleasures", user_id: user1.id, is_public: false)
