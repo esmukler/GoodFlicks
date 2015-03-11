@@ -3,11 +3,17 @@
 </label>
 
 <label>Public
-  <input type="radio" name="library[is_public]" value="true">
+  <input type="radio" name="library[is_public]"value="true"
+    <% if (library.get("is_public")) { %>
+      checked
+    <% } %>>
 </label>
 
 <label>Private
-  <input type="radio" name="library[is_public]" value="false">
+  <input type="radio" name="library[is_public]"value="false"
+    <% if (!library.get("is_public")) { %>
+      checked
+    <% } %>>
 </label><br>
 
 <button type="submit">Add Library</button>
