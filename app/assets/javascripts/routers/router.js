@@ -1,8 +1,9 @@
 GoodFlicks.Routers.Router = Backbone.Router.extend({
 
   initialize: function(options) {
-    this.collection = options.collection;
+    this.movies = options.movies;
     this.$rootEl = options.$rootEl;
+    this.libs = options.libs;
   },
 
   routes: {
@@ -13,22 +14,23 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
   },
 
   home: function() {
-    var homeView = new GoodFlicks.Views.HomeView()
-
+    var homeView = new GoodFlicks.Views.HomeView({
+      collection: this.libs
+    })
 
     this._swapView(homeView);
   },
 
   movieIndex: function() {
     var movieIndex = new GoodFlicks.Views.MovieIndex({
-      collection: this.collection
+      collection: this.movies
     });
 
     this._swapView(movieIndex)
   },
 
   movieShow: function(id) {
-    var movie = this.collection.getOrFetch(id);
+    var movie = this.movies.getOrFetch(id);
 
     var movieShow = new GoodFlicks.Views.MovieShow({
       model: movie
@@ -42,7 +44,7 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
 
     var movieForm = new GoodFlicks.Views.MovieForm({
       model: movie,
-      collection: this.collection
+      collection: this.movies
     });
 
     this._swapView(movieForm);

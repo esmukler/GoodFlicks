@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :libraries,
+    class_name: "Library",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :user
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     return nil if user.nil?

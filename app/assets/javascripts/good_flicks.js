@@ -3,20 +3,23 @@ window.GoodFlicks = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
+  initialize: function(options) {
     var $rootEl = $("#content");
+
+    var cuid = options.cuid;
+
     var movies = new GoodFlicks.Collections.Movies()
     movies.fetch();
 
+    var cuLibraries = new GoodFlicks.Collections.Libraries();
+    cuLibraries.fetch();
+
     var router = new GoodFlicks.Routers.Router({
       $rootEl: $rootEl,
-      collection: movies
+      movies: movies,
+      libs: cuLibraries
     });
 
     Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  GoodFlicks.initialize();
-});
