@@ -1,0 +1,24 @@
+figure.credentials {
+  background: #D69554;
+  max-width: 300px;
+  margin: 100px auto;
+  padding: 100px;
+  border-radius: 10px;
+  display: block;
+}
+
+figure.credentials h1 {
+  position: relative;
+  bottom: 75px;
+  font-size: 50px;
+  text-align: center;
+}
+
+figure.credentials label,
+figure.credentials p {
+  font-family: courier;
+}
+
+figure.credentials label {
+  margin: 5px;
+}

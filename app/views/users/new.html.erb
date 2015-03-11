@@ -1,19 +1,21 @@
-<h1>Sign Up</h1>
+<figure class="credentials">
+  <h1>Sign Up</h1>
 
-<form class="sign-up" action="<%= users_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <form class="sign-up" action="<%= users_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>Username:
-    <input type="text" name="user[username]" value=""></input>
-  </label><br>
+    <label>Username:
+      <input type="text" name="user[username]" value=""></input>
+    </label><br>
 
-  <label>Password:
-    <input type="password" name="user[password]" value=""></input>
-  </label>
+    <label>Password:
+      <input type="password" name="user[password]" value=""></input>
+    </label>
 
-  <button type="submit">Sign-Up!</button>
+    <button type="submit">Sign-Up!</button>
 
-</form>
+  </form>
 
-<p>Already a user? <a href="<%= new_session_url %>">Log In!</a></p>
-<button class="demo-user">Demo User</button>
+  <p>Already a user? <a href="<%= new_session_url %>">Log In!</a></p>
+  <button class="demo-user">Demo User</button>
+</figure>
