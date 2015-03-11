@@ -66,6 +66,7 @@ I will add a database table called "friendships" that will keep track of users "
 - [ ] Logo that randomly displays a tagline of a famous movie quote
 - [ ] Search by actor/director
 - [ ] Predictive Search in the overhead search bar
+- [ ] Different styles/display for Public/Private Libraries 
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

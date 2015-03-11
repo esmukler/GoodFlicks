@@ -9,7 +9,7 @@ class Api::LibrariesController < ApplicationController
   end
 
   def create
-    @library = Library.new(library_params)
+    @library = current_user.libraries.new(library_params)
 
     if @library.save
       render json: @library

@@ -8,16 +8,19 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
   template: JST['home'],
 
   events: {
-    "click .add-library": "addLibrary"
+    "click button.add-library": "addLibrary"
   },
 
   addLibrary: function(event) {
 
-    var addLib = new GoodFlicks.Views.LibForm
-    $(event.currentTarget).html(addLib.render().$el);
+    var model = new GoodFlicks.Models.Library()
 
-    // TODO Make LibForm view and template, make sure it acutally creates
-
+    var addLib = new GoodFlicks.Views.LibForm({
+      collection: this.collection,
+      model: model
+    })
+    $(event.currentTarget).parent().html(addLib.render().$el);
+    
   },
 
   render: function() {

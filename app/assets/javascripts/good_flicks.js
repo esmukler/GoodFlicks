@@ -11,7 +11,7 @@ window.GoodFlicks = {
     var movies = new GoodFlicks.Collections.Movies()
     movies.fetch();
 
-    var cuLibraries = new GoodFlicks.Collections.Libraries();
+    var cuLibraries = new GoodFlicks.Collections.Libraries(); //{ user_id: cuid });
     cuLibraries.fetch();
 
     var router = new GoodFlicks.Routers.Router({
