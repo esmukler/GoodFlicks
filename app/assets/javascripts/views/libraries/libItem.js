@@ -8,6 +8,18 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model, "sync", this.render)
+    this.subViews = [];
+  },
+
+  events: {
+    "click button": "editLibrary"
+  },
+
+  editLibrary: function(event) {
+    var libForm = new GoodFlicks.Views.LibForm({ model: this.model })
+    this.subViews.push(libForm);
+
+    this.$el.html(libForm.render().$el)
   },
 
   render: function() {
@@ -15,6 +27,14 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
 
     this.$el.html(content);
     return this
+  },
+
+  remove: function() {
+    this.subViews.forEach( function(view) {
+      view.remove();
+    })
+    this.subViews = []
+    Backbone.View.prototype.remove.call(this);
   }
 
 })

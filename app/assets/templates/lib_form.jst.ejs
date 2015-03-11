@@ -1,5 +1,5 @@
 <label>Title:
-  <input type="text" name="library[title]" value="">
+  <input type="text" name="library[title]" value="<%= library.escape("title") %>">
 </label>
 
 <label>Public
@@ -8,6 +8,6 @@
 
 <label>Private
   <input type="radio" name="library[is_public]" value="false">
-</label>
+</label><br>
 
 <button type="submit">Add Library</button>

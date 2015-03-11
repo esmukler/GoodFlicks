@@ -23,8 +23,11 @@ class Api::LibrariesController < ApplicationController
     render json: @library
   end
 
+  def edit
+  end
+
   def update
-    @library = Library.find(params[:id])
+    @library = current_user.libraries.find(params[:id])
 
     if @library.update(library_params)
       render json: @library
