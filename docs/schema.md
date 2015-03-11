@@ -24,15 +24,22 @@ id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users)
 title       | string    | not null
 
-## movie_adds
+## reviews
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-library_id  | integer   | not null, foreign key (references libraries)
+user_id     | integer   | not null, foreign key (references users)
 movie_id    | integer   | not null, foreign key (references movies)
 num_stars   | integer   |
-review      | text      |
-is_public   | boolean   | not null
+body        | text      |
+is_public   | boolean   | not null, default: true
+
+## library_movies
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+library_id  | integer   | not null, foreign key (references libs.)
+movie_id    | integer   | not null, foreign key (references movies)
 
 
 ## friendships

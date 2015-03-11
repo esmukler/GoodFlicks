@@ -15,7 +15,11 @@
 <%= render partial: "layouts/footer" %>
 <script>
 $(document).ready(function(){
-  GoodFlicks.initialize({ cuid: <%= current_user.id %> });
+  GoodFlicks.initialize({ cuid:
+    <% if current_user %>
+      <%= current_user.id %>
+    <% end %>
+    });
 });
 </script>
 

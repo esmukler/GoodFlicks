@@ -1,3 +1,14 @@
 img {
   width: 200px;
 }
+
+.movie-list li {
+  float: left;
+  display: block;
+  margin: 20px;
+}
+
+.movie-list img {
+  height: 400px;
+  width: auto;
+}

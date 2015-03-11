@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :movies
     resources :libraries
+    resources :reviews
   end
 
 end

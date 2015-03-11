@@ -6,8 +6,16 @@ GoodFlicks.Views.MovieListItem = Backbone.View.extend({
 
   tagName: "li",
 
+  events: {
+    "click": "goToMovie"
+  },
+
   initialize: function() {
     this.listenTo(this.model, "sync", this.render)
+  },
+
+  goToMovie: function(event) {
+    Backbone.history.navigate("#/movies/" + this.model.id, { trigger: true })
   },
 
   render: function() {

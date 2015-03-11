@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :user
 
+  has_many :reviews,
+    class_name: "Review",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :user
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     return nil if user.nil?

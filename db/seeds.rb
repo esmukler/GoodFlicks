@@ -21,3 +21,11 @@ library1 = Library.create!(title: "Seen", user_id: user1.id)
 library2 = Library.create!(title: "Want to See", user_id: user1.id)
 library3 = Library.create!(title: "Favorites", user_id: user1.id)
 library4 = Library.create!(title: "Guilty Pleasures", user_id: user1.id, is_public: false)
+
+
+# ma1 = MovieAdd.create!(library_id: library1.id, movie_id: movie1.id,
+#                         num_stars: 4, review: "This movie is great! Forget it, Jake. It's Chinatown.",
+#                         is_public: true)
+# ma2 = MovieAdd.create!(library_id: library1.id, movie_id: movie2.id,
+#                         num_stars: 4, review: "This movie is great! Forget it, Jake. It's Chinatown.",
+#                         is_public: true)
