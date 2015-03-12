@@ -4,6 +4,7 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
     this.movies = options.movies;
     this.$rootEl = options.$rootEl;
     this.libs = options.libs;
+    this.revs = options.revs;
   },
 
   routes: {
@@ -15,9 +16,10 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
 
   home: function() {
     this.libs.fetch();
-    
+
     var homeView = new GoodFlicks.Views.HomeView({
-      collection: this.libs
+      libraries: this.libs,
+      reviews: this.revs
     })
 
     this._swapView(homeView);

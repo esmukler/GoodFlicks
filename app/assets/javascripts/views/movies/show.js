@@ -2,7 +2,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
   template: JST['movie_show'],
 
-  className: "movie-show",
+  className: "movie-show group",
 
   initialize: function() {
     this.subViews = [];

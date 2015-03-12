@@ -1,3 +1,8 @@
+.movie-show {
+
+}
+
+
 img {
   width: 200px;
 }
@@ -11,4 +16,16 @@ img {
 .movie-list img {
   height: 400px;
   width: auto;
+}
+
+.movie-show-info {
+  display: block;
+  float: left;
+  border: 5px solid red;
+  max-width: 400px;
+}
+
+.movie-show-info .title {
+  font-size: 28px;
+  text-align: center;
 }

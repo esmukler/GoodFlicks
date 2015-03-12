@@ -1,14 +1,18 @@
-<h2 class="title"><%= movie.escape("title") %> (<%= movie.escape("year") %>)</h2>
+<section class="movie-show-info">
+  <h2 class="title"><%= movie.escape("title") %> (<%= movie.escape("year") %>)</h2>
 
-<img class="poster" src="<%= movie.escape("poster_img") %>">
+  <img class="poster" src="<%= movie.escape("poster_img") %>">
 
-<h4 class="director">Director: <%= movie.escape("director")%></h4><br>
+  <h4 class="director">Director: <%= movie.escape("director")%></h4>
 
-<p class="description">Description: <%= movie.escape("description")%></p><br>
+  <p class="description">Description: <%= movie.escape("description")%></p>
+</section>
 
-<h3>Reviews:</h3>
-<ul class="reviews-list"></ul>
+<section class="reviews">
+  <h3>Reviews:</h3>
+  <ul class="reviews-list"></ul>
 
-<div>
-  <button class="add-review">Write a review for this movie</button>
-</div>
+  <div>
+    <button class="add-review">Write a review for this movie</button>
+  </div>
+</section>

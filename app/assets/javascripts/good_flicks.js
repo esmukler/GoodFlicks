@@ -9,13 +9,18 @@ window.GoodFlicks = {
     var movies = new GoodFlicks.Collections.Movies()
     movies.fetch();
 
-    var cuLibraries = new GoodFlicks.Collections.Libraries(); //{ user_id: cuid });
+    var cuLibraries = new GoodFlicks.Collections.Libraries();
     cuLibraries.fetch();
+
+
+    var cuReviews = new GoodFlicks.Collections.Reviews();
+    cuReviews.fetch();
 
     var router = new GoodFlicks.Routers.Router({
       $rootEl: $rootEl,
       movies: movies,
-      libs: cuLibraries
+      libs: cuLibraries,
+      revs: cuReviews
     });
 
     Backbone.history.start();

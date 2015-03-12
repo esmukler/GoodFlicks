@@ -1,8 +1,8 @@
 class Api::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all
-    render json: @reviews
+    @reviews = current_user.reviews.limit(5).order(:updated_at)
+    render :index
   end
 
   def show

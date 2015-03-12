@@ -17,13 +17,22 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
     }
   },
 
+  userOrMovie: function() {
+    // console.log(this.model.get("username"))
+    // console.log(this.model.get("movie_title"))
+    if (this.model.get("username")) {
+      this.$('.userOrMovie').text("Written by: " + this.model.get("username"));
+    } else {
+      this.$('.userOrMovie').text("Movie: " + this.model.get("movie_title"));
+    }
+  },
+
   events: {
     "click button.edit": "editReview",
     "click button.delete": "deleteReview"
   },
 
   editReview: function(event) {
-    console.log(this.model.id)
     var revForm = new GoodFlicks.Views.ReviewForm({
       model: this.model
     });
@@ -46,6 +55,7 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
 
     this.$el.html(content);
     this.showOwnerButtons();
+    this.userOrMovie();
     return this
   },
 

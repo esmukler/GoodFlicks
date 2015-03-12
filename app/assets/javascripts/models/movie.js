@@ -2,7 +2,6 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
   urlRoot: "/api/movies",
 
   parse: function(jsonResp) {
-    // debugger
     if (jsonResp.reviews) {
       this.reviews().set(jsonResp.reviews, { parse: true })
       delete jsonResp.reviews
