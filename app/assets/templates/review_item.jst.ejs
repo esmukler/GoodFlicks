@@ -1,1 +1,5 @@
 <p><%= review.escape("body") %></p>
+<p>Number of Stars: <%= review.get("num_stars") %></p>
+<p>Written by: <%= review.get("username") %></p>
+<p><%= review.get("updated_at") %></p>
+<p><%= review.get("is_public") %></p><br>

@@ -1,0 +1,24 @@
+<label>Number of Stars:
+  <input type="number" name="review[num_stars]" min="0" max="5" step="1" value="">
+</label>
+
+<label>Review:
+  <textarea name="review[body]"></textarea>
+</label>
+
+<label>Private
+  <input id="is_private" type="radio" name="review[is_public]" value="false">
+</label>
+
+<label>Public
+  <input id="is_public" type="radio" name="review[is_public]" value="true">
+</label><br>
+
+
+
+
+<% if (library.id) { %>
+  <button type="submit">Save Review</button>
+<% } else { %>
+  <button type="submit">Add Review</button>
+<% } %>

@@ -9,6 +9,15 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, "sync", this.render)
     // this.subViews = [];
+    this.getUser();
+  },
+
+  getUser: function() {
+    var users = new GoodFlicks.Collections.Users();
+    var user = users.getOrFetch(this.model.get("user_id"));
+    this.model.set("user", user);
+    // debugger
+    // console.log(this.model.get("user"))
   },
 
   events: {
@@ -30,8 +39,13 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   //     Backbone.history.navigate("", {trigger: true});
   //   }
   // },
+  // parseTime: function() {
+  //   var time = this.model.get("updated_at")
+  //   TODO: Make it look nice!
+  // },
 
   render: function() {
+    // debugger
     var content = this.template({ review: this.model })
 
     this.$el.html(content);
@@ -39,10 +53,12 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   },
 
   remove: function() {
-    this.subViews.forEach( function(view) {
-      view.remove();
-    })
-    this.subViews = []
+    if (this.subViews) {
+      this.subViews.forEach( function(view) {
+        view.remove();
+      })
+      this.subViews = []
+    }
     Backbone.View.prototype.remove.call(this);
   }
 
