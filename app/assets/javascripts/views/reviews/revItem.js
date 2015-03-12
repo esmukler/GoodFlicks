@@ -8,47 +8,44 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model, "sync", this.render)
-    // this.subViews = [];
-    this.getUser();
+    this.subViews = [];
   },
 
-  getUser: function() {
-    var users = new GoodFlicks.Collections.Users();
-    var user = users.getOrFetch(this.model.get("user_id"));
-    this.model.set("user", user);
-    // debugger
-    // console.log(this.model.get("user"))
+  showOwnerButtons: function() {
+    if (this.model.get("user_id") === GoodFlicks.current_user_id) {
+      this.$("button").toggleClass("hidden");
+    }
   },
 
   events: {
-    // "click button.edit": "editReview",
-    // "click button.delete": "deleteReview"
+    "click button.edit": "editReview",
+    "click button.delete": "deleteReview"
   },
 
-  // EDITREVIEW: function(event) {
-  //   var libForm = new GoodFlicks.Views.LibForm({ model: this.model })
-  //   this.subViews.push(libForm);
-  //
-  //   this.$el.html(libForm.render().$el)
-  // },
+  editReview: function(event) {
+    console.log(this.model.id)
+    var revForm = new GoodFlicks.Views.ReviewForm({
+      model: this.model
+    });
+    this.subViews.push(revForm);
 
-  // DELETEREVIEW: function(event) {
-  //   if (confirm("Are you sure you want to delete the whole library '" +
-  //                   this.model.escape("title") + "'?")) {
-  //     this.model.destroy();
-  //     Backbone.history.navigate("", {trigger: true});
-  //   }
-  // },
-  // parseTime: function() {
-  //   var time = this.model.get("updated_at")
-  //   TODO: Make it look nice!
-  // },
+    this.$el.html(revForm.render().$el);
+  },
+
+  deleteReview: function(event) {
+    if (confirm("Are you sure you want to delete this review?")) {
+      this.model.destroy();
+      Backbone.history.navigate("#/movies/" + this.model.get("movie_id"),
+        { trigger: true } );
+    }
+  },
 
   render: function() {
     // debugger
     var content = this.template({ review: this.model })
 
     this.$el.html(content);
+    this.showOwnerButtons();
     return this
   },
 

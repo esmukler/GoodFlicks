@@ -40,12 +40,20 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
     }
   },
 
+  addButtonText: function() {
+    if (this.isNew()) {
+      this.$('button').text('Add Review')
+    } else {
+      this.$('button').text('Update Review')
+    }
+  },
+
   render: function() {
-    var content = this.template({ library: this.model, isNew: this.isNew() })
+    var content = this.template({ review: this.model, isNew: this.isNew() })
 
     this.$el.html(content);
     this.checkPublic();
-
+    this.addButtonText();
     return this
   }
 

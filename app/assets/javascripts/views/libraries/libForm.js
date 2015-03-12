@@ -36,11 +36,20 @@ GoodFlicks.Views.LibForm = Backbone.View.extend({
     }
   },
 
+  addButtonText: function() {
+    if (this.isNew()) {
+      this.$('button').text('Add Library')
+    } else {
+      this.$('button').text('Update Library')
+    }
+  },
+
   render: function() {
     var content = this.template({ library: this.model, isNew: this.isNew() })
 
     this.$el.html(content);
     this.checkPublic();
+    this.addButtonText();
 
     return this
   }

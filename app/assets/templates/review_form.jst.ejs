@@ -1,9 +1,10 @@
 <label>Number of Stars:
-  <input type="number" name="review[num_stars]" min="0" max="5" step="1" value="">
+  <input type="number" name="review[num_stars]" min="0" max="5" step="1"
+         value="<%= review.get("num_stars") %>">
 </label>
 
 <label>Review:
-  <textarea name="review[body]"></textarea>
+  <textarea name="review[body]"><%= review.get("body") %></textarea>
 </label>
 
 <label>Private
@@ -14,11 +15,4 @@
   <input id="is_public" type="radio" name="review[is_public]" value="true">
 </label><br>
 
-
-
-
-<% if (library.id) { %>
-  <button type="submit">Save Review</button>
-<% } else { %>
-  <button type="submit">Add Review</button>
-<% } %>
+<button type="submit"></button>
