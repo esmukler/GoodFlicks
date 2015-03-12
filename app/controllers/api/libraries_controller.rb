@@ -3,7 +3,7 @@ class Api::LibrariesController < ApplicationController
   def index
     if current_user
       @libraries = current_user.libraries
-      render json: @libraries
+      render "index"
     end
   end
 

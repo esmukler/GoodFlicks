@@ -2,7 +2,7 @@ class Api::MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    render json: @movies
+    render "index"
   end
 
   def new
@@ -12,7 +12,7 @@ class Api::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      render json: @movie
+      render "show"
     else
       render json: @movie.errors.full_messages, status: :unprocessable_entity
     end
@@ -20,7 +20,7 @@ class Api::MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    render json: @movie
+    render "show"
   end
 
   private

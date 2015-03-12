@@ -23,9 +23,15 @@ library3 = Library.create!(title: "Favorites", user_id: user1.id)
 library4 = Library.create!(title: "Guilty Pleasures", user_id: user1.id, is_public: false)
 
 
-# ma1 = MovieAdd.create!(library_id: library1.id, movie_id: movie1.id,
-#                         num_stars: 4, review: "This movie is great! Forget it, Jake. It's Chinatown.",
-#                         is_public: true)
-# ma2 = MovieAdd.create!(library_id: library1.id, movie_id: movie2.id,
-#                         num_stars: 4, review: "This movie is great! Forget it, Jake. It's Chinatown.",
-#                         is_public: true)
+rev1 = Review.create!(user_id: user1.id, movie_id: movie1.id,
+                        num_stars: 5, body: "This movie is great!",
+                        is_public: true)
+rev2 = Review.create!(user_id: user2.id, movie_id: movie1.id,
+                        num_stars: 4, body: "This movie is pretty good.",
+                        is_public: true)
+rev3 = Review.create!(user_id: user1.id, movie_id: movie2.id,
+                        num_stars: 2, body: "This movie is lame!",
+                        is_public: true)
+rev4 = Review.create!(user_id: user2.id, movie_id: movie2.id,
+                        num_stars: 1, body: "This movie is terrible.",
+                        is_public: false)

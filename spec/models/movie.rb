@@ -7,6 +7,4 @@ describe Movie do
   it { should_not allow_value(7). for(:year) }
   it { should_not allow_value(2070). for(:year) }
 
-
-
 end

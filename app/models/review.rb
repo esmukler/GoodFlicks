@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   validates :user, :movie, presence: true
   validates_inclusion_of :num_stars, :in => 0..5
+  validates :is_public, inclusion: { in: [true, false] }
 
   belongs_to :user,
     class_name: "User",
