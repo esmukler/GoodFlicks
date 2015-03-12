@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311221837) do
+ActiveRecord::Schema.define(version: 20150312224730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20150311221837) do
     t.string   "title",                     null: false
     t.integer  "order"
     t.boolean  "is_public",  default: true, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "library_movies", force: :cascade do |t|
+    t.integer  "library_id", null: false
+    t.integer  "movie_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

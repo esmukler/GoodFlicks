@@ -7,6 +7,14 @@ class Library < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :libraries
 
+  has_many :library_movies,
+    class_name: "LibraryMovies",
+    foreign_key: :library_id,
+    primary_key: :id,
+    inverse_of: :library
+
+  has_many :movies, through: :library_movies, source: :movie
+
   after_initialize :set_is_public
 
 
