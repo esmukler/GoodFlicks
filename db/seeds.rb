@@ -18,7 +18,7 @@ movie2 = Movie.create!(title: "Office Space", description: "Three company worker
                         poster_img: "https://www.movieposter.com/posters/archive/main/58/MPW-29049")
 
 movie3 = Movie.create!(title: "Wall-E", description: "In the distant future, a small waste collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
-                        year: 2008, direct: "Andrew Stanton",
+                        year: 2008, director: "Andrew Stanton",
                         poster_img: "http://www.impawards.com/2008/posters/wall_e.jpg")
 
 
