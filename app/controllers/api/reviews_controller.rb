@@ -1,7 +1,7 @@
 class Api::ReviewsController < ApplicationController
 
   def index
-    @reviews = current_user.reviews.limit(5).order(:updated_at)
+    @reviews = current_user.reviews.order(:updated_at => :desc).limit(5)
     render :index
   end
 

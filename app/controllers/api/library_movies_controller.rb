@@ -9,12 +9,14 @@ class Api::LibraryMoviesController < ApplicationController
 
     if @library_movie
       @library_movie.destroy
-      render json: @library_movie
+      @movie = @library_movie.movie
+      render "api/movies/show"
     else
       @library_movie = LibraryMovie.new(lm_params)
 
       if @library_movie.save
-        render json: @library_movie
+        @movie = @library_movie.movie
+        render "api/movies/show"
       else
         render json: @library_movie.errors.full_messages, status: :unprocessable_entity
       end

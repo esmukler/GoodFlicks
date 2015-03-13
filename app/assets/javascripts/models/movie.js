@@ -3,7 +3,8 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
 
 
   // toggle from lib??
-  addToLibrary: function(libId) {
+  addToLibrary: function(options) {
+    var libId = options.libId
     $.ajax({
       url: "/api/library_movies",
       type: "POST",
@@ -14,8 +15,9 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
           movie_id: this.id
         }
       }, success: function(data) {
-        console.log("successful post", data);
-      }
+        this.set(this.parse(data));
+        console.log(data)
+      }.bind(this)
     })
   },
 
@@ -26,7 +28,7 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
       dataType: "json",
       data: {
         library_movie: {
-          library_id: libId,
+          library_id: libId.libId,
           movie_id: this.id
         }
       }, success: function(data) {

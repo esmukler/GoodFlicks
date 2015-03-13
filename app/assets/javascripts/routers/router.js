@@ -16,7 +16,7 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
 
   home: function() {
     this.libs.fetch();
-
+    this.revs.fetch();
     var homeView = new GoodFlicks.Views.HomeView({
       libraries: this.libs,
       reviews: this.revs

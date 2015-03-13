@@ -1,8 +1,6 @@
 GoodFlicks.Collections.Reviews = Backbone.Collection.extend({
   url: "/api/reviews",
 
-  comparator: "updated_at",
-
   model: GoodFlicks.Models.Review,
 
   initialize: function(models, options) {

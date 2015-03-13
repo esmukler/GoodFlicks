@@ -6,9 +6,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
   initialize: function() {
     this.subViews = [];
-    this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.reviews(), "sync", this.render);
-    this.listenTo(this.model.libraries(), "sync remove", this.renderCurrentLibs);
+    this.listenTo(this.model, "sync change", this.render);
+    this.listenTo(this.model.reviews(), "add remove", this.render);
   },
 
   events: {
@@ -46,7 +45,6 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
   renderLibAddForm: function() {
     if (this.model.get("unadded_libraries")) {
-      console.log(this.model.get("unadded_libraries"))
       var libAdd = new GoodFlicks.Views.LibMovieForm({
         model: this.model
       })
