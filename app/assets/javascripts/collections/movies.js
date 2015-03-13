@@ -5,6 +5,10 @@ GoodFlicks.Collections.Movies = Backbone.Collection.extend({
 
   model: GoodFlicks.Models.Movie,
 
+  initialize: function(models, options) {
+    if (options) this.library = options.library;
+  },
+
   getOrFetch: function(id) {
     var movie = this.get(id);
 

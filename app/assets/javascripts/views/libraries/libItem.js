@@ -6,14 +6,29 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
 
   tagName: "li",
 
-  initialize: function() {
-    this.listenTo(this.model, "sync", this.render)
+  initialize: function(options) {
+    this.$show = options.$show;
+    this.listenTo(this.model, "sync", this.render);
     this.subViews = [];
   },
 
   events: {
     "click button.edit": "editLibrary",
-    "click button.delete": "deleteLibrary"
+    "click button.delete": "deleteLibrary",
+    "click .lib-title" : "showLibrary"
+  },
+
+  showLibrary: function(event) {
+    this.$show.empty();
+    this.model.movies().each( function(movie) {
+      var movieItem = new GoodFlicks.Views.MovieListItem({
+        model: movie
+      })
+      this.subViews.push(movieItem);
+
+      this.$show.append(movieItem.render().$el);
+    }.bind(this));
+
   },
 
   editLibrary: function(event) {

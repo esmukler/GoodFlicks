@@ -8,7 +8,7 @@ class Library < ActiveRecord::Base
     inverse_of: :libraries
 
   has_many :library_movies,
-    class_name: "LibraryMovies",
+    class_name: "LibraryMovie",
     foreign_key: :library_id,
     primary_key: :id,
     inverse_of: :library

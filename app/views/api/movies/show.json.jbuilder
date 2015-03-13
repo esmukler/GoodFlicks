@@ -5,3 +5,7 @@ json.reviews @movie.reviews do |review|
     json.partial! "api/reviews/review", review: review
   end
 end
+
+json.libraries @movie.libraries do |library|
+  json.partial! "api/libraries/library", library: library
+end

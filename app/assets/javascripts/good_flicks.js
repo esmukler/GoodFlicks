@@ -26,3 +26,7 @@ window.GoodFlicks = {
     Backbone.history.start();
   }
 };
+
+$(document).ready(function(){
+  GoodFlicks.initialize();
+});

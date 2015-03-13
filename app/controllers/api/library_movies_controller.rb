@@ -1,10 +1,10 @@
-class LibraryMoviesController < ApplicationController
+class Api::LibraryMoviesController < ApplicationController
 
   def new
   end
 
   def create
-    @library_movie = current_user.library_movies.new
+    @library_movie = LibraryMovie.new(lm_params)
 
     if @library_movie.save
       render json: @library_movie
@@ -18,5 +18,11 @@ class LibraryMoviesController < ApplicationController
     @library_movie.destroy
     render json: @library_movie
   end
+
+  private
+
+    def lm_params
+      params.require(:library_movie).permit(:library_id, :movie_id)
+    end
 
 end

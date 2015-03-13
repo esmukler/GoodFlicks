@@ -16,11 +16,9 @@
   <%= render partial: "layouts/footer" %>
 <% end %>
 
-
 <script>
 <% if current_user %>
   $(document).ready(function(){
-    GoodFlicks.initialize();
     GoodFlicks.current_user_id = <%= current_user.id %>
   });
 <% end %>

@@ -19,11 +19,13 @@ GoodFlicks.Views.LibMovieForm = Backbone.View.extend({
     var formData = this.$el.serializeJSON();
     if (formData.lm) {
       formData.lm.library_ids.forEach( function(libId) {
-        console.log("Make a libMovie w/ libId: ", libId, "and movId: ", this.model.id)
+        this.model.addToLibrary(libId);
+        console.log(libId)
       }.bind(this))
       this.render();
     }
   },
+
 
   render: function() {
 

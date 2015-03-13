@@ -21,8 +21,8 @@ class Api::LibrariesController < ApplicationController
   end
 
   def show
-    @libary = Library.find(params[:id])
-    render json: @library
+    @library = Library.find(params[:id])
+    render :show
   end
 
   def edit

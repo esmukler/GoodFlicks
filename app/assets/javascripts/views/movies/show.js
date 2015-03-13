@@ -47,6 +47,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var libraries = new GoodFlicks.Collections.Libraries()
     libraries.fetch({
       success: function() {
+        console.log(this.filterOutCurrentLibs(libraries));
+
         var libAdd = new GoodFlicks.Views.LibMovieForm({
           model: this.model,
           collection: libraries
@@ -55,7 +57,44 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
         this.subViews.push(libAdd)
       }.bind(this)
     })
+  },
 
+  filterOutCurrentLibs: function(allLibs) {
+
+    var currentLibIds = [];
+    this.model.libraries().each( function(lib) {
+      currentLibIds.push(lib.id)
+    })
+
+    var allLibIds = [];
+    allLibs.each( function(lib) {
+      allLibIds.push(lib.id)
+    })
+
+    var unAddedLibIds = [];
+
+    allLibs.each( function(lib) {
+
+    })
+
+    var unAddedLibIds = _.reject(allLibIds, function(libId) {
+        _.contains(currentLibIds, libId)
+    })
+
+    return unAddedLibIds;
+  },
+
+
+  renderCurrentLibs: function() {
+    if (this.model.libraries()) {
+      this.model.libraries().each( function(lib) {
+        var movieLibItem = new GoodFlicks.Views.MovieLibItem({
+          model: lib
+        })
+        this.$('.current-libs > ul').append(movieLibItem.render().$el);
+        this.subViews.push(movieLibItem);
+      }.bind(this))
+    }
   },
 
   render: function() {
@@ -64,6 +103,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
     this.renderLibAddForm();
     this.renderReviews();
+    this.renderCurrentLibs();
+
 
     return this
   },

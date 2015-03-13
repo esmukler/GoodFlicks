@@ -32,7 +32,8 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     var $libList = $('.library-list')
     this.libraries.each( function(library) {
       var libItem = new GoodFlicks.Views.LibItem({
-        model: library
+        model: library,
+        $show: this.$('.library-show')
       });
       this.subViews.push(libItem);
       $libList.append(libItem.render().$el)

@@ -1,3 +1,3 @@
 json.array! @libraries do |library|
-  json.extract! library, :id, :title, :order, :is_public, :user_id
+  json.partial! "api/libraries/library", library: library
 end

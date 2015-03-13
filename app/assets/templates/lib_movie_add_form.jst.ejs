@@ -1,6 +1,6 @@
 <h4>Add <%= movie.escape("title") %> to My Libraries</h4>
 <% libraries.each( function(lib) { %>
-  <label>
+  <label data-lib-id="<%= lib.id %>">
     <input type="checkbox" name="lm[library_ids][]" value="<%= lib.id %>">
     <%= lib.get("title") %>
   </label><br>
