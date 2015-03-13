@@ -17,6 +17,12 @@ movie2 = Movie.create!(title: "Office Space", description: "Three company worker
                         year: 1999, director: "Mike Judge",
                         poster_img: "https://www.movieposter.com/posters/archive/main/58/MPW-29049")
 
+movie3 = Movie.create!(title: "Wall-E", description: "In the distant future, a small waste collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
+                        year: 2008, direct: "Andrew Stanton",
+                        poster_img: "http://www.impawards.com/2008/posters/wall_e.jpg")
+
+
+
 library1 = Library.create!(title: "Seen", user_id: user1.id)
 library2 = Library.create!(title: "Want to See", user_id: user1.id)
 library3 = Library.create!(title: "Favorites", user_id: user1.id)
@@ -35,3 +41,9 @@ rev3 = Review.create!(user_id: user1.id, movie_id: movie2.id,
 rev4 = Review.create!(user_id: user2.id, movie_id: movie2.id,
                         num_stars: 1, body: "This movie is terrible.",
                         is_public: false)
+rev4 = Review.create!(user_id: user2.id, movie_id: movie3.id,
+                        num_stars: 3, body: "I cried often during this movie.",
+                        is_public: true)
+rev5 = Review.create!(user_id: user1.id, movie_id: movie3.id,
+                        num_stars: 3, body: "This movie is super realistic. The end is nigh.",
+                        is_public: true)

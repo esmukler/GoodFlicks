@@ -6,7 +6,8 @@ GoodFlicks.Views.MovieLibItem = Backbone.View.extend({
 
   tagName: "li",
 
-  initialize: function() {
+  initialize: function(options) {
+    this.movie = options.movie;
     this.listenTo(this.model, "sync", this.render)
   },
 
@@ -15,8 +16,10 @@ GoodFlicks.Views.MovieLibItem = Backbone.View.extend({
     "click button": "removeFromLib"
   },
 
-
-
+  removeFromLib: function(event) {
+    event.preventDefault();
+    this.movie.removeFromLibrary(this.model.id)
+  },
 
 
   render: function() {

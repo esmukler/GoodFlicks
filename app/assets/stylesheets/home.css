@@ -1,9 +1,14 @@
 section.libraries,
 section.reviews {
   border: 5px solid yellow;
-  float: left;
+  /*float: left;*/
   display: block;
   margin: 50px;
   padding: 20px;
   border-radius: 10px;
+}
+
+section.library-show {
+  border: 5px solid yellow;
+  display: block;
 }

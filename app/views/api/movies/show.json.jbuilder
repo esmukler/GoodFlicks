@@ -9,3 +9,7 @@ end
 json.libraries @movie.libraries do |library|
   json.partial! "api/libraries/library", library: library
 end
+
+json.unadded_libraries current_user.libraries - @movie.libraries do |library|
+  json.extract! library, :id, :title
+end

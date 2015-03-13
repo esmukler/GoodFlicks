@@ -6,8 +6,9 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
   initialize: function() {
     this.subViews = [];
-    this.listenTo(this.model, "sync", this.render)
-    this.listenTo(this.model.reviews(), "sync", this.render)
+    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.reviews(), "sync", this.render);
+    this.listenTo(this.model.libraries(), "sync remove", this.renderCurrentLibs);
   },
 
   events: {
@@ -44,44 +45,14 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
   },
 
   renderLibAddForm: function() {
-    var libraries = new GoodFlicks.Collections.Libraries()
-    libraries.fetch({
-      success: function() {
-        console.log(this.filterOutCurrentLibs(libraries));
-
-        var libAdd = new GoodFlicks.Views.LibMovieForm({
-          model: this.model,
-          collection: libraries
-        });
-        this.$('feature.lib-add').html(libAdd.render().$el);
-        this.subViews.push(libAdd)
-      }.bind(this)
-    })
-  },
-
-  filterOutCurrentLibs: function(allLibs) {
-
-    var currentLibIds = [];
-    this.model.libraries().each( function(lib) {
-      currentLibIds.push(lib.id)
-    })
-
-    var allLibIds = [];
-    allLibs.each( function(lib) {
-      allLibIds.push(lib.id)
-    })
-
-    var unAddedLibIds = [];
-
-    allLibs.each( function(lib) {
-
-    })
-
-    var unAddedLibIds = _.reject(allLibIds, function(libId) {
-        _.contains(currentLibIds, libId)
-    })
-
-    return unAddedLibIds;
+    if (this.model.get("unadded_libraries")) {
+      console.log(this.model.get("unadded_libraries"))
+      var libAdd = new GoodFlicks.Views.LibMovieForm({
+        model: this.model
+      })
+      this.$('feature.lib-add').html(libAdd.render().$el);
+      this.subViews.push(libAdd);
+    }
   },
 
 
@@ -89,6 +60,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     if (this.model.libraries()) {
       this.model.libraries().each( function(lib) {
         var movieLibItem = new GoodFlicks.Views.MovieLibItem({
+          movie: this.model,
           model: lib
         })
         this.$('.current-libs > ul').append(movieLibItem.render().$el);

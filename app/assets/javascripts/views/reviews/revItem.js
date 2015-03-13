@@ -18,8 +18,6 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   },
 
   userOrMovie: function() {
-    // console.log(this.model.get("username"))
-    // console.log(this.model.get("movie_title"))
     if (this.model.get("username")) {
       this.$('.userOrMovie').text("Written by: " + this.model.get("username"));
     } else {

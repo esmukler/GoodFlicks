@@ -1,7 +1,7 @@
 GoodFlicks.Views.LibMovieForm = Backbone.View.extend({
 
   initialize: function() {
-    this.listenTo(this.collection, "sync", this.render)
+    this.listenTo(this.model, "sync", this.render)
   },
 
   template: JST['lib_movie_add_form'],
@@ -20,7 +20,6 @@ GoodFlicks.Views.LibMovieForm = Backbone.View.extend({
     if (formData.lm) {
       formData.lm.library_ids.forEach( function(libId) {
         this.model.addToLibrary(libId);
-        console.log(libId)
       }.bind(this))
       this.render();
     }
@@ -28,9 +27,8 @@ GoodFlicks.Views.LibMovieForm = Backbone.View.extend({
 
 
   render: function() {
-
     var content = this.template({
-      libraries: this.collection,
+      libraries: this.model.get("unadded_libraries"),
       movie: this.model
     })
     this.$el.html(content);

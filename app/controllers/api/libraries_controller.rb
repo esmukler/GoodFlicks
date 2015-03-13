@@ -7,6 +7,7 @@ class Api::LibrariesController < ApplicationController
     end
   end
 
+
   def new
   end
 

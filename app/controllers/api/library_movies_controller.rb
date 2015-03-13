@@ -4,12 +4,20 @@ class Api::LibraryMoviesController < ApplicationController
   end
 
   def create
-    @library_movie = LibraryMovie.new(lm_params)
+    @library_movie = LibraryMovie.find_by(:library_id => lm_params["library_id"], :movie_id => lm_params["movie_id"])
 
-    if @library_movie.save
+
+    if @library_movie
+      @library_movie.destroy
       render json: @library_movie
     else
-      render json: @library_movie.errors.full_messages, status: :unprocessable_entity
+      @library_movie = LibraryMovie.new(lm_params)
+
+      if @library_movie.save
+        render json: @library_movie
+      else
+        render json: @library_movie.errors.full_messages, status: :unprocessable_entity
+      end
     end
   end
 
