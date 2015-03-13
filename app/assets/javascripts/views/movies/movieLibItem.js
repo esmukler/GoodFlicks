@@ -18,7 +18,7 @@ GoodFlicks.Views.MovieLibItem = Backbone.View.extend({
 
   removeFromLib: function(event) {
     event.preventDefault();
-    this.movie.removeFromLibrary({libId: this.model.id})
+    this.movie.toggleFromLibrary(this.model.id)
   },
 
 

@@ -34,6 +34,7 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
   },
 
   movieShow: function(id) {
+    this.libs.fetch();
     var movie = this.movies.getOrFetch(id);
 
     var movieShow = new GoodFlicks.Views.MovieShow({

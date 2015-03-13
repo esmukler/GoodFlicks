@@ -8,6 +8,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.subViews = [];
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.reviews(), "add remove", this.render);
+    this.listenTo(this.model.libraries(), "add remove", this.render)
   },
 
   events: {
