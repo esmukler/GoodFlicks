@@ -23,15 +23,12 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       model: newRev,
       collection: this.model.reviews()
     });
-    GoodFlicks.current_user_id
+
     this.subViews.push(addRev);
     $(event.currentTarget).parent().html(addRev.render().$el)
   },
 
-  render: function() {
-    var baseContent = this.template({ movie: this.model })
-    this.$el.html(baseContent);
-
+  renderReviews: function() {
     if (this.model.reviews()) {
       this.model.reviews().each( function(review) {
         if (review.get("is_public")) {
@@ -44,6 +41,29 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
         }
       }.bind(this))
     }
+  },
+
+  renderLibAddForm: function() {
+    var libraries = new GoodFlicks.Collections.Libraries()
+    libraries.fetch({
+      success: function() {
+        var libAdd = new GoodFlicks.Views.LibMovieForm({
+          model: this.model,
+          collection: libraries
+        });
+        this.$('feature.lib-add').html(libAdd.render().$el);
+        this.subViews.push(libAdd)
+      }.bind(this)
+    })
+
+  },
+
+  render: function() {
+    var baseContent = this.template({ movie: this.model })
+    this.$el.html(baseContent);
+
+    this.renderLibAddForm();
+    this.renderReviews();
 
     return this
   },

@@ -7,11 +7,11 @@ img {
   width: 200px;
 }
 
-.movie-list li {
+/*.movie-list li {
   float: left;
   display: block;
   margin: 20px;
-}
+}*/
 
 .movie-list img {
   height: 400px;
@@ -19,13 +19,15 @@ img {
 }
 
 .movie-show-info {
-  display: block;
+  max-width: 400px;
+  /*display: block;
   float: left;
   border: 5px solid red;
-  max-width: 400px;
+
+  border-radius: 10px;*/
 }
 
 .movie-show-info .title {
   font-size: 28px;
-  text-align: center;
+  /*text-align: center;*/
 }
