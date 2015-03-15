@@ -47,9 +47,7 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
 
   libraries: function() {
     if (!this._libraries) {
-      this._libraries = new GoodFlicks.Collections.Libraries([], {
-        movie: this
-      })
+      this._libraries = new GoodFlicks.Collections.Libraries()
     }
     return this._libraries;
   },

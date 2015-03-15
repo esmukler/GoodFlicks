@@ -6,10 +6,8 @@ json.reviews @movie.reviews do |review|
   end
 end
 
-json.libraries @movie.libraries do |library|
-  json.partial! "api/libraries/library", library: library
-end
-
-json.unadded_libraries current_user.libraries - @movie.libraries do |library|
-  json.extract! library, :id, :title
+json.libraries current_user.libraries do |library|
+  json.id     library.id
+  json.title  library.title
+  json.added  @movie.libraries.include?(library)
 end

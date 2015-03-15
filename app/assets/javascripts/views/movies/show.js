@@ -4,15 +4,28 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
   className: "movie-show group",
 
-  initialize: function() {
+  initialize: function(options) {
     this.subViews = [];
+    this.libs = options.libs;
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.reviews(), "add remove", this.render);
-    this.listenTo(this.model.libraries(), "add remove", this.render)
+    this.listenTo(this.model.libraries(), "add remove", this.render);
   },
 
   events: {
     "click .add-review": "addReview"
+  },
+
+  renderLibButtons: function() {
+    var currentLibs = this.model.libraries();
+
+    currentLibs.each( function(lib) {
+      var libButton = new GoodFlicks.Views.LibButton({
+        model: lib
+      })
+      this.subViews.push(libButton);
+      this.$('.lib-button-list').append(libButton.render().$el)
+    }.bind(this))
   },
 
   addReview: function(event) {
@@ -72,11 +85,11 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var baseContent = this.template({ movie: this.model })
     this.$el.html(baseContent);
 
-    this.renderLibAddForm();
+    this.renderLibButtons();
+    // this.renderLibAddForm();
     this.renderReviews();
-    this.renderCurrentLibs();
-
-
+    // this.renderCurrentLibs();
+    // console.log(this.model.libraries());
     return this
   },
 
