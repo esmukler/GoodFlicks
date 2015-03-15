@@ -1,8 +1,0 @@
-<h4>Add <%= movie.escape("title") %> to My Libraries</h4>
-<% libraries.forEach( function(lib) { %>
-  <label data-lib-id="<%= lib.id %>">
-    <input type="checkbox" name="lm[library_ids][]" value="<%= lib.id %>">
-    <%= lib.title %>
-  </label><br>
-<% }) %>
-<button type="submit">Add Movie to Libraries</button

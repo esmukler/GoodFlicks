@@ -2,6 +2,7 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
   urlRoot: "/api/movies",
 
   toggleFromLibrary: function(libId) {
+    console.log("togglefromlib")
     $.ajax({
       url: "/api/library_movies",
       type: "POST",
@@ -16,22 +17,6 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
       }.bind(this)
     })
   },
-
-  // removeFromLibrary: function(libId) {
-  //   $.ajax({
-  //     url: "/api/library_movies",
-  //     type: "POST",
-  //     dataType: "json",
-  //     data: {
-  //       library_movie: {
-  //         library_id: libId.libId,
-  //         movie_id: this.id
-  //       }
-  //     }, success: function(data) {
-  //       console.log("removed post!", data);
-  //     }
-  //   })
-  // },
 
   parse: function(jsonResp) {
     if (jsonResp.reviews) {
