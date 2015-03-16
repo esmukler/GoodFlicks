@@ -25,7 +25,6 @@ section.movie-show-info {
   float: left;
   padding: 20px;
   border: 5px solid red;
-
   border-radius: 10px;
 }
 
@@ -38,7 +37,7 @@ section.reviews {
   max-width: 300px;
   display: block;
   float: right;
-  border: 5px solid red:
+  border: 5px solid red;
   border-radius: 10px;
 }
 
