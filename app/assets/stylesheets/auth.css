@@ -22,3 +22,15 @@ figure.credentials p {
 figure.credentials label {
   margin: 5px;
 }
+
+.errors {
+  background: #E07B7B;
+  display: block;
+  position: relative;
+  width: 300px;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  margin: auto;
+}

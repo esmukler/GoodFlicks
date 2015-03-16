@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :users
   resource :session
   namespace :api, defaults: { format: :json } do
+    get "/search", to: "static_pages#search"
     resources :movies
     resources :libraries
     resources :reviews
-    resources :library_movies
+    resources :library_movies, only: [:create, :destroy]
   end
 
 end

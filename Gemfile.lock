@@ -150,6 +150,10 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.18.1)
+    pg_search (0.7.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -283,6 +287,7 @@ DEPENDENCIES
   jquery-rails
   paperclip (~> 4.2)
   pg
+  pg_search
   pry-rails
   quiet_assets
   rails (= 4.2.0)

@@ -1,6 +1,9 @@
 GoodFlicks.Views.HomeView = Backbone.View.extend({
 
   initialize: function(options) {
+    if (options.libId) {
+      this.libId = options.libId;
+    }
     this.reviews = options.reviews;
     this.libraries = options.libraries;
     this.subViews = [];
@@ -16,6 +19,12 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     "click button.add-library": "addLibrary"
   },
 
+  renderHeader: function() {
+    var header = new GoodFlicks.Views.Header()
+    this.subViews.push(header)
+    this.$('header.home').html(header.render().$el)
+  },
+
   addLibrary: function(event) {
     var model = new GoodFlicks.Models.Library()
 
@@ -28,16 +37,24 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
 
   },
 
-  renderLibraries: function() {
+  renderLibraries: function(libId) {
     var $libList = $('.library-list')
     this.libraries.each( function(library) {
-      var libItem = new GoodFlicks.Views.LibItem({
-        model: library,
-        $show: this.$('.library-show')
-      });
+      if (libId == library.id) {
+        var libItem = new GoodFlicks.Views.LibItem({
+          model: library,
+          $show: this.$('.library-show'),
+          quickStart: true
+        });
+
+      } else {
+        var libItem = new GoodFlicks.Views.LibItem({
+          model: library,
+          $show: this.$('.library-show')
+        });
+      }
       this.subViews.push(libItem);
       $libList.append(libItem.render().$el)
-
     }.bind(this))
   },
 
@@ -56,7 +73,8 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
 
     this.$el.html(baseContent);
 
-    this.renderLibraries();
+    this.renderHeader();
+    this.renderLibraries(this.libId);
     this.renderReviews();
 
     return this;

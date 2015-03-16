@@ -38,6 +38,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem "paperclip", "~> 4.2"
-gem "aws-sdk", "< 2.0"
-gem "figaro"
+gem 'paperclip', '~> 4.2'
+gem 'aws-sdk', '< 2.0'
+gem 'figaro'
+gem 'pg_search'

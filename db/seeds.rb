@@ -10,7 +10,7 @@ user1 = User.create!(username: "eli", password: "password", session_token: "fake
 user2 = User.create!(username: "dude", password: "password", session_token: "fake456")
 
 movie1 = Movie.create!(title: "Chinatown", description: "A private detective hired to expose an adulterer finds himself caught up in a web of deceit, corruption and murder.",
-                        year: 1974, director: "Roman Polanski")
+                        year: 1974, director: "Roman Polanski", poster_url: "https://s3.amazonaws.com/goodflicks-dev/chinatown.jpg")
 
 movie2 = Movie.create!(title: "Office Space", description: "Three company workers who hate their jobs and decide to rebel against their greedy boss.",
                         year: 1999, director: "Mike Judge")

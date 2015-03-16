@@ -1,4 +1,11 @@
 class Movie < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_title,
+                  against: :title,
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   validates :title, presence: true
   validates :year, numericality: { only_integer: true }
   validates_inclusion_of :year, in: 1896..(Time.now.year + 2)

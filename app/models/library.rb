@@ -1,5 +1,6 @@
 class Library < ActiveRecord::Base
-  validates :user, :title, presence: true
+  validates :user, presence: true
+  validates :title, presence: true, allow_blank: false
 
   belongs_to :user,
     class_name: "User",

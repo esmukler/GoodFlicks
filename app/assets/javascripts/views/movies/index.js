@@ -3,7 +3,7 @@ GoodFlicks.Views.MovieIndex = Backbone.View.extend({
   initialize: function() {
     this.subViews = [];
 
-    this.listenTo(this.collection, "sync", this.render)
+    this.listenTo(this.collection, "add sync remove", this.render)
   },
 
   template: JST["movie_index"],

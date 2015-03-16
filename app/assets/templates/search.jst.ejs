@@ -1,0 +1,10 @@
+<h1>Search</h1>
+
+<label>Enter a Movie Title:
+  <input type="text" class="query">
+</label>
+<button type="submit">Search</button>
+
+<% results.each (function(result) { %>
+  <p><%= result.escape("title") %></p>
+<% }) %>

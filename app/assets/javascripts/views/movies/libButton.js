@@ -19,9 +19,8 @@ GoodFlicks.Views.LibButton = Backbone.View.extend({
 
   goToLibrary: function(event) {
     event.preventDefault();
-    var libId = $(event.currentTarget).data("lib-id")
-    console.log(libId)
-    // TODO make a route home/libraries/1 then have this link take you there
+    var libId = this.$('button').data("lib-id")
+    Backbone.history.navigate("#/libraries/" + libId, {trigger: true});
   },
 
   renderButton: function() {

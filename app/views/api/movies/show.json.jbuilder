@@ -1,4 +1,4 @@
-json.extract! @movie, :title, :description, :year, :director
+json.extract! @movie, :title, :description, :year, :director, :id
 
 json.reviews @movie.reviews do |review|
   if review.is_public
