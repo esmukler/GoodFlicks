@@ -1,17 +1,20 @@
+<h2 class="title"><%= movie.escape("title") %> (<%= movie.escape("year") %>)</h2>
+
 <section class="movie-show-info">
-  <h2 class="title"><%= movie.escape("title") %> (<%= movie.escape("year") %>)</h2>
 
   <img class="poster" src="<%= movie.escape("poster_img") %>">
 
   <h4 class="director">Director: <%= movie.escape("director")%></h4>
 
-  <p class="description">Description: <%= movie.escape("description")%></p>
+  <p class="description"><%= movie.escape("description")%></p>
 
+  <feature class="lib-buttons">
+    <h4>Your Libraries<h4>
+    <ul class="lib-button-list"></ul>
+  </feature>
 </section>
 
-<feature class="lib-buttons">
-  <ul class="lib-button-list"></ul>
-</feature>
+
 
 <section class="reviews">
   <h3>Reviews:</h3>

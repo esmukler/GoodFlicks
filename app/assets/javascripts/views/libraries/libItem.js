@@ -15,7 +15,15 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
   events: {
     "click button.edit": "editLibrary",
     "click button.delete": "deleteLibrary",
-    "click .lib-title" : "showLibrary"
+    "click .lib-title" : "showLibrary",
+    "mouseenter" : "toggleButton",
+    "mouseleave" : "toggleButton",
+  },
+
+  toggleButton: function(event) {
+    this.$('button.edit').toggleClass("hidden");
+    this.$('button.delete').toggleClass("hidden");
+
   },
 
   showLibrary: function(event) {

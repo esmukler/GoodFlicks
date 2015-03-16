@@ -10,7 +10,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
 
   template: JST['home'],
 
-  className: "home-container group",
+  className: "home-container",
 
   events: {
     "click button.add-library": "addLibrary"

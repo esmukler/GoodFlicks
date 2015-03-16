@@ -1,11 +1,11 @@
 <label>Number of Stars:
   <input type="number" name="review[num_stars]" min="0" max="5" step="1"
          value="<%= review.get("num_stars") %>">
-</label>
+</label><br>
 
 <label>Review:
   <textarea name="review[body]"><%= review.get("body") %></textarea>
-</label>
+</label><br>
 
 <label>Private
   <input id="is_private" type="radio" name="review[is_public]" value="false">

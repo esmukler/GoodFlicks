@@ -1,14 +1,43 @@
-section.libraries,
-section.reviews {
-  border: 5px solid yellow;
-  /*float: left;*/
+main.home {
   display: block;
-  margin: 50px;
-  padding: 20px;
+  margin: auto;
+  max-width: 900px;
+  padding: 10px;
+  background: white;
+}
+
+sidebar.libraries {
+  border: 5px solid red;
+  float: left;
+  display: block;
   border-radius: 10px;
+  width: 250px;
+  margin: 10px;
+}
+
+sidebar.libraries li {
+  list-style: none;
+  display: block;
+  background: lightgrey;
+}
+
+button.add-library {
+  display: block;
+  margin: auto;
+}
+
+div.home-content {
+  border: 5px solid red;
+  border-radius: 10px;
+  float: right;
+  display: block;
+  width: 570px;
+  margin: 10px;
 }
 
 section.library-show {
-  border: 5px solid yellow;
+  border: 5px solid red;
   display: block;
+  width: 100%;
+  min-height: 100px;
 }

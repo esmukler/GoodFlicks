@@ -11,9 +11,17 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
     this.subViews = [];
   },
 
+  events: {
+    "mouseenter": "showOwnerButtons",
+    "mouseleave": "showOwnerButtons",
+    "click button.edit": "editReview",
+    "click button.delete": "deleteReview"
+  },
+
   showOwnerButtons: function() {
     if (this.model.get("user_id") === GoodFlicks.current_user_id) {
-      this.$("button").toggleClass("hidden");
+      this.$("button.edit").toggleClass("hidden");
+      this.$("button.delete").toggleClass("hidden");
     }
   },
 
@@ -23,11 +31,6 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
     } else {
       this.$('.userOrMovie').text("Movie: " + this.model.get("movie_title"));
     }
-  },
-
-  events: {
-    "click button.edit": "editReview",
-    "click button.delete": "deleteReview"
   },
 
   editReview: function(event) {
@@ -52,7 +55,6 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
     var content = this.template({ review: this.model })
 
     this.$el.html(content);
-    this.showOwnerButtons();
     this.userOrMovie();
     return this
   },
