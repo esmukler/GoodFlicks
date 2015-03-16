@@ -6,8 +6,9 @@
 <button type="submit">Search</button>
 
 <ul class="search-results">
-<% results.each (function(result) { %>
-  <li><a href="#/movies/<%= result.id %>">
-          <%= result.escape("title") %></a></li>
+<% results.forEach (function(result) { %>
+  <li class="result" data-movie-db-id="<%= result.id %>">
+    <%= result.title %> (<%= result.release_date.slice(0,4) %>)
+  </li>
 <% }) %>
 </ul>

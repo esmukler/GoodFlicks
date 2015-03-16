@@ -16,6 +16,12 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     "click .add-review": "addReview"
   },
 
+  renderHeader: function() {
+    var header = new GoodFlicks.Views.Header()
+    this.subViews.push(header)
+    this.$('header.movie-show').html(header.render().$el)
+  },
+
   renderLibButtons: function() {
     var cuLibs = this.model.libraries();
 
@@ -62,6 +68,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var baseContent = this.template({ movie: this.model })
     this.$el.html(baseContent);
 
+    this.renderHeader();
     this.renderLibButtons();
     this.renderReviews();
 

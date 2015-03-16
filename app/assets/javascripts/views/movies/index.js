@@ -12,20 +12,29 @@ GoodFlicks.Views.MovieIndex = Backbone.View.extend({
 
   tagName: "section",
 
-  render: function() {
-    var movies = this.collection;
+  renderHeader: function() {
+    var header = new GoodFlicks.Views.Header()
+    this.subViews.push(header)
+    this.$('header.movie-index').html(header.render().$el)
+  },
 
-    var baseContent = this.template({ movies: movies })
-    this.$el.html(baseContent);
-
-    var $movieList = this.$el.find('.movie-list')
-    movies.each( function(movie) {
+  renderMovies: function() {
+    this.collection.each( function(movie) {
       var movieItem = new GoodFlicks.Views.MovieListItem({
         model: movie
       })
       this.subViews.push(movieItem);
       this.$('.movie-list').append(movieItem.render().$el)
     }.bind(this))
+  },
+
+  render: function() {
+
+    var baseContent = this.template({ movies: this.collection })
+    this.$el.html(baseContent);
+
+    this.renderHeader();
+    this.renderMovies();
 
     return this
   },

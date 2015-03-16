@@ -1,7 +1,7 @@
 main.home {
   display: block;
   margin: auto;
-  max-width: 900px;
+  width: 900px;
   padding: 10px;
   background: white;
 }

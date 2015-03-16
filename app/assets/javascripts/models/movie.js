@@ -2,7 +2,6 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
   urlRoot: "/api/movies",
 
   toggleFromLibrary: function(libId) {
-    console.log("togglefromlib")
     $.ajax({
       url: "/api/library_movies",
       type: "POST",
