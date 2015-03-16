@@ -23,20 +23,14 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
   toggleButton: function(event) {
     this.$('button.edit').toggleClass("hidden");
     this.$('button.delete').toggleClass("hidden");
-
   },
 
   showLibrary: function(event) {
-    this.$show.empty();
-    this.model.movies().each( function(movie) {
-      var movieItem = new GoodFlicks.Views.MovieListItem({
-        model: movie
-      })
-      this.subViews.push(movieItem);
-
-      this.$show.append(movieItem.render().$el);
-    }.bind(this));
-
+    var libShow = new GoodFlicks.Views.LibraryShow({
+      model: this.model
+    })
+    this.subViews.push(libShow)
+    this.$show.html(libShow.render().$el)
   },
 
   editLibrary: function(event) {
@@ -55,10 +49,10 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
   },
 
   render: function() {
-    var content = this.template({ library: this.model })
+    var content = this.template({ library: this.model });
 
     this.$el.html(content);
-    return this
+    return this;
   },
 
   remove: function() {

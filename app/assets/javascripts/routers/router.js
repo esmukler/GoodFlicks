@@ -11,7 +11,11 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
     "": "home",
     "movies" : "movieIndex",
     "movies/new" : "movieNew",
-    "movies/:id" : "movieShow"
+    "movies/:id" : "movieShow",
+    "search" : "search"
+  },
+
+  search: function() {
   },
 
   home: function() {
@@ -36,7 +40,7 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
   movieShow: function(id) {
     this.libs.fetch();
     var movie = this.movies.getOrFetch(id);
-    
+
     var movieShow = new GoodFlicks.Views.MovieShow({
       model: movie,
       libs: this.libs

@@ -1,7 +1,7 @@
 class Api::MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all.order("updated_at DESC").limit(10)
     render "index"
   end
 
@@ -27,7 +27,7 @@ class Api::MoviesController < ApplicationController
 
     def movie_params
       params.require(:movie)
-            .permit(:title, :description, :director, :year, :poster_img)
+            .permit(:title, :description, :director, :year, :poster)
     end
 
 

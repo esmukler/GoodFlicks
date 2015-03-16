@@ -1,4 +1,4 @@
-json.extract! @movie, :title, :description, :poster_img, :year, :director
+json.extract! @movie, :title, :description, :year, :director
 
 json.reviews @movie.reviews do |review|
   if review.is_public
@@ -11,3 +11,5 @@ json.libraries current_user.libraries do |library|
   json.title  library.title
   json.added  @movie.libraries.include?(library)
 end
+
+json.poster_url image_url(@movie.poster.url(:medium))

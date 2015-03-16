@@ -2,26 +2,42 @@ GoodFlicks.Views.MovieForm = Backbone.View.extend({
 
   template: JST['movie_form'],
 
-  tagName: "form",
+  tagName: "div",
 
-  className: "movie-form",
+  className: "movie-form-container",
 
   events: {
-    "submit" : "submitForm"
+    "submit" : "submitForm",
+    "change #input-picture-file": "changePicture"
   },
 
   submitForm: function(event) {
     event.preventDefault();
-    var formData = this.$el.serializeJSON();
-
-    this.model.set(formData.movie)
-    this.model.save({}, {
+    var formData = this.$('.movie-form').serializeJSON();
+    this.model.save(formData.movie, {
       success: function() {
+
         this.collection.add(this.model)
-        console.log("hello")
+        console.log("new movie saved!")
         Backbone.history.navigate("/#movies/", {trigger: true})
       }.bind(this)
     })
+  },
+
+  changePicture: function(event) {
+    var file = event.currentTarget.files[0]
+    var fileReader = new FileReader();
+
+    fileReader.onloadend = function () {
+      this.model.set("poster", fileReader.result);
+      this.previewPic(fileReader.result);
+    }.bind(this)
+
+    fileReader.readAsDataURL(file);
+  },
+
+  previewPic: function(src) {
+    this.$('#picture-preview').attr("src", src);
   },
 
   render: function() {

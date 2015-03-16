@@ -19,16 +19,13 @@ GoodFlicks.Views.MovieIndex = Backbone.View.extend({
     this.$el.html(baseContent);
 
     var $movieList = this.$el.find('.movie-list')
-    // this.collection.sort(); I want reverse updated_at
-    for (var i=0; i<= 10; i++) {
-      if (movies.at(i)) {
-        var itemView = new GoodFlicks.Views.MovieListItem({
-          model: movies.at(i)
-        })
-        this.subViews.push(itemView);
-        $movieList.append(itemView.render().$el);
-      }
-    };
+    movies.each( function(movie) {
+      var movieItem = new GoodFlicks.Views.MovieListItem({
+        model: movie
+      })
+      this.subViews.push(movieItem);
+      this.$('.movie-list').append(movieItem.render().$el)
+    }.bind(this))
 
     return this
   },

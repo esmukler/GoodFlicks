@@ -6,6 +6,7 @@
    and have not found it before adding it to the database.
 </p>
 
+<form class="movie-form" enctype="multipart/form-data">
   <label>Title (required):
     <input type="text" name="movie[title]" value="<%= movie.escape("title") %>"></input>
   </label><br>
@@ -23,11 +24,13 @@
     <textarea></textarea>
   </label><br>
 
-  <label>Poster Image URL:
-    <input type="text" name="movie[poster_img]" value="<%= movie.escape("poster_img") %>"></input>
-  </label><br>
+  <label>Poster Image
+    <input id="input-picture-file" type="file" name="movie[poster]">
+  </label>
 
-  <button>Add Movie!</button>
+  <img src="" class="picture-preview">
 
+  <button type="submit" >Add Movie!</button>
+</form>
 
 <a href="#">Home</a>

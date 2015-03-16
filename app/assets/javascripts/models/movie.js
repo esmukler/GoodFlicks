@@ -44,6 +44,13 @@ GoodFlicks.Models.Movie = Backbone.Model.extend({
       })
     }
     return this._reviews;
+  },
+
+  toJSON: function() {
+    return {
+
+      movie: this.attributes
+    }
   }
 
 })
