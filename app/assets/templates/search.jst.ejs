@@ -5,6 +5,9 @@
 </label>
 <button type="submit">Search</button>
 
+<ul class="search-results">
 <% results.each (function(result) { %>
-  <p><%= result.escape("title") %></p>
+  <li><a href="#/movies/<%= result.id %>">
+          <%= result.escape("title") %></a></li>
 <% }) %>
+</ul>
