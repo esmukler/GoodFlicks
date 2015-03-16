@@ -1,15 +1,17 @@
-<header>
-  <% if @current_user %>
-    <form action="<%= session_url %>" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit">Log Out</button>
-    </form>
-    <p>Hello, <%= @current_user.username %>. Welcome to...</p>
-  <% end %>
+<header group>
+  <nav class="welcome">
+    <% if @current_user %>
+      <p>Welcome, <%= @current_user.username %>.</p>
 
-  <!-- <h1>GoodFlicks</h1> -->
-  <img src="/images/GoodFlicks-logo.png">
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit">Log Out</button>
+      </form>
+    <% end %>
+  </nav>
+
+  <a href="#"><img class="logo" src="/images/GoodFlicks-logo.png"></a>
 
   <% if flash.now[:errors] %>
     <p class="errors"><%= flash.now[:errors] %></p>

@@ -58,6 +58,17 @@ feature.lib-buttons h4 {
   text-align: center;
 }
 
+feature.lib-buttons a {
+  position: relative;
+}
+
+feature.lib-buttons a:hover {
+  background: lightyellow;
+  top: 2px;
+  left: 2px;
+}
+
+
 feature.lib-buttons li {
   list-style: none;
   display: block;

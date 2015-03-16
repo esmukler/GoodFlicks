@@ -1,9 +1,28 @@
-header > h1 {
-  margin: 20px auto;
-  color: black;
-  font-size: 40px;
-  text-align: center;
+header {
+  background: lightyellow;
+  border-radius: 10px;
+  display: block;
+  position: relative;
 }
 
-header > img {
+nav.welcome {
+  display: block;
+  float: left;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+header img.logo {
+  margin: auto;
+  width: 300px;
+  display: block;
+  position: relative;
+  border-radius: 10px;
+}
+
+header img.logo:hover {
+  background: yellow;
+  top: 2px;
+  left: 2px;
 }
