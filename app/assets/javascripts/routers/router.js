@@ -13,11 +13,13 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
     "movies/new" : "movieNew",
     "movies/:id" : "movieShow",
     "libraries/:lib_id": "home",
-    "search" : "search"
+    "search/:query" : "search"
   },
 
-  search: function() {
-    var search = new GoodFlicks.Views.Search()
+  search: function(query) {
+    var search = new GoodFlicks.Views.Search({
+      query: query
+    })
     this._swapView(search);
   },
 
