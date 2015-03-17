@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ $offwhite: #f4f2e9;
+ $darkbrown: #8F7F3D;
+ $lightbrown: #E3DFC9;
+ $darkdarkbrown: #5E411F;
+
  html, main, section, article,
  h1, h2, p, strong, em, a {
    margin: 0;
@@ -33,8 +38,14 @@
  }
 
  body {
-   background: #FFEBC2;
+   background: $offwhite;
+ }
 
+ main#content {
+  width: 900px;
+  border: 1px solid $darkbrown;
+  margin: auto;
+  border-radius: 10px;
  }
 
 .group:after {

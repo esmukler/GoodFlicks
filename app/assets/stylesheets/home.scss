@@ -1,0 +1,32 @@
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+
+header.home {
+  padding: 10px;
+}
+
+form.header-search {
+  color: $darkdarkbrown;
+}
+
+form.header-search button {
+  color: $darkdarkbrown;
+  cursor: pointer;
+}
+
+div.home-content {
+  border: 5px solid red;
+  border-radius: 10px;
+  float: right;
+  display: block;
+  width: 550px;
+  margin: 10px;
+}
+
+section.library-show {
+  border: 5px solid red;
+  display: block;
+  width: 100%;
+  min-height: 100px;
+}

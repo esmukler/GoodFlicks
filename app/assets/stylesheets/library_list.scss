@@ -1,0 +1,72 @@
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+
+sidebar.libraries {
+  border: 1px solid $darkbrown;
+  float: left;
+  display: block;
+  border-radius: 10px;
+  width: 250px;
+  margin: 20px;
+  padding: 0 10px 20px 10px;
+  color: $darkdarkbrown;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.library-item {
+  position: relative;
+  padding: 0 10px;
+  display: block;
+  background: $lightbrown;
+  box-shadow: 5px 5px 5px $darkbrown;
+  max-width: 175px;
+  border-radius: 10px;
+  min-height: 50px;
+}
+
+button.add-library {
+  color: $darkdarkbrown;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  display: block;
+  margin: auto;
+  position: relative;
+  left: 12px;
+  padding: 10px 40px;
+  border-radius: 10px;
+  background: $lightbrown;
+  box-shadow: 5px 5px 5px $darkbrown;
+}
+
+button.add-library:hover {
+  top: 2px;
+}
+
+.lib-title {
+  display: block;
+  max-width: 175px;
+  border-radius: 10px;
+  padding: 5px 0 0 5px;
+  position: relative;
+}
+
+.lib-title:hover {
+  box-shadow: 2px 2px 2px $darkbrown;
+  top: 2px;
+  left: 2px;
+}
+
+.library-item button.edit {
+  position: absolute;
+  top: 30px;
+  right: 80px;
+}
+
+.library-item button.delete {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}

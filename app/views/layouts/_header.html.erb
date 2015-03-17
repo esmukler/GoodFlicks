@@ -1,4 +1,16 @@
-<header group>
+<header class="rails-header group">
+  <% if flash.now[:errors] %>
+    <% if flash.now[:errors].class == Array %>
+      <% flash.now[:errors].each do |error| %>
+        <p class="errors"><%= error %></p>
+      <% end %>
+    <% else %>
+      <p class="errors"><%= flash.now[:errors] %></p>
+    <% end %>
+  <% end %>
+
+  <a href="#"><img class="logo" src="/images/GoodFlicks-logo.png"></a>
+
   <nav class="welcome">
     <% if @current_user %>
       <p>Welcome, <%= @current_user.username %>.</p>
@@ -10,16 +22,4 @@
       </form>
     <% end %>
   </nav>
-
-  <a href="#"><img class="logo" src="/images/GoodFlicks-logo.png"></a>
-
-  <% if flash.now[:errors] %>
-    <% if flash.now[:errors].class == Array %>
-      <% flash.now[:errors].each do |error| %>
-        <p class="errors"><%= error %></p>
-      <% end %>
-    <% else %>
-      <p class="errors"><%= flash.now[:errors] %></p>
-    <% end %>
-  <% end %>
 </header>

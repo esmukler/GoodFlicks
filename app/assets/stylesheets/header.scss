@@ -1,0 +1,41 @@
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+
+
+header.rails-header {
+  background: $lightbrown;
+  border-top: 1px solid $darkbrown;
+  border-left: 1px solid $darkbrown;
+  border-right: 1px solid $darkbrown;
+  width: 900px;
+  margin: auto;
+  border-radius: 10px;
+  display: block;
+  position: relative;
+  min-height: 100px;
+}
+
+nav.welcome {
+  display: block;
+  float: right;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  background: #DFD8C6;
+  color: $darkdarkbrown;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+header img.logo {
+  width: 300px;
+  display: block;
+  border-radius: 10px;
+}
+
+nav.welcome:hover,
+header img.logo:hover {
+  box-shadow: 5px 5px 5px $darkbrown;
+}

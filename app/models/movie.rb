@@ -11,7 +11,7 @@ class Movie < ActiveRecord::Base
   validates :year, numericality: { only_integer: true }
   validates_inclusion_of :year, in: 1896..(Time.now.year + 2)
 
-  has_attached_file :poster, default_url: "https://s3.amazonaws.com/goodflicks-dev/oscar-statue.jpg"
+  has_attached_file :poster, default_url: "/images/oscar-statue.jpg"
   validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
 
   has_many :library_movies,
