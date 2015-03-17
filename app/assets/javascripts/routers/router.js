@@ -13,6 +13,7 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
     "movies/new" : "movieNew",
     "movies/:id" : "movieShow",
     "libraries/:lib_id": "home",
+    "search": "search",
     "search/:query" : "search"
   },
 

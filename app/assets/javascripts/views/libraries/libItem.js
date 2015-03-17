@@ -8,6 +8,7 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
 
   initialize: function(options) {
     this.$show = options.$show;
+    this.$revs = options.$revs;
     this.listenTo(this.model, "sync", this.render);
     this.subViews = [];
     if (options.quickStart) {
@@ -36,7 +37,8 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
 
   showLibrary: function(event) {
     var libShow = new GoodFlicks.Views.LibraryShow({
-      model: this.model
+      model: this.model,
+      $revs: this.$revs
     })
     this.subViews.push(libShow)
     this.$show.html(libShow.render().$el)

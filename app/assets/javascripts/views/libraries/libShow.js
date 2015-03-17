@@ -6,15 +6,12 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
 
   tagName: "feature",
 
-  initialize: function() {
+  initialize: function(options) {
     this.subViews = [];
-
+    this.$revs = options.$revs;
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.movies(), "add remove", this.render)
-  },
-
-  events: {
-
+    this.listenTo(this.model.reviews(), "add remove", this.render)
   },
 
   render: function() {
@@ -24,7 +21,7 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
     this.$el.html(content)
 
     this.renderMovies();
-
+    this.renderReviews();
 
     return this;
   },
@@ -36,6 +33,19 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
       })
       this.subViews.push(movieItem);
       this.$('ul.movie-list').append(movieItem.render().$el);
+    }.bind(this))
+  },
+
+  renderReviews: function() {
+    this.$revs.find('h3').text("Reviews for movies in " + this.model.get("title"))
+    $(this.$revs.find('.my-review-list')).html("");
+
+    this.model.reviews().each( function(review) {
+      var revItem = new GoodFlicks.Views.ReviewItem({
+        model: review
+      });
+      this.subViews.push(revItem);
+      this.$revs.find('.my-review-list').append(revItem.render().$el);
     }.bind(this))
   },
 

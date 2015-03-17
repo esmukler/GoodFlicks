@@ -6,6 +6,10 @@ GoodFlicks.Models.Library = Backbone.Model.extend({
       this.movies().set(jsonResp.movies, { parse: true })
       delete jsonResp.movies
     }
+    if (jsonResp.reviews) {
+      this.reviews().set(jsonResp.reviews, { parse: true })
+      delete jsonResp.reviews
+    }
     return jsonResp
   },
 
@@ -14,6 +18,13 @@ GoodFlicks.Models.Library = Backbone.Model.extend({
       this._movies = new GoodFlicks.Collections.Movies()
     }
     return this._movies;
+  },
+
+  reviews: function() {
+    if (!this._reviews) {
+      this._reviews = new GoodFlicks.Collections.Reviews()
+    }
+    return this._reviews;
   },
 
 })

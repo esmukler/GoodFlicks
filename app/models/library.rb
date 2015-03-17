@@ -16,6 +16,8 @@ class Library < ActiveRecord::Base
 
   has_many :movies, through: :library_movies, source: :movie
 
+  has_many :reviews, through: :movies, source: :reviews
+
   after_initialize :set_is_public
 
 

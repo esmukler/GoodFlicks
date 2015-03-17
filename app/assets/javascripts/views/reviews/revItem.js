@@ -27,9 +27,16 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
 
   userOrMovie: function() {
     if (this.model.get("username")) {
+      
+      // TODO add link to user page
       this.$('.userOrMovie').text("Written by: " + this.model.get("username"));
+
     } else {
-      this.$('.userOrMovie').text("Movie: " + this.model.get("movie_title"));
+
+      this.$('.userOrMovie').html(
+        "Movie: <a href='#movies/" + this.model.get("movie_id") +
+        "'>" + this.model.get("movie_title") + "</a>"
+      );
     }
   },
 
