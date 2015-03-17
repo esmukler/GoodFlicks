@@ -37,8 +37,8 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
   },
 
   renderReviews: function() {
-    this.$revs.find('h3').text("Reviews for movies in " + this.model.get("title"))
-    $(this.$revs.find('.my-review-list')).html("");
+    this.$revs.find('h3').html("Reviews for movies in " + this.model.escape("title"))
+    this.$revs.find('.my-review-list').empty();
 
     this.model.reviews().each( function(review) {
       var revItem = new GoodFlicks.Views.ReviewItem({

@@ -18,10 +18,10 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
   renderAttrs: function() {
     if (this.model.escape("director")) {
-      this.$('.director').text("Director: " + this.model.escape("director"))
+      this.$('.director').html("Director: " + this.model.escape("director"))
     }
     if (this.model.escape("description")) {
-      this.$('.description').text(this.model.escape("description"))
+      this.$('.description').html(this.model.escape("description"))
     }
   },
 
