@@ -9,13 +9,21 @@ class Api::MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    movie_results = Movie.where(title: params[:movie][:title]).where(year: params[:movie][:year])
 
-    if @movie.save
+    if movie_results.first
+      @movie = movie_results.first
       render "show"
     else
-      render json: @movie.errors.full_messages, status: :unprocessable_entity
+      @movie = Movie.new(movie_params)
+
+      if @movie.save
+        render "show"
+      else
+        render json: @movie.errors.full_messages, status: :unprocessable_entity
+      end
     end
+
   end
 
   def show

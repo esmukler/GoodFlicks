@@ -2,7 +2,7 @@ class Api::LibrariesController < ApplicationController
 
   def index
     if current_user
-      @libraries = current_user.libraries
+      @libraries = current_user.libraries.order(:order)
       render "index"
     end
   end

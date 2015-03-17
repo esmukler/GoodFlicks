@@ -16,8 +16,30 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
   className: "home-container",
 
   events: {
-    "click button.add-library": "addLibrary"
+    "click button.add-library": "addLibrary",
+    "sortupdate .library-list" : "updateLibOrder"
   },
+
+  updateLibOrder: function(event, ui) {
+    var newOrder = [];
+    var $children = $($(event.currentTarget).children())
+    for (var i = 0; i< $children.length; i++) {
+      newOrder.push($($children[i]).attr("data-lib-id"));
+    }
+
+    var libs = this.libraries;
+
+    if (newOrder) {
+      for (var j = 0; j < newOrder.length; j++) {
+        libs.each(function(lib) {
+          if (newOrder[j] == lib.id) {
+            lib.save({order: j})
+          }
+        })
+      }
+    }
+  },
+
 
   renderHeader: function() {
     var header = new GoodFlicks.Views.Header()
@@ -74,8 +96,14 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     this.$el.html(baseContent);
 
     this.renderHeader();
+
+    this.$('.library-list').sortable();
+    this.libraries.sort();
     this.renderLibraries(this.libId);
+
     this.renderReviews();
+
+
 
     return this;
   },

@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require backbone
+//= require jquery.ui.sortable
 //= require serializejson
 //= require good_flicks
 //= require_tree ../templates

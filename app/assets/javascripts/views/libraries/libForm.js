@@ -4,7 +4,7 @@ GoodFlicks.Views.LibForm = Backbone.View.extend({
 
   tagName: "form",
 
-  className: "lib-form",
+  className: "lib-form group",
 
   events: {
     "click button" : "submitForm"

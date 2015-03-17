@@ -15,6 +15,12 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
     }
   },
 
+  attributes: function() {
+    return {
+      'data-lib-id': this.model.get("id")
+    };
+  },
+
   events: {
     "click button.edit": "editLibrary",
     "click button.delete": "deleteLibrary",
@@ -57,6 +63,7 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
       this.showLibrary();
     }
     this.$el.html(content);
+
     return this;
   },
 

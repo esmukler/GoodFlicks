@@ -5,10 +5,5 @@
 </label>
 <button type="submit">Search</button>
 
-<ul class="search-results">
-<% results.forEach (function(result) { %>
-  <li class="result" data-movie-db-id="<%= result.id %>">
-    <%= result.title %> (<%= result.release_date.slice(0,4) %>)
-  </li>
-<% }) %>
-</ul>
+<span class="empty-msg"></span>
+<ul class="search-results"></ul>

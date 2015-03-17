@@ -23,6 +23,13 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
     })
     this.$el.html(content)
 
+    this.renderMovies();
+
+
+    return this;
+  },
+
+  renderMovies: function() {
     this.model.movies().each( function(movie) {
       var movieItem = new GoodFlicks.Views.MovieListItem({
         model: movie
@@ -30,9 +37,6 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
       this.subViews.push(movieItem);
       this.$('ul.movie-list').append(movieItem.render().$el);
     }.bind(this))
-
-
-    return this;
   },
 
   remove: function() {

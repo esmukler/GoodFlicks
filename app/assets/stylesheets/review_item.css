@@ -17,6 +17,7 @@ li.review-item {
   width: 150%;
   list-style: none;
   background: lightgrey;
+  border: 1px solid yellow;
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
