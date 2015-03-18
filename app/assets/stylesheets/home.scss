@@ -1,3 +1,4 @@
+$offwhite: #f4f2e9;
 $lightbrown: #E3DFC9;
 $darkbrown: #8F7F3D;
 $darkdarkbrown: #5E411F;
@@ -13,14 +14,16 @@ form.header-search {
 form.header-search button {
   color: $darkdarkbrown;
   cursor: pointer;
+  padding: 5px;
 }
 
 div.home-content {
+  background: $offwhite;
   border: 1px solid $darkbrown;
   border-radius: 10px;
   float: right;
   display: block;
-  width: 540px;
-  margin: 10px 20px;
+  width: 565px;
+  margin: 10px 20px 20px 20px;
   color: $darkdarkbrown;
 }

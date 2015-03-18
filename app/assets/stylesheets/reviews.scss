@@ -1,0 +1,78 @@
+$offwhite: #f4f2e9;
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+$yellowglow: #F2F2A2;
+
+section.reviews {
+  padding: 10px;
+  display: block;
+  min-height: 100px;
+  position: relative;
+}
+
+ul.reviews-list {
+  position: relative;
+}
+
+section.reviews h3 {
+  border-radius: 10px;
+  padding: 5px;
+  position: relative;
+  background: $lightbrown;
+  text-align: center;
+  bottom: 20px;
+}
+
+li.review-item {
+  background: $lightbrown;
+  display: block;
+  list-style: none;
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px $darkbrown;
+  width: 500px;
+  position: relative;
+  right: 30px;
+}
+
+p.body {
+  font-family: courier;
+  display: block;
+  padding: 5px;
+  max-width: 350px;
+  word-break: break-all;
+}
+
+p.stars {
+  display: block;
+  text-align: right;
+
+}
+
+p.user-or-movie {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+}
+
+p.user-or-movie a {
+  text-decoration: none;
+}
+
+p.user-or-movie a:hover {
+  text-shadow: 1px 1px 1px $yellowglow, -1px -1px 1px $yellowglow;
+}
+
+p.updated-at {
+  display: block;
+  text-align: right;
+
+  font-size: 12px;
+  font-style: italic;
+}
+
+form.review-form {
+  display: inline;
+}

@@ -8,7 +8,7 @@ json.movies library.movies do |movie|
   json.poster_url image_url(movie.poster.url)
 end
 
-json.reviews library.reviews.where(:user_id => library.user_id).limit(5) do |review|
+json.reviews library.reviews.where(:user_id => library.user_id).order(updated_at: :desc).limit(5) do |review|
   json.extract! review, :id, :movie_id, :body, :num_stars, :updated_at, :is_public
 
   json.movie_title review.movie.title

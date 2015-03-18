@@ -18,8 +18,10 @@
  $lightbrown: #E3DFC9;
  $darkbrown: #8F7F3D;
  $darkdarkbrown: #5E411F;
+ $yellowglow: #F2F2A2;
 
- html, main, section, article,
+
+ html, figure, main, section, article,
  h1, h2, p, strong, em, a {
    margin: 0;
    border: 0;
@@ -27,21 +29,42 @@
    outline: 0;
    box-sizing: inherit;
    font: inherit;
+   font-family: garamond;
    text-decoration: inherit;
    text-align: inherit;
    color: inherit;
    background: transparent;
  }
 
+ button {
+   font-family: garamond;
+   border-radius: 10px;
+   background: $offwhite;
+ }
+
  a {
    text-decoration: underline;
  }
 
- body {
-   background: $offwhite;
+ ul {
+   list-style-type: none;
  }
 
+ body {
+  background: $offwhite;
+ }
+
+input[type=text]:focus, textarea:focus {
+  outline-color: yellow;
+}
+
+button:active {
+  outline-color: yellow;
+  background: $yellowglow;
+}
+
  main#content {
+  background: #fff;
   width: 900px;
   border: 1px solid $darkbrown;
   margin: auto;

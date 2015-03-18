@@ -1,18 +1,36 @@
+$offwhite: #f4f2e9;
 $lightbrown: #E3DFC9;
 $darkbrown: #8F7F3D;
 $darkdarkbrown: #5E411F;
 
 sidebar.libraries {
+  background: $offwhite;
+
   border: 1px solid $darkbrown;
   float: left;
   display: block;
   border-radius: 10px;
   width: 250px;
-  margin: 10px 20px;
-  padding: 0 10px 20px 10px;
+  margin: 10px 0 10px 20px;
+  padding: 10px 10px 20px 10px;
   color: $darkdarkbrown;
   font-size: 16px;
   font-weight: bold;
+  // box-shadow: 3px 3px 3px $lightbrown;
+}
+
+button.all-movies {
+  color: $darkdarkbrown;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  display: block;
+  position: relative;
+  padding: 10px 60px;
+  border-radius: 10px;
+  margin: 0 auto;
+  background: $lightbrown;
+  box-shadow: 5px 5px 5px $darkbrown;
 }
 
 .library-item {
@@ -41,6 +59,7 @@ button.add-library {
   box-shadow: 5px 5px 5px $darkbrown;
 }
 
+button.all-movies:hover,
 button.add-library:hover {
   top: 2px;
 }

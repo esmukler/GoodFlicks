@@ -16,8 +16,13 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
   className: "home-container",
 
   events: {
+    "click button.all-movies": "showAllMovies",
     "click button.add-library": "addLibrary",
     "sortupdate .library-list" : "updateLibOrder"
+  },
+
+  showAllMovies: function() {
+    this.$('.library-show').html("All of this user's movies should show up here");
   },
 
   updateLibOrder: function(event, ui) {

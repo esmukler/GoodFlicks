@@ -5,9 +5,6 @@ GoodFlicks.Views.Header = Backbone.View.extend({
     "change .query": "search",
   },
 
-  initialize: function() {
-  },
-
   search: function(event) {
     event.preventDefault();
     var query = this.$(".query").val()
