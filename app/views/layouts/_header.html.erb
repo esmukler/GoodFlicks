@@ -1,12 +1,10 @@
 <header class="rails-header group">
   <% if flash.now[:errors] %>
-    <% if flash.now[:errors].class == Array %>
-      <% flash.now[:errors].each do |error| %>
-        <p class="errors"><%= error %></p>
-      <% end %>
-    <% else %>
-      <p class="errors"><%= flash.now[:errors] %></p>
+    <ul class="error-list">
+    <% flash.now[:errors].each do |error| %>
+      <li class="error"><%= error %></li>
     <% end %>
+    </ul>
   <% end %>
 
   <a href="#"><img class="logo" src="/images/GoodFlicks-logo.png"></a>
@@ -20,6 +18,8 @@
         <input type="hidden" name="_method" value="delete">
         <button type="submit">Log Out</button>
       </form>
+    <% else %>
+      <p>Find, share and review all your favorite films!</p>
     <% end %>
   </nav>
 </header>

@@ -5,9 +5,7 @@ $darkdarkbrown: #5E411F;
 
 header.rails-header {
   background: $lightbrown;
-  border-top: 1px solid $darkbrown;
-  border-left: 1px solid $darkbrown;
-  border-right: 1px solid $darkbrown;
+  border: 1px solid $darkbrown;
   width: 900px;
   margin: auto;
   border-radius: 10px;
@@ -17,6 +15,7 @@ header.rails-header {
 }
 
 nav.welcome {
+  max-width: 175px;
   display: block;
   float: right;
   padding: 20px;
@@ -27,6 +26,7 @@ nav.welcome {
   position: absolute;
   right: 0;
   top: 0;
+  box-shadow: 5px 5px 5px $darkbrown;
 }
 
 header img.logo {
@@ -36,7 +36,6 @@ header img.logo {
   border-radius: 10px;
 }
 
-nav.welcome:hover,
 header img.logo:hover {
   box-shadow: 5px 5px 5px $darkbrown;
 }

@@ -1,3 +1,7 @@
 Features to add:
 
 - Users can only have one review per movie (?)
+- Movies have an "order" attribute that allows the user to sort them
+- Add more info from movies (i.e. actors, country, more photos)
+- ActionMailer for authentication
+- Paginate (infinite scroll) users index, movie index

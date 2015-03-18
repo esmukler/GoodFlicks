@@ -66,7 +66,9 @@ button:active {
  main#content {
   background: #fff;
   width: 900px;
-  border: 1px solid $darkbrown;
+  border-bottom: 1px solid $darkbrown;
+  border-right: 1px solid $darkbrown;
+  border-left: 1px solid $darkbrown;
   margin: auto;
   border-radius: 10px;
  }

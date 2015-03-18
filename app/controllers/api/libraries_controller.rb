@@ -17,7 +17,7 @@ class Api::LibrariesController < ApplicationController
     if @library.save
       render json: @library
     else
-      render json: @library.errors.full_messages, status: :unprocessable_entity
+      flash.now[:errors] = @library.errors.full_messages
     end
   end
 

@@ -39,7 +39,6 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
         this.$('ul.movie-list').append(movieItem.render().$el);
       }.bind(this))
     } else {
-      console.log("no movies here")
       this.$('.movie-list').html("No movies here. Yet...")
       // TODO Recommend a movie to them!
     }
@@ -65,7 +64,6 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
   },
 
   remove: function() {
-    console.log("libshow render movies", this.model.movies())
     this.subViews.forEach( function(view) {
       view.remove();
     });

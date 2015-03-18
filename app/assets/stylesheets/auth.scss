@@ -23,14 +23,12 @@ figure.credentials label {
   margin: 5px;
 }
 
-.errors {
+.error-list {
   background: #E07B7B;
   display: block;
-  position: relative;
-  width: 300px;
-  text-align: center;
+  position: absolute;
   padding: 10px;
-  margin: 20px;
   border-radius: 10px;
-  margin: auto;
+  left: 10px;
+  max-width: 200px;
 }
