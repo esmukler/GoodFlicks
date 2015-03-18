@@ -13,11 +13,11 @@ GoodFlicks is a clone of Goodreads built on Rails and Backbone. Users can:
 - [X] Create/destroy sessions (log in/log out)
 - [X] Add movies to the site
 - [X] Create libraries
-- [ ] Add movies to libraries
+- [X] Add movies to libraries
 - [X] Rate movies
 - [X] Review movies
-- [ ] Search for movies
-- [ ] Search for movies pulled from 3rd party database
+- [X] Search for movies
+- [X] Search for movies pulled from 3rd party database
 - [ ] "Friend" other users
 - [ ] See a feed of movies their friends have rated
 

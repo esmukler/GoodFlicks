@@ -1,5 +1,5 @@
 GoodFlicks.Collections.Users = Backbone.Collection.extend({
-  url: "/users",
+  url: "/api/users",
 
   model: GoodFlicks.Models.User,
 

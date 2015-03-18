@@ -1,8 +1,11 @@
 <h3 class="library-title"><%= library.escape("title") %></h3>
 
 <ul class="movie-list"></ul>
-<div class="lib-show-prompt">
-  <p>Want to add more movies to this list?</p>
-  <p><a href="#movies">Browse Movies</a> or
-  <a href="#search">Search for Movies</a>
-</div>
+
+<% if (library.get("is_cu")) { %>
+  <div class="lib-show-prompt">
+    <p>Want to add more movies to this list?</p>
+    <p><a href="#movies">Browse Movies</a> or
+    <a href="#search">Search for Movies</a>
+  </div>
+<% } %>

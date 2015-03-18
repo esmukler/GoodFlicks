@@ -7,7 +7,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     this.reviews = options.reviews;
     this.libraries = options.libraries;
     this.subViews = [];
-    this.listenTo(this.libraries, "sync destroy", this.render);
+    this.listenTo(this.libraries, "add remove", this.render);
     this.listenTo(this.reviews, "sync", this.render);
   },
 
@@ -58,7 +58,8 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
   },
 
   renderLibraries: function(libId) {
-    var $libList = $('.library-list')
+    var $libList = $('.library-list');
+
     this.libraries.each( function(library) {
       if (libId == library.id) {
         var libItem = new GoodFlicks.Views.LibItem({

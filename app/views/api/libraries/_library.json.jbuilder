@@ -1,5 +1,7 @@
 json.extract! library, :title, :id, :order
 
+json.is_cu library.user == current_user
+
 json.movies library.movies do |movie|
   json.extract! movie, :id, :title, :year
 

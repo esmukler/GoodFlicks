@@ -9,12 +9,24 @@ GoodFlicks.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "home",
+    "users/:id": "userShow",
     "movies" : "movieIndex",
     "movies/new" : "movieNew",
     "movies/:id" : "movieShow",
     "libraries/:lib_id": "home",
     "search": "search",
     "search/:query" : "search"
+  },
+
+  userShow: function(id) {
+    var users = new GoodFlicks.Collections.Users()
+    var user = users.getOrFetch(id)
+
+    var userShow = new GoodFlicks.Views.UserShow({
+      model: user
+    })
+
+    this._swapView(userShow);
   },
 
   search: function(query) {

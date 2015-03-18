@@ -31,8 +31,10 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
   },
 
   toggleButton: function(event) {
-    this.$('button.edit').toggleClass("hidden");
-    this.$('button.delete').toggleClass("hidden");
+    if (this.model.get("is_cu")) {
+      this.$('button.edit').toggleClass("hidden");
+      this.$('button.delete').toggleClass("hidden");
+    }
   },
 
   showLibrary: function(event) {

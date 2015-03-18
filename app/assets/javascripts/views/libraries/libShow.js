@@ -10,7 +10,7 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
     this.subViews = [];
     this.$revs = options.$revs;
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.movies(), "add remove", this.render)
+    this.listenTo(this.model.movies(), "add sync remove", this.render)
     this.listenTo(this.model.reviews(), "add remove", this.render)
   },
 
@@ -50,6 +50,7 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
   },
 
   remove: function() {
+    console.log("libshow render movies", this.model.movies())
     this.subViews.forEach( function(view) {
       view.remove();
     });
