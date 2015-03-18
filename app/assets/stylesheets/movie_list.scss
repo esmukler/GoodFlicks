@@ -1,0 +1,41 @@
+$offwhite: #f4f2e9;
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+
+.library-title {
+  display: block;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+  position: relative;
+  background: $lightbrown;
+  text-align: center;
+}
+
+.movie-item {
+  margin: 10px 30px 10px 0;
+  background: $lightbrown;
+  border-radius: 10px;
+  display: block;
+  position: relative;
+  box-shadow: 5px 5px 5px $darkbrown;
+}
+
+.movie-item img {
+  margin-right: 20px;
+  width: 75px;
+  height: auto;
+  float: left;
+  display: block;
+}
+
+.movie-item h3 {
+  position: absolute;
+  left: 85px;
+}
+
+li.movie-item:hover {
+  left: 2px;
+  top: 2px;
+}

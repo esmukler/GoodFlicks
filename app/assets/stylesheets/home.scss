@@ -16,17 +16,11 @@ form.header-search button {
 }
 
 div.home-content {
-  border: 5px solid red;
+  border: 1px solid $darkbrown;
   border-radius: 10px;
   float: right;
   display: block;
-  width: 550px;
-  margin: 10px;
-}
-
-section.library-show {
-  border: 5px solid red;
-  display: block;
-  width: 100%;
-  min-height: 100px;
+  width: 540px;
+  margin: 10px 20px;
+  color: $darkdarkbrown;
 }

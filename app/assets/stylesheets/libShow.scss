@@ -1,0 +1,16 @@
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+
+section.library-show {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  border-bottom: 1px solid $darkbrown;
+}
+
+.lib-show-prompt {
+  margin: 20px;
+  text-align: center;
+  display: block;
+  position: relative;
+}

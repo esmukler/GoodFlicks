@@ -37,7 +37,6 @@ section.reviews {
   max-width: 300px;
   display: block;
   float: right;
-  border: 5px solid red;
   border-radius: 10px;
 }
 
