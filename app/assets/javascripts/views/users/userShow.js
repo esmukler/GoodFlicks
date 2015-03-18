@@ -61,6 +61,15 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
     }.bind(this))
   },
 
+  renderReviews: function() {
+    this.model.reviews().each( function(review) {
+      var revItem = new GoodFlicks.Views.ReviewItem({
+        model: review
+      });
+      this.subViews.push(revItem);
+      this.$('.my-review-list').append(revItem.render().$el);
+    }.bind(this))
+  },
 
   render: function() {
     this.$el.html(this.template({
@@ -69,6 +78,7 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
 
     this.renderHeader();
     this.renderLibraries();
+    this.renderReviews();
 
 
     return this;
