@@ -44,6 +44,11 @@ button.all-movies {
   min-height: 50px;
 }
 
+.library-item:hover {
+  cursor: -webkit-grab;
+}
+
+
 button.add-library {
   color: $darkdarkbrown;
   font-size: 12px;

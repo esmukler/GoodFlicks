@@ -1,6 +1,6 @@
 json.extract! @movie, :title, :description, :year, :director, :id
 
-json.reviews @movie.reviews do |review|
+json.reviews @movie.reviews.order(updated_at: :desc) do |review|
   if review.is_public
     json.partial! "api/reviews/review", review: review
   end

@@ -37,7 +37,7 @@ li.review-item {
   right: 30px;
 }
 
-p.body {
+.review-item p.body {
   font-family: courier;
   display: block;
   padding: 5px;
@@ -48,7 +48,6 @@ p.body {
 p.stars {
   display: block;
   text-align: right;
-
 }
 
 p.user-or-movie {
@@ -75,4 +74,15 @@ p.updated-at {
 
 form.review-form {
   display: inline;
+}
+
+.review-item button.edit {
+  position: absolute;
+  bottom: 10px;
+}
+
+.review-item button.delete {
+  position: absolute;
+  bottom: 10px;
+  left: 100px;
 }
