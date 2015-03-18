@@ -3,5 +3,5 @@ json.array! @reviews do |review|
 
   json.movie_title review.movie.title
 
-  json.updated_at review.updated_at.strftime('%b %d %Y %I:%M%P')
+  json.updated_at review.updated_at.to_time.strftime('%b %d %Y %I:%M%P')
 end

@@ -4,4 +4,4 @@ json.username review.user.username
 
 json.mine (review.user == current_user)
 
-json.updated_at review.updated_at.strftime('%b %d %Y %I:%M%P')
+json.updated_at review.updated_at.to_time.strftime('%b %d %Y %I:%M%P')

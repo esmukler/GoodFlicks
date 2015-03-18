@@ -13,5 +13,5 @@ json.reviews library.reviews.where(:user_id => library.user_id).order(updated_at
 
   json.movie_title review.movie.title
 
-  json.updated_at review.updated_at.strftime('%b %d %Y %I:%M%P')
+  json.updated_at review.updated_at.to_time.strftime('%b %d %Y %I:%M%P')
 end
