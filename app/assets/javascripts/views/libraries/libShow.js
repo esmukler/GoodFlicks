@@ -38,8 +38,8 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
       }.bind(this))
     } else {
       console.log("no movies here")
-      this.$('.lib-show.prompt').html("no movies here")
-      // TODO
+      this.$('.movie-list').html("No movies here. Yet...")
+      // TODO Recommend a movie to them!
     }
 
   },
