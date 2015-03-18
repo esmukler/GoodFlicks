@@ -21,8 +21,29 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     "sortupdate .library-list" : "updateLibOrder"
   },
 
-  showAllMovies: function() {
-    this.$('.library-show').html("All of this user's movies should show up here");
+  showAllMovies: function(event) {
+    event.preventDefault();
+    var libAll = new GoodFlicks.Models.Library({
+      id: 0,
+      title: "All My Movies"
+    })
+
+    this.libraries.each( function(library) {
+      library.movies().each( function(movie) {
+        libAll.movies().add(movie);
+      })
+    })
+    this.reviews.each( function(review) {
+      libAll.reviews().add(review)
+    })
+
+    var allView = new GoodFlicks.Views.LibraryShow({
+      model: libAll,
+      $revs: this.$('.reviews')
+    })
+
+    this.subViews.push(allView)
+    this.$('.library-show').html(allView.render().$el)
   },
 
   updateLibOrder: function(event, ui) {

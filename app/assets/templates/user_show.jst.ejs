@@ -2,7 +2,8 @@
 
 <main class="home group">
   <sidebar class="libraries">
-    <h3><%= user.escape("username") %>'s Libraries:</h3>
+    <button class="all-movies">All <%= username %>'s Movies</button>
+    <h3><%= username %>'s Libraries:</h3>
     <ul class="library-list"></ul>
 
   </sidebar>
@@ -10,12 +11,12 @@
   <div class="home-content">
     <section class="library-show">
       <div class="lib-show-prompt">
-        <p>Click on one of <%= user.escape("username") %>'s libraries to see their movies.</p>
+        <p>Click on one of <%= username %>'s libraries to see their movies.</p>
       </div>
     </section>
 
     <section class="reviews">
-      <h3><%= user.escape("username") %>'s Recent Reviews:</h3>
+      <h3><%= username %>'s Recent Reviews:</h3>
       <ul class="my-review-list"></ul>
     </section>
   </div>

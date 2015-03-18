@@ -10,6 +10,36 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
 
   className: "home-container",
 
+  events: {
+    "click button.all-movies": "showAllMovies"
+  },
+
+  showAllMovies: function(event) {
+    event.preventDefault();
+    var libAll = new GoodFlicks.Models.Library({
+      id: 0,
+      title: "All " + this.model.escape("username") + "'s Movies"
+    })
+
+
+    this.model.libraries().each( function(library) {
+      library.movies().each( function(movie) {
+        libAll.movies().add(movie);
+      })
+    })
+    this.model.reviews().each( function(review) {
+      libAll.reviews().add(review)
+    })
+
+    var allView = new GoodFlicks.Views.LibraryShow({
+      model: libAll,
+      $revs: this.$('.reviews')
+    })
+
+    this.subViews.push(allView)
+    this.$('.library-show').html(allView.render().$el)
+  },
+
   renderHeader: function() {
     var header = new GoodFlicks.Views.Header()
     this.subViews.push(header)
@@ -25,7 +55,7 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
         $show: this.$('.library-show'),
         $revs: this.$('.reviews')
       });
-      
+
       this.subViews.push(libItem);
       $libList.append(libItem.render().$el)
     }.bind(this))
@@ -34,7 +64,7 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template({
-      user: this.model
+      username: this.model.escape("username")
     }))
 
     this.renderHeader();
