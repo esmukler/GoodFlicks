@@ -27,13 +27,21 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
   },
 
   renderMovies: function() {
-    this.model.movies().each( function(movie) {
-      var movieItem = new GoodFlicks.Views.MovieListItem({
-        model: movie
-      })
-      this.subViews.push(movieItem);
-      this.$('ul.movie-list').append(movieItem.render().$el);
-    }.bind(this))
+    console.log(this.model.movies())
+    if (this.model.movies().length !== 0) {
+      this.model.movies().each( function(movie) {
+        var movieItem = new GoodFlicks.Views.MovieListItem({
+          model: movie
+        })
+        this.subViews.push(movieItem);
+        this.$('ul.movie-list').append(movieItem.render().$el);
+      }.bind(this))
+    } else {
+      console.log("no movies here")
+      this.$('.lib-show.prompt').html("no movies here")
+      // TODO
+    }
+
   },
 
   renderReviews: function() {

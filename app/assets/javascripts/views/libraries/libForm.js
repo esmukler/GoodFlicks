@@ -20,6 +20,7 @@ GoodFlicks.Views.LibForm = Backbone.View.extend({
         if (isNew) {
           this.collection.add(this.model, {merge: true});
         }
+        Backbone.history.navigate("#/libraries/" + this.model.id, { trigger: true })
       }.bind(this),
       error: function(model, data) {
         console.log(data.responseJSON)
