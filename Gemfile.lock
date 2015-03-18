@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 6a817eb4618f97cf0ef2d04a6a56a6a97c941eb0
+  specs:
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.5)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -147,11 +157,6 @@ GEM
     notiffany (0.0.5)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    paperclip (4.2.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     pg (0.18.1)
     pg_search (0.7.9)
       activerecord (>= 3.1)
@@ -287,7 +292,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
-  paperclip (~> 4.2)
+  paperclip!
   pg
   pg_search
   pry-rails

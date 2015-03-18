@@ -9,7 +9,8 @@ class Api::MoviesController < ApplicationController
   end
 
   def create
-    movie_results = Movie.where(title: params[:movie][:title]).where(year: params[:movie][:year])
+    movie_results = Movie.where(title: params[:movie][:title],
+                                year: params[:movie][:year])
 
     if movie_results.first
       @movie = movie_results.first
