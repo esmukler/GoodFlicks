@@ -20,6 +20,24 @@ class User < ActiveRecord::Base
     inverse_of: :user,
     dependent: :destroy
 
+  has_many :active_relationships,
+    class_name: "Relationship",
+    foreign_key: :follower_id,
+    primary_key: :id,
+    inverse_of: :follower,
+    dependent: :destroy
+
+  has_many :passive_relationships,
+    class_name: "Relationship",
+    foreign_key: :followed_id,
+    primary_key: :id,
+    inverse_of: :followed,
+    dependent: :destroy
+
+  has_many :followings, through: :active_relationships, source: :followed
+
+  has_many :followers, through: :passive_relationships, source: :follower
+
   def make_default_libs
     self.libraries.create!(title: "Seen")
     self.libraries.create!(title: "Want To See")

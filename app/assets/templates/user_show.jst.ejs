@@ -1,12 +1,19 @@
 <header class="home"></header>
 
 <main class="home group">
-  <sidebar class="libraries">
-    <button class="all-movies">All <%= username %>'s Movies</button>
-    <h3><%= username %>'s Libraries:</h3>
-    <ul class="library-list"></ul>
 
-  </sidebar>
+  <div class="home-sidebar group">
+    <section class="libraries">
+      <button class="all-movies">All <%= username %>'s Movies</button>
+      <h3><%= username %>'s Libraries:</h3>
+      <ul class="library-list"></ul>
+    </section>
+
+    <section class="followings">
+      <h3><%= username %> Follows:</h3>
+      <ul class="followings-list"></ul>
+    </section>
+  </div>
 
   <div class="home-content">
     <section class="library-show">

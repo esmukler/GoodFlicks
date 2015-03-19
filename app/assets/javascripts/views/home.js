@@ -6,6 +6,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     }
     this.reviews = options.reviews;
     this.libraries = options.libraries;
+    this.followings = options.followings;
     this.subViews = [];
     this.listenTo(this.libraries, "add remove", this.render);
     this.listenTo(this.reviews, "sync", this.render);
@@ -19,6 +20,16 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     "click button.all-movies": "showAllMovies",
     "click button.add-library": "addLibrary",
     "sortupdate .library-list" : "updateLibOrder"
+  },
+
+  renderFollowings: function() {
+    this.followings.each( function(user) {
+      var userItem = new GoodFlicks.Views.UserItem({
+        model: user
+      })
+      this.subViews.push(userItem);
+      this.$('.followings-list').append(userItem.render().$el)
+    }.bind(this))
   },
 
   showAllMovies: function(event) {
@@ -131,9 +142,9 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     this.libraries.sort();
     this.renderLibraries(this.libId);
 
+    this.renderFollowings();
+
     this.renderReviews();
-
-
 
     return this;
   },

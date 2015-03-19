@@ -10,8 +10,19 @@ GoodFlicks.Models.User = Backbone.Model.extend({
       this.reviews().set(jsonResp.reviews, { parse: true })
       delete jsonResp.reviews
     }
+    if (jsonResp.followings) {
+      this.followings().set(jsonResp.followings, { parse: true })
+      delete jsonResp.followings
+    }
 
     return jsonResp
+  },
+
+  followings: function() {
+    if (!this._followings) {
+      this._followings = new GoodFlicks.Collections.Users()
+    }
+    return this._followings
   },
 
   libraries: function() {

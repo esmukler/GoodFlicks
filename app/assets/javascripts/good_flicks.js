@@ -12,15 +12,18 @@ window.GoodFlicks = {
     var cuLibraries = new GoodFlicks.Collections.Libraries();
     cuLibraries.fetch();
 
-
     var cuReviews = new GoodFlicks.Collections.Reviews();
     cuReviews.fetch();
+
+    var cuFollowings = new GoodFlicks.Collections.Users()
+    cuFollowings.fetch();
 
     var router = new GoodFlicks.Routers.Router({
       $rootEl: $rootEl,
       movies: movies,
       libs: cuLibraries,
-      revs: cuReviews
+      revs: cuReviews,
+      followings: cuFollowings
     });
 
     Backbone.history.start();

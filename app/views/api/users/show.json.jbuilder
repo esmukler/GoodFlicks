@@ -13,3 +13,10 @@ json.reviews @user.reviews.where(is_public: true).order(updated_at: :desc).limit
 
   json.updated_at review.updated_at.to_time.strftime('%b %d %Y %I:%M%P')
 end
+
+json.followings @user.followings do |user|
+  json.extract! user, :id, :username
+  if (user == current_user)
+    json.is_cu true
+  end
+end

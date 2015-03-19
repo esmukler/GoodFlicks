@@ -4,6 +4,7 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.libraries(), "add sync remove", this.render);
     this.listenTo(this.model.reviews(), "add remove", this.render);
+    this.listenTo(this.model.followings(), "add remove", this.render)
   },
 
   template: JST['user_show'],
@@ -12,6 +13,20 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
 
   events: {
     "click button.all-movies": "showAllMovies"
+  },
+
+  renderFollowings: function() {
+    this.model.followings().each( function(user) {
+      var userItem = new GoodFlicks.Views.UserItem({
+        model: user
+      })
+      this.subViews.push(userItem);
+      if (user.get("is_cu")) {
+        this.$('.followings-list').before(userItem.render().$el)
+      } else {
+        this.$('.followings-list').append(userItem.render().$el)
+      }
+    }.bind(this))
   },
 
   showAllMovies: function(event) {
@@ -78,6 +93,7 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
 
     this.renderHeader();
     this.renderLibraries();
+    this.renderFollowings();
     this.renderReviews();
 
 
