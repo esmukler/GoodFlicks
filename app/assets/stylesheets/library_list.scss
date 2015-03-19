@@ -33,11 +33,10 @@ button.all-movies {
 
 .library-item {
   position: relative;
-  padding: 0 10px;
   display: block;
   background: $lightbrown;
+  margin: 0px 20px;
   box-shadow: 5px 5px 5px $darkbrown;
-  max-width: 175px;
   border-radius: 10px;
   min-height: 50px;
 }
@@ -69,9 +68,8 @@ button.add-library:hover {
 
 .lib-title {
   display: block;
-  max-width: 175px;
   border-radius: 10px;
-  padding: 5px 0 0 5px;
+  padding: 10px 0 0 10px;
   position: relative;
 }
 

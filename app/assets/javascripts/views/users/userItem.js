@@ -11,12 +11,9 @@ GoodFlicks.Views.UserItem = Backbone.View.extend({
     }))
 
     if (this.model.get("is_cu")) {
-      this.$('a').html("me!")
+      this.$('a').html("me")
       this.$('a').attr("href", "#")
     }
-
     return this
   }
-
-
 })

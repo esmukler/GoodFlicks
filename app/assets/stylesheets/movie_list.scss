@@ -3,7 +3,8 @@ $lightbrown: #E3DFC9;
 $darkbrown: #8F7F3D;
 $darkdarkbrown: #5E411F;
 
-.library-title {
+.library-title,
+figure.movie-index > h3 {
   display: block;
   border-radius: 10px;
   padding: 5px;
@@ -14,7 +15,8 @@ $darkdarkbrown: #5E411F;
 }
 
 .movie-item {
-  margin: 10px 30px 10px 0;
+  max-width: 600px;
+  margin: 10px;
   background: $lightbrown;
   border-radius: 10px;
   display: block;
@@ -32,7 +34,8 @@ $darkdarkbrown: #5E411F;
 
 .movie-item h3 {
   position: absolute;
-  left: 85px;
+  left: 90px;
+  color: $darkdarkbrown
 }
 
 li.movie-item:hover {

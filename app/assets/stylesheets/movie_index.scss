@@ -1,0 +1,21 @@
+$offwhite: #f4f2e9;
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+
+header.movie-index {
+  padding: 10px;
+}
+
+figure.movie-index {
+  background: $offwhite;
+  border: 1px solid $darkbrown;
+  border-radius: 10px;
+  display: block;
+  margin: 0 20px 20px 20px;
+  color: $darkdarkbrown;
+}
+
+figure.movie-index h3 {
+
+}

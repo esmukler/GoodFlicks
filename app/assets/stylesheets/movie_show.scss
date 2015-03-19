@@ -3,13 +3,12 @@ $lightbrown: #E3DFC9;
 $darkbrown: #8F7F3D;
 $darkdarkbrown: #5E411F;
 
-.movie-show {
+div.movie-show {
  background: #fff;
  width: 900px;
  margin: auto;
  border-radius: 10px;
 }
-
 
 img.poster {
   display: block;
@@ -21,8 +20,6 @@ img.poster {
 
 header.movie-show {
   padding: 10px;
-  width: 400px;
-  float: left;
 }
 
 section.movie-show-info {
