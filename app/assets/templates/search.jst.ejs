@@ -1,9 +1,18 @@
-<h1>Search</h1>
+<header class="search">
+  <label>Search for Movies or Users:
+    <input type="text" class="query">
+  </label>
+  <button type="submit">Search</button>
+</header>
 
-<label>Enter a Movie Title:
-  <input type="text" class="query">
-</label>
-<button type="submit">Search</button>
+<div class="results-container group">
+  <section class="movie-results">
+    <span class="empty-movie-msg"></span>
+    <ul class="movie-results"></ul>
+  </section>
 
-<span class="empty-msg"></span>
-<ul class="search-results"></ul>
+  <section class="user-results">
+    <span class="empty-user-msg"></span>
+    <ul class="user-results"></ul>
+  </section>
+</div>

@@ -7,12 +7,23 @@ header.home {
   padding: 10px;
 }
 
+figure.search-bar {
+  float: left;
+}
+figure.follow {
+  float: right;
+}
+
+button.follow {
+  padding: 5px 20px;
+  font-size: 16px;
+}
+
 form.header-search {
   color: $darkdarkbrown;
 }
 
 form.header-search button {
-  color: $darkdarkbrown;
   cursor: pointer;
   padding: 5px;
 }

@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   after_create :make_default_libs
 
+  include PgSearch
+  pg_search_scope :search_by_username, :against => [:username]
+
   has_many :libraries,
     class_name: "Library",
     foreign_key: :user_id,

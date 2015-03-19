@@ -12,10 +12,7 @@ GoodFlicks.Views.Header = Backbone.View.extend({
   },
 
   render: function() {
-
-    var content = this.template;
-
-    this.$el.html(content)
+    this.$el.html(this.template());
 
     return this;
   }

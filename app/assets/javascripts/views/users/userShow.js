@@ -36,7 +36,6 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
       title: "All " + this.model.escape("username") + "'s Movies"
     })
 
-
     this.model.libraries().each( function(library) {
       library.movies().each( function(movie) {
         libAll.movies().add(movie);
@@ -55,10 +54,20 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
     this.$('.library-show').html(allView.render().$el)
   },
 
+  renderFollowButton: function() {
+    var followButton = new GoodFlicks.Views.FollowButton({
+      model: this.model
+    })
+    this.subViews.push(followButton)
+    this.$('figure.follow').html(followButton.render().$el)
+  },
+
   renderHeader: function() {
-    var header = new GoodFlicks.Views.Header()
+    var header = new GoodFlicks.Views.Header({
+      user: this.model
+    })
     this.subViews.push(header)
-    this.$('header.home').html(header.render().$el)
+    this.$('.search-bar').html(header.render().$el)
   },
 
   renderLibraries: function() {
@@ -92,6 +101,7 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
     }))
 
     this.renderHeader();
+    this.renderFollowButton();
     this.renderLibraries();
     this.renderFollowings();
     this.renderReviews();

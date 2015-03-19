@@ -19,6 +19,7 @@
  $darkbrown: #8F7F3D;
  $darkdarkbrown: #5E411F;
  $yellowglow: #F2F2A2;
+ $errors: #E07B7B;
 
 
  html, figure, main, section, article,
@@ -40,6 +41,7 @@
    font-family: Helvetica;
    border-radius: 10px;
    background: $offwhite;
+   color: $darkdarkbrown;
  }
 
  a {
@@ -47,7 +49,13 @@
  }
 
  ul {
-   list-style-type: none;
+   list-style: none;
+   padding-left: 0;
+ }
+
+input {
+   -webkit-appearance: none;
+   -moz-appearance: none;
  }
 
  body {

@@ -2,8 +2,10 @@ json.extract! @user, :id, :username
 
 json.is_current_user (@user == current_user)
 
+json.followed current_user.followings.include?(@user)
+
 json.libraries @user.libraries.where(is_public: true).order(:order) do |library|
-    json.partial! "api/libraries/library", library: library
+  json.partial! "api/libraries/library", library: library
 end
 
 json.reviews @user.reviews.where(is_public: true).order(updated_at: :desc).limit(5) do |review|

@@ -1,0 +1,76 @@
+$offwhite: #f4f2e9;
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+$errors: #DE042C;
+
+header.search {
+  padding: 5px;
+  color: $darkdarkbrown;
+  text-align: center;
+}
+
+.search button {
+  padding: 5px;
+}
+
+.results-container {
+  width: 100%;
+}
+
+section.movie-results {
+  position: relative;
+  float:left;
+  width: 590px;
+  margin: 10px 10px 20px 20px;
+  padding: 10px;
+  background: $offwhite;
+  border: 1px solid $darkbrown;
+  border-radius: 10px;
+  display: block;
+  color: $darkdarkbrown;
+}
+
+section.user-results {
+  position: relative;
+  float: right;
+  width: 200px;
+  margin: 10px 20px 20px 10px;
+  padding: 10px;
+  background: $offwhite;
+  border: 1px solid $darkbrown;
+  border-radius: 10px;
+  display: block;
+  color: $darkdarkbrown;
+}
+
+.empty-user-msg,
+.empty-movie-msg {
+  width: 100%;
+  color: $errors;
+  font-size: 14px;
+  padding: 5px;
+  position: relative;
+  margin: auto;
+}
+
+.user-result,
+.result {
+  background: #fff;
+  border-radius: 10px;
+  display: block;
+  padding: 10px;
+  margin: 5px;
+  position: relative;
+}
+
+.user-result:hover,
+.result:hover {
+  background: $lightbrown;
+}
+
+.clicked {
+  top: 2px;
+  left: 2px;
+  background: $lightbrown;
+}

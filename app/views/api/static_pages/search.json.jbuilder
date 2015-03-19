@@ -1,3 +1,3 @@
 json.array! @search_results do |result|
-  json.extract! result, :title, :id
+  json.extract! result, :id, :username
 end

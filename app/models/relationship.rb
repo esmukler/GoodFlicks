@@ -1,7 +1,6 @@
 class Relationship < ActiveRecord::Base
   validates :follower_id, :followed_id, presence: true
   validates :follower_id, uniqueness: { scope: :followed_id }
-  validates :followed_id, uniqueness: { scope: :follower_id }
 
   belongs_to :follower,
     class_name: "User",

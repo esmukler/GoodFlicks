@@ -1,6 +1,21 @@
 GoodFlicks.Models.User = Backbone.Model.extend({
   urlRoot: "/api/users",
 
+  toggleFollow: function() {
+    $.ajax({
+      url: "/api/relationships",
+      type: "POST",
+      dataType: "json",
+      data: {
+        relationship: {
+          followed_id: this.id
+        }
+      }, success: function(data) {
+        this.set(this.parse(data));
+      }.bind(this)
+    })
+  },
+
   parse: function(jsonResp) {
     if (jsonResp.libraries) {
       this.libraries().set(jsonResp.libraries, { parse: true })
