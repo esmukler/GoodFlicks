@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, except: [:show]
   namespace :api, defaults: { format: :json } do
     get "/search", to: "static_pages#search"
-    resources :users, only: [:show]
+    resources :users, only: [:index, :show]
     resources :movies
     resources :libraries
     resources :reviews

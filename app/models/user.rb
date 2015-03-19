@@ -4,18 +4,26 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   after_initialize :ensure_session_token
+  after_create :make_default_libs
 
   has_many :libraries,
     class_name: "Library",
     foreign_key: :user_id,
     primary_key: :id,
-    inverse_of: :user
+    inverse_of: :user,
+    dependent: :destroy
 
   has_many :reviews,
     class_name: "Review",
     foreign_key: :user_id,
     primary_key: :id,
-    inverse_of: :user
+    inverse_of: :user,
+    dependent: :destroy
+
+  def make_default_libs
+    self.libraries.create!(title: "Seen")
+    self.libraries.create!(title: "Want To See")
+  end
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

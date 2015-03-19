@@ -25,7 +25,8 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     event.preventDefault();
     var libAll = new GoodFlicks.Models.Library({
       id: 0,
-      title: "All My Movies"
+      title: "All My Movies",
+      is_cu: true
     })
 
     this.libraries.each( function(library) {

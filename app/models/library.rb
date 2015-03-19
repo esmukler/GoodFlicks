@@ -12,7 +12,8 @@ class Library < ActiveRecord::Base
     class_name: "LibraryMovie",
     foreign_key: :library_id,
     primary_key: :id,
-    inverse_of: :library
+    inverse_of: :library,
+    dependent: :destroy
 
   has_many :movies, through: :library_movies, source: :movie
 

@@ -9,21 +9,33 @@
 user1 = User.create!(username: "eli", password: "password", session_token: "fake123")
 user2 = User.create!(username: "dude", password: "password", session_token: "fake456")
 
+25.times do |i|
+
+  user = User.create!(username: Faker::Internet.user_name, password: "gfpassword")
+
+end
+
+
+
+
+
 movie1 = Movie.create!(title: "Chinatown", description: "A private detective hired to expose an adulterer finds himself caught up in a web of deceit, corruption and murder.",
-                        year: 1974, director: "Roman Polanski")
+                        year: 1974, director: "Roman Polanski",
+                        poster: "http://image.tmdb.org/t/p/w500/iIHO6FzF6lL4mA90rrmk3Y705XS.jpg")
 
 movie2 = Movie.create!(title: "Office Space", description: "Three company workers who hate their jobs and decide to rebel against their greedy boss.",
-                        year: 1999, director: "Mike Judge")
+                        year: 1999, director: "Mike Judge",
+                        poster: "http://image.tmdb.org/t/p/w500/iO9aZzrfmMvm3IqkFiQyuuUMLh2.jpg")
 
-movie3 = Movie.create!(title: "Wall-E", description: "In the distant future, a small waste collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
-                        year: 2008, director: "Andrew Stanton")
+movie3 = Movie.create!(title: "WALL·E", description: "WALL-E is the last robot left on an Earth that has been overrun with garbage and all humans have fled to outer space. For 700 years he has continued to try and clean up the mess, but has developed some rather interesting human-like qualities. When a ship arrives with a sleek new type of robot, Wall-E thinks he's finally found a friend and stows away on the ship when it leaves.",
+                        year: 2008, director: "Andrew Stanton",
+                        poster: "http://image.tmdb.org/t/p/w500//4qOKgcDcB0SojUIg2syzor1FeL7.jpg")
 
 
 
-library1 = Library.create!(title: "Seen", user_id: user1.id)
-library2 = Library.create!(title: "Want to See", user_id: user1.id)
-library3 = Library.create!(title: "Favorites", user_id: user1.id)
-library4 = Library.create!(title: "Guilty Pleasures", user_id: user1.id, is_public: false)
+
+library1 = Library.create!(title: "Favorites", user_id: user1.id)
+library2 = Library.create!(title: "Guilty Pleasures", user_id: user1.id, is_public: false)
 
 
 rev1 = Review.create!(user_id: user1.id, movie_id: movie1.id,
