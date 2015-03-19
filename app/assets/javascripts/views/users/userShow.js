@@ -16,17 +16,21 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
   },
 
   renderFollowings: function() {
-    this.model.followings().each( function(user) {
-      var userItem = new GoodFlicks.Views.UserItem({
-        model: user
-      })
-      this.subViews.push(userItem);
-      if (user.get("is_cu")) {
-        this.$('.followings-list').before(userItem.render().$el)
-      } else {
-        this.$('.followings-list').append(userItem.render().$el)
-      }
-    }.bind(this))
+    if (this.model.followings().length === 0) {
+      this.$('.followings-list').html(this.model.get("username") + " isn't following anyone yet.")
+    } else {
+      this.model.followings().each( function(user) {
+        var userItem = new GoodFlicks.Views.UserItem({
+          model: user
+        })
+        this.subViews.push(userItem);
+        if (user.get("is_cu")) {
+          this.$('.followings-list').before(userItem.render().$el)
+        } else {
+          this.$('.followings-list').append(userItem.render().$el)
+        }
+      }.bind(this))
+    }
   },
 
   showAllMovies: function(event) {

@@ -19,17 +19,28 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
   events: {
     "click button.all-movies": "showAllMovies",
     "click button.add-library": "addLibrary",
-    "sortupdate .library-list" : "updateLibOrder"
+    "sortupdate .library-list" : "updateLibOrder",
+    "change .friend-query": "searchUsers"
+  },
+
+  searchUsers: function(event) {
+    event.preventDefault();
+    var query = this.$(".friend-query").val()
+    Backbone.history.navigate("#/search/" + query, { trigger: true })
   },
 
   renderFollowings: function() {
-    this.followings.each( function(user) {
-      var userItem = new GoodFlicks.Views.UserItem({
-        model: user
-      })
-      this.subViews.push(userItem);
-      this.$('.followings-list').append(userItem.render().$el)
-    }.bind(this))
+    if (this.followings.length === 0) {
+      this.$('.followings-list').html("You don't follow anyone yet.")
+    } else {
+      this.followings.each( function(user) {
+        var userItem = new GoodFlicks.Views.UserItem({
+          model: user
+        })
+        this.subViews.push(userItem);
+        this.$('.followings-list').append(userItem.render().$el)
+      }.bind(this))
+    }
   },
 
   showAllMovies: function(event) {

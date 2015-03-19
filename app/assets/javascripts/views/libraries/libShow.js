@@ -53,7 +53,9 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
     }
 
     this.$revs.find('.my-review-list').empty();
-
+    if (this.model.reviews().length === 0) {
+      this.$revs.find('.my-review-list').html("<div>No reviews yet.<div>")
+    }
     this.model.reviews().each( function(review) {
       var revItem = new GoodFlicks.Views.ReviewItem({
         model: review
