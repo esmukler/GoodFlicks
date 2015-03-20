@@ -22,8 +22,10 @@ GoodFlicks.Views.LibForm = Backbone.View.extend({
         }
         this.remove();
       }.bind(this),
-      error: function(model, data) {
-        console.log(data.responseJSON)
+      error: function(model, errorData) {
+        errorData.responseJSON.forEach(function(error) {
+          this.$('.errors-list').append("<li>" + error + "</li>")
+        })
       }
     })
   },

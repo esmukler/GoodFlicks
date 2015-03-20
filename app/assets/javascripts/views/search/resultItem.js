@@ -37,6 +37,11 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
         fullResult.director = person.name
       }
     })
+    if (fullResult.poster_path) {
+      fullResult.poster = "http://image.tmdb.org/t/p/w500/" + fullResult.poster_path
+    } else {
+      fullResult.poster = null
+    }
 
     $.ajax({
       url: "/api/movies",
@@ -47,7 +52,7 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
           year: parseInt(fullResult.release_date.slice(0,4)),
           description: fullResult.overview,
           director: fullResult.director,
-          poster: "http://image.tmdb.org/t/p/w500/" + fullResult.poster_path
+          poster: fullResult.poster
         }
       },
       success: function(data) {

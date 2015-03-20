@@ -15,9 +15,9 @@ class Api::LibrariesController < ApplicationController
     @library = current_user.libraries.new(library_params)
 
     if @library.save
-      render json: @library
+      render "show"
     else
-      flash.now[:errors] = @library.errors.full_messages
+      render json: @library.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -33,7 +33,7 @@ class Api::LibrariesController < ApplicationController
     @library = current_user.libraries.find(params[:id])
 
     if @library.update(library_params)
-      render json: @library
+      render "show"
     else
       render json: @library.errors.full_messages, status: :unprocessable_entity
     end
