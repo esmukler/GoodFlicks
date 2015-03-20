@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.create!(username: "eli", password: "password", session_token: "fake123")
+user1 = User.create!(username: "guy", password: "password", session_token: "fake123")
 user2 = User.create!(username: "dude", password: "password", session_token: "fake456")
 
 25.times do |i|
