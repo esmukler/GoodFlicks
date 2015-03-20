@@ -1,18 +1,29 @@
-<label>Number of Stars:
-  <input type="number" name="review[num_stars]" min="0" max="5" step="1"
-         value="<%= review.get("num_stars") %>">
-</label><br>
+<h3>So what'd ya think?</h3>
+<div class="textarea">
+  <textarea class="review" rows="10" cols="70" name="review[body]"><%= review.get("body") %></textarea>
+</div>
 
-<label>Review:
-  <textarea name="review[body]"><%= review.get("body") %></textarea>
-</label><br>
+<div class="form-items group">
+  <div class="input">
+    <label>Number of Stars:
+      <input type="number" name="review[num_stars]" min="0" max="5" step="1"
+             value="<%= review.get("num_stars") %>">
+    </label>
+  </div>
 
-<label>Private
-  <input id="is_private" type="radio" name="review[is_public]" value="false">
-</label>
+  <div class="radio">
+    <label>Private
+      <input id="is_private" type="radio" name="review[is_public]" value="false">
+    </label>
+  </div>
 
-<label>Public
-  <input id="is_public" type="radio" name="review[is_public]" value="true">
-</label><br>
+  <div class="radio">
+    <label>Public
+      <input id="is_public" type="radio" name="review[is_public]" value="true">
+    </label>
+  </div>
 
-<button type="submit"></button>
+  <div class="submit-button">
+    <button type="submit"></button>
+  </div>
+</div>

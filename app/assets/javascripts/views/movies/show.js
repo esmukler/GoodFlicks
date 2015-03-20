@@ -55,7 +55,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     });
 
     this.subViews.push(addRev);
-    $(event.currentTarget).parent().html(addRev.render().$el)
+    $('.modal').toggleClass("hidden")
+    $('.modal-form').html(addRev.render().$el)
   },
 
   renderReviews: function() {
@@ -81,7 +82,6 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.renderAttrs();
     this.renderLibButtons();
     this.renderReviews();
-
     return this
   },
 

@@ -1,0 +1,35 @@
+$offwhite: #f4f2e9;
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+$yellowglow: #F2F2A2;
+
+.modal {
+
+}
+
+.modal-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: rgba(0,0,0, 0.8);
+}
+
+.modal-form {
+  width: 500px;
+  min-height: 270px;
+  position: absolute;
+  margin: 50%;
+  transform: translateX(-50%);
+  background: white;
+  z-index: 3;
+  background: $offwhite;
+  display: block;
+  padding: 15px;
+  border-radius: 10px;
+  color: $darkdarkbrown;
+  font-family: garamond;
+}

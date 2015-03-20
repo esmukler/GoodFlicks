@@ -1,0 +1,49 @@
+$offwhite: #f4f2e9;
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+$yellowglow: #F2F2A2;
+
+form {
+  position: relative;
+}
+
+form h3 {
+  margin-top: 0;
+  border-radius: 10px;
+  padding: 5px;
+  position: relative;
+  background: $lightbrown;
+  text-align: center;
+}
+
+.textarea {
+  width: 100%;
+  margin: 10px auto;
+}
+
+.textarea textarea {
+  display: block;
+  margin: auto;
+}
+
+.input {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  float: left;
+}
+
+.radio {
+  display: block;
+  float: left;
+  margin: 5px;
+  padding: 5px;
+}
+
+.submit-button {
+  display: block;
+  float: left;
+  margin: 5px;
+  padding: 5px;
+}
