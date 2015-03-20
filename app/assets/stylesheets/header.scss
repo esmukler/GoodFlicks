@@ -1,6 +1,8 @@
 $lightbrown: #E3DFC9;
 $darkbrown: #8F7F3D;
 $darkdarkbrown: #5E411F;
+$yellowglow: #F2F2A2;
+
 
 header.rails-header {
   background: $lightbrown;
@@ -13,28 +15,45 @@ header.rails-header {
   min-height: 100px;
 }
 
+div.home-link,
 nav.welcome {
-  max-width: 175px;
+  min-width: 150px;
   display: block;
-  float: right;
   padding: 20px;
-  margin: 20px;
+  margin: 10px;
   border-radius: 10px;
   background: #DFD8C6;
   color: $darkdarkbrown;
-  position: absolute;
-  right: 0;
-  top: 0;
+}
+
+div.home-link {
+  float: left;
+  margin-right: 65px;
+}
+
+div.home-link:hover {
   box-shadow: 5px 5px 5px $darkbrown;
 }
 
-header img.logo {
-  margin: auto;
-  width: 300px;
+nav.welcome {
+  float: right;
+}
+
+div.logo {
+  float: left;
+  margin: 0 auto;
+  width: 400px;
   display: block;
-  border-radius: 10px;
 }
 
-header img.logo:hover {
-  box-shadow: 5px 5px 5px $darkbrown;
+div.logo img {
+  width: 100%;
+  height: auto;
+}
+
+p.home {
+  text-align: center;
+  margin: 10px;
+  font-weight: bold;
+  text-shadow: 3px 3px 3px $yellowglow;
 }

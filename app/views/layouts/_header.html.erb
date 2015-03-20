@@ -1,25 +1,34 @@
 <header class="rails-header group">
-  <% if flash.now[:errors] %>
-    <ul class="error-list">
-    <% flash.now[:errors].each do |error| %>
-      <li class="error"><%= error %></li>
-    <% end %>
-    </ul>
-  <% end %>
+      <a href="#"><div class="home-link">
+        <% if flash.now[:errors] %>
+          <ul class="error-list">
+          <% flash.now[:errors].each do |error| %>
+            <li class="error"><%= error %></li>
+          <% end %>
+          </ul>
+        <% end %>
 
-  <a href="#"><img class="logo" src="/images/GoodFlicks-logo.png"></a>
+        <% if @current_user %>
+          <p>There's no place like</p>
+          <p class="home">HOME</p>
+        <% end %>
+      </div></a>
 
-  <nav class="welcome">
-    <% if @current_user %>
-      <p>Welcome, <%= @current_user.username %>.</p>
+      <div class="logo">
+        <a href="#"><img class="logo" src="/images/GoodFlicks-logo.png"></a>
+      </div>
 
-      <form action="<%= session_url %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="delete">
-        <button type="submit">Log Out</button>
-      </form>
-    <% else %>
-      <p>Find, share and review all your favorite films!</p>
-    <% end %>
-  </nav>
+      <nav class="welcome">
+        <% if @current_user %>
+          <p>Welcome, <%= @current_user.username %>.</p>
+
+          <form action="<%= session_url %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">Log Out</button>
+          </form>
+        <% else %>
+          <p>Find, share and review all your favorite films!</p>
+        <% end %>
+      </nav>
 </header>
