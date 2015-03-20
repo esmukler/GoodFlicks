@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to root_url
     else
+      @credentials = true
       flash.now[:errors] = ['That information does not match our files']
       render :new
     end
