@@ -1,0 +1,42 @@
+ $offwhite: #f4f2e9;
+ $lightbrown: #E3DFC9;
+ $darkbrown: #8F7F3D;
+ $darkdarkbrown: #5E411F;
+ $yellowglow: #F2F2A2;
+ $errors: #E07B7B;
+
+.movie-form-container {
+  color: $darkdarkbrown;
+  padding: 10px;
+  position: relative;
+}
+
+.add-movie-title {
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+  margin-top: 0;
+  position: relative;
+  background: $lightbrown;
+  text-align: center;
+}
+
+.movie-form .input {
+  margin: 20px;
+}
+
+.movie-form .textarea {
+  float: left;
+  clear: both;
+}
+
+.movie-form-btn,
+.movie-form-btn-cancel {
+  position:absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.movie-form-btn-cancel {
+  right: 90px;
+}

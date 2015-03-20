@@ -34,7 +34,7 @@ GoodFlicks.Views.Search = Backbone.View.extend({
   },
 
   renderUserResults: function() {
-    if (this.userResults.length === 0) {
+    if (this.userResults.length === 0 && this.userResults.query) {
       this.$('.empty-user-msg').html("Sorry we couldn't find that username. Please try again.")
     } else {
       this.userResults.each( function(user) {

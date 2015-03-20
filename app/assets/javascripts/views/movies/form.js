@@ -7,17 +7,25 @@ GoodFlicks.Views.MovieForm = Backbone.View.extend({
   className: "movie-form-container",
 
   events: {
-    "submit" : "submitForm",
+    "click .submit-movie-form" : "submitForm",
+    "click .cancel-movie-form" : "cancel",
     "change #input-picture-file": "changePicture"
+  },
+
+  cancel: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate("#/search", { trigger: true })
+    this.remove();
+
   },
 
   submitForm: function(event) {
     event.preventDefault();
-    var formData = this.$('.movie-form').serializeJSON();
+    var formData = $('.movie-form').serializeJSON();
     this.model.save(formData.movie, {
       success: function() {
         this.collection.add(this.model)
-
+        this.remove();
         Backbone.history.navigate("#/movies/" + this.model.id, {trigger: true})
       }.bind(this)
     })

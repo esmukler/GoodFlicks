@@ -1,36 +1,53 @@
-<h1>Add a New Movie</h1>
+<h3 class="add-movie-title">Add a New Movie</h3>
 
-<p>Note: GoodFlicks has a LARGE database of movies.
+<p class="add-movie-disclaimer">
+  Note: GoodFlicks has a LARGE database of movies.
    Please make sure you have already
-   <a href="javascript:void(0)">searched</a> for the movie you want
+   <a href="#search">searched</a> for the movie you want
    and have not found it before adding it to the database.
 </p>
 
-<form class="movie-form" enctype="multipart/form-data">
-  <label>Title (required):
-    <input type="text" name="movie[title]" value="<%= movie.escape("title") %>"></input>
-  </label><br>
+<form class="movie-form group" enctype="multipart/form-data">
 
-  <label>Director:
-    <input type="text" name="movie[director]" value="<%= movie.escape("director") %>"></input>
-  </label><br>
+  <div class="input">
+    <label>Title (required):
+      <input type="text" name="movie[title]" value="<%= movie.escape("title") %>"></input>
+    </label>
+  </div>
 
-  <label>Year:
-    <input type="number" name="movie[year]" min="1896" max="<%= new Date().getFullYear() + 2%>"
-           value="<%= movie.escape("year") %>"></input>
-  </label><br><br>
+  <div class="input">
+    <label>Director:
+      <input type="text" name="movie[director]" value="<%= movie.escape("director") %>"></input>
+    </label>
+  </div>
 
-  <label>Description:
-    <textarea></textarea>
-  </label><br>
+  <div class="input">
+    <label>Year:
+      <input type="number" name="movie[year]" min="1896" max="<%= new Date().getFullYear() + 2%>"
+             value="<%= movie.escape("year") %>"></input>
+    </label>
+  </div>
 
-  <label>Poster Image
-    <input id="input-picture-file" type="file" name="movie[poster]">
-  </label>
+  <div class="textarea">
+      <textarea rows="10" cols="30">Write a synopsis here:</textarea>
+  </div>
 
-  <img src="" id="picture-preview">
+  <div class="input">
+    <label>Poster Image
+      <input id="input-picture-file" type="file" name="movie[poster]">
+    </label>
+  </div>
 
-  <button type="submit" >Add Movie!</button>
+  <div class="picture-preview">
+    <img src="" id="picture-preview">
+  </div>
+
 </form>
 
-<a href="#">Home</a>
+<div class="movie-form-btn">
+  <button class="submit-movie-form" >Add Movie!</button>
+</div>
+
+<div class="movie-form-btn-cancel">
+  <button class="cancel-movie-form">Cancel</button>
+</div>
