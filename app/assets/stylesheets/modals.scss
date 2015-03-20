@@ -15,15 +15,29 @@ $yellowglow: #F2F2A2;
   left: 0;
   right: 0;
   z-index: 2;
-  background: rgba(0,0,0, 0.8);
+  background: rgba(0,0,0, 0.5);
 }
 
 .modal-form {
-  width: 500px;
+  width: 550px;
   min-height: 270px;
   position: absolute;
-  margin: 50%;
+  margin: 20% 50%;
   transform: translateX(-50%);
+  background: white;
+  z-index: 3;
+  background: $offwhite;
+  display: block;
+  padding: 15px;
+  border-radius: 10px;
+  color: $darkdarkbrown;
+  font-family: garamond;
+}
+
+.lib-modal-form {
+  width: 200px;
+  height: auto;
+  position: absolute;
   background: white;
   z-index: 3;
   background: $offwhite;

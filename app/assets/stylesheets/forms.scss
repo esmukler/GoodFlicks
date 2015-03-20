@@ -6,6 +6,7 @@ $yellowglow: #F2F2A2;
 
 form {
   position: relative;
+  padding: 5px;
 }
 
 form h3 {
@@ -18,13 +19,15 @@ form h3 {
 }
 
 .textarea {
-  width: 100%;
-  margin: 10px auto;
+  margin: 10px 5px;
+  padding: 5px;
 }
 
 .textarea textarea {
   display: block;
   margin: auto;
+  font-family: courier;
+  font-size: 16px;
 }
 
 .input {
@@ -42,6 +45,12 @@ form h3 {
 }
 
 .submit-button {
+  display: block;
+  float: left;
+  margin: 5px;
+  padding: 5px;
+}
+.cancel-button {
   display: block;
   float: left;
   margin: 5px;

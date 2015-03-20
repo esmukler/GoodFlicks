@@ -7,7 +7,14 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
   className: "review-form",
 
   events: {
-    "click button" : "submitForm"
+    "click .submit-button" : "submitForm",
+    "click button.cancel" : "cancelForm"
+  },
+
+  cancelForm: function(event) {
+    event.preventDefault();
+    this.remove();
+    $('.modal').toggleClass("hidden")
   },
 
   submitForm: function(event) {
@@ -24,6 +31,8 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
         if (!this.model.get("is_public")) {
           alert("Private review saved. It will display on your home page.");
         }
+        this.remove();
+        $('.modal').addClass("hidden");
       }.bind(this)
     })
   },
@@ -42,9 +51,9 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
 
   addButtonText: function() {
     if (this.isNew()) {
-      this.$('button').text('Add Review')
+      this.$('.submit-button button').text('Add Review')
     } else {
-      this.$('button').text('Update Review')
+      this.$('.submit-button button').text('Update Review')
     }
   },
 

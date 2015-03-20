@@ -26,14 +26,21 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
     "click button.edit": "editLibrary",
     "click button.delete": "deleteLibrary",
     "click .lib-title" : "showLibrary",
-    "mouseenter" : "toggleButton",
-    "mouseleave" : "toggleButton",
+    "mouseenter" : "addButton",
+    "mouseleave" : "removeButton",
   },
 
-  toggleButton: function(event) {
+  addButton: function(event) {
     if (this.model.get("is_cu")) {
-      this.$('button.edit').toggleClass("hidden");
-      this.$('button.delete').toggleClass("hidden");
+      this.$('button.edit').removeClass("hidden");
+      this.$('button.delete').removeClass("hidden");
+    }
+  },
+
+  removeButton: function(event) {
+    if (this.model.get("is_cu")) {
+      this.$('button.edit').addClass("hidden");
+      this.$('button.delete').addClass("hidden");
     }
   },
 
@@ -54,11 +61,13 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
   },
 
   deleteLibrary: function(event) {
-    if (confirm("Are you sure you want to delete the whole library '" +
-                    this.model.escape("title") + "'?")) {
-      this.model.destroy();
-      Backbone.history.navigate("", {trigger: true});
-    }
+    event.preventDefault();
+    var deleteModal = new GoodFlicks.Views.DeleteModal({
+      model: this.model
+    })
+    this.subViews.push(deleteModal);
+    this.$('.modal').toggleClass("hidden")
+    $('.lib-modal-form').html(deleteModal.render().$el)
   },
 
   render: function() {

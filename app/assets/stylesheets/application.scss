@@ -58,9 +58,9 @@
 //    -moz-appearance: none;
 //  }
 
- // body {
- //  background: $offwhite;
- // }
+ body {
+  background: $offwhite;
+ }
 
 input[type=text]:focus, textarea:focus {
   outline-color: yellow;
