@@ -3,7 +3,12 @@
 <section class="movie-show-info">
   <h2 class="title"><%= movie.escape("title") %> (<%= movie.escape("year") %>)</h2>
 
-  <img class="poster" src="<%= movie.escape("poster_url") %>">
+  <div class="visuals group">
+    <img class="poster" src="<%= movie.escape("poster_url") %>">
+
+    <p class="your-rating"></p>
+    <div class="stars"></div>
+  </div>
 
   <div class="movie-details group">
 
@@ -29,8 +34,3 @@
     <button class="add-review">Write a review for this movie</button>
   </div>
 </section>
-
-<div class="modal hidden">
-  <section class="modal-screen"></section>
-  <section class="modal-form group"></section>
-</div>

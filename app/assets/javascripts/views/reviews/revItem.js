@@ -48,8 +48,8 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
     });
     this.subViews.push(revForm);
 
-    this.$('.modal').toggleClass("hidden")
-    this.$('.modal-form').html(revForm.render().$el)
+    $('.modal').toggleClass("hidden")
+    $('.modal-form').html(revForm.render().$el)
   },
 
   deleteReview: function(event) {

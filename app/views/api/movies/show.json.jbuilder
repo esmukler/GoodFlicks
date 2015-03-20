@@ -13,3 +13,7 @@ json.libraries current_user.libraries do |library|
 end
 
 json.poster_url image_url(@movie.poster.url)
+
+if @movie.reviews.where(user_id: current_user.id).first
+  json.cu_rating @movie.reviews.where(user_id: current_user.id).order(updated_at: :desc).first.num_stars
+end

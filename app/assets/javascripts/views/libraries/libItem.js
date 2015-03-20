@@ -66,8 +66,8 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
       model: this.model
     })
     this.subViews.push(deleteModal);
-    this.$('.modal').toggleClass("hidden")
-    $('.lib-modal-form').html(deleteModal.render().$el)
+    $('.modal').toggleClass("hidden")
+    $('.modal-form').html(deleteModal.render().$el)
   },
 
   render: function() {

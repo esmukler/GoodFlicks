@@ -15,15 +15,16 @@ $yellowglow: #F2F2A2;
   left: 0;
   right: 0;
   z-index: 2;
-  background: rgba(0,0,0, 0.5);
+  background: rgba(0,0,0,0.8);
 }
 
 .modal-form {
-  width: 550px;
+  max-width: 550px;
   min-height: 270px;
-  position: absolute;
-  margin: 20% 50%;
+  position: fixed;
+  margin: auto 50%;
   transform: translateX(-50%);
+  top: 90px;
   background: white;
   z-index: 3;
   background: $offwhite;
@@ -34,16 +35,8 @@ $yellowglow: #F2F2A2;
   font-family: garamond;
 }
 
-.lib-modal-form {
-  width: 200px;
-  height: auto;
-  position: absolute;
-  background: white;
-  z-index: 3;
-  background: $offwhite;
-  display: block;
-  padding: 15px;
-  border-radius: 10px;
-  color: $darkdarkbrown;
-  font-family: garamond;
+.delete-form {
+  position: relative;
+  min-width: 300px;
+  max-height: 200px;
 }

@@ -74,6 +74,18 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     }
   },
 
+  renderStars: function() {
+    if (this.model.get("cu_rating")) {
+      this.$('div.stars').raty({
+        score: function() {
+          return this.model.get("cu_rating")
+        }.bind(this),
+        readOnly: true
+      })
+      this.$('.your-rating').html("Your Rating:")
+    }
+  },
+
   render: function() {
     var baseContent = this.template({ movie: this.model })
     this.$el.html(baseContent);
@@ -82,6 +94,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.renderAttrs();
     this.renderLibButtons();
     this.renderReviews();
+    this.renderStars();
+
     return this
   },
 

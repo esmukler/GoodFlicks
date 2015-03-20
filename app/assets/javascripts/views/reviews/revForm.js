@@ -33,7 +33,12 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
         }
         this.remove();
         $('.modal').addClass("hidden");
-      }.bind(this)
+      }.bind(this),
+      error: function(model, errorData) {
+        errorData.responseJSON.forEach(function(error) {
+          this.$('.errors-list').append("<li>" + error + "</li>")
+        })
+      }
     })
   },
 

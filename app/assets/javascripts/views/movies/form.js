@@ -27,7 +27,12 @@ GoodFlicks.Views.MovieForm = Backbone.View.extend({
         this.collection.add(this.model)
         this.remove();
         Backbone.history.navigate("#/movies/" + this.model.id, {trigger: true})
-      }.bind(this)
+      }.bind(this),
+      error: function(model, errorData) {
+        errorData.responseJSON.forEach(function(error) {
+          this.$('.errors-list').append("<li>" + error + "</li>")
+        })
+      }
     })
   },
 
