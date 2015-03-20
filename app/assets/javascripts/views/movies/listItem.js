@@ -18,10 +18,22 @@ GoodFlicks.Views.MovieListItem = Backbone.View.extend({
     Backbone.history.navigate("#/movies/" + this.model.id, { trigger: true })
   },
 
+  renderStars: function() {
+    if (this.model.get("rating")) {
+      this.$('div.item-stars').raty({
+        score: function() {
+          return this.model.get("rating")
+        }.bind(this),
+        readOnly: true
+      })
+    }
+  },
+
   render: function() {
     var content = this.template({ movie: this.model })
 
     this.$el.html(content);
+    this.renderStars();
     return this;
   }
 
