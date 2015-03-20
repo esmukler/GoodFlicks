@@ -1,17 +1,35 @@
-figure.credentials {
-  background: #D69554;
-  max-width: 300px;
-  margin: 100px auto;
-  padding: 100px;
-  border-radius: 10px;
-  display: block;
+$offwhite: #f4f2e9;
+$lightbrown: #E3DFC9;
+$darkbrown: #8F7F3D;
+$darkdarkbrown: #5E411F;
+$yellowglow: #F2F2A2;
+$errors: #E07B7B;
+
+body.credentials {
+  background-image: url("/images/et.jpg");
+  background-size: auto 100%;
+  background-attachment: fixed;
+  background-position: -70px 0;
 }
 
-figure.credentials h1 {
+figure.credentials {
+  margin: 0 auto;
+  background: $offwhite;
+  border: 1px solid $darkdarkbrown;
+  max-width: 300px;
+  padding: 0 20px 10px 20px;
+  border-radius: 10px;
+  display: block;
+  color: $darkdarkbrown
+
+}
+
+figure.credentials h3 {
   position: relative;
-  bottom: 75px;
-  font-size: 50px;
   text-align: center;
+  border-radius: 10px;
+  background: $lightbrown;
+  padding: 5px;
 }
 
 figure.credentials label,
@@ -21,6 +39,19 @@ figure.credentials p {
 
 figure.credentials label {
   margin: 5px;
+}
+
+figure.credentials button {
+  float: left;
+  padding: 10px;
+  margin: 5px;
+}
+
+figure.credentials p {
+  width: 100%;
+  clear: both;
+  text-align: center;
+  margin: auto;
 }
 
 .error-list {

@@ -1,5 +1,5 @@
 <figure class="credentials">
-  <h1>Sign Up</h1>
+  <h3>Sign Up</h3>
 
   <form class="sign-up" action="<%= users_url %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -15,7 +15,8 @@
     <button type="submit">Sign-Up!</button>
 
   </form>
-
-  <p>Already a user? <a href="<%= new_session_url %>">Log In!</a></p>
   <button class="demo-user">Demo User</button>
+  
+  <p>Already a user? <a href="<%= new_session_url %>">Log In!</a></p>
+
 </figure>

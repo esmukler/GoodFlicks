@@ -1,8 +1,10 @@
 class Api::UsersController < ApplicationController
 
   def index
-    @users = current_user.followings.all
-    render 'index'
+    if current_user
+      @users = current_user.followings.all
+      render 'index'
+    end
   end
 
   def show

@@ -5,8 +5,9 @@
   <%= stylesheet_link_tag    'application' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
 </head>
-<body>
+<body class="<%= @credentials ? 'credentials' : '' %>">
 
 <%= render partial: "layouts/header" %>
 

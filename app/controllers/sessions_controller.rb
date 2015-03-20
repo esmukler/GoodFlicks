@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @credentials = true
     user = User.new
     render :new
   end
