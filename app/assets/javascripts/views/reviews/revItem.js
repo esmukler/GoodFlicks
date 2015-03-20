@@ -6,7 +6,8 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
 
   tagName: "li",
 
-  initialize: function() {
+  initialize: function(options) {
+    this.movie = options.movie;
     this.listenTo(this.model, "sync", this.render)
     this.subViews = [];
   },
@@ -44,7 +45,8 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
 
   editReview: function(event) {
     var revForm = new GoodFlicks.Views.ReviewForm({
-      model: this.model
+      model: this.model,
+      movie: this.movie
     });
     this.subViews.push(revForm);
 

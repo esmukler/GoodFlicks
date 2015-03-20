@@ -7,7 +7,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
   initialize: function(options) {
     this.subViews = [];
     this.libs = options.libs;
-    this.listenTo(this.model, "sync change", this.render);
+    this.listenTo(this.model, "sync change:cu_rating", this.render);
     this.listenTo(this.model.reviews(), "add remove", this.render);
     this.listenTo(this.model.libraries(), "add remove", this.render);
   },
@@ -51,7 +51,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
     var addRev = new GoodFlicks.Views.ReviewForm({
       model: newRev,
-      collection: this.model.reviews()
+      collection: this.model.reviews(),
+      movie: this.model
     });
 
     this.subViews.push(addRev);
@@ -65,7 +66,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
         if (review.get("is_public")) {
 
           var revItem = new GoodFlicks.Views.ReviewItem({
-            model: review
+            model: review,
+            movie: this.model
           });
           this.subViews.push(revItem);
           this.$('.reviews-list').append(revItem.render().$el);

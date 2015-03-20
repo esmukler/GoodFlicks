@@ -8,6 +8,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     this.libraries = options.libraries;
     this.followings = options.followings;
     this.subViews = [];
+    this.listenTo(this.followings, "add remove", this.render)
     this.listenTo(this.libraries, "add remove", this.render);
     this.listenTo(this.reviews, "sync", this.render);
   },

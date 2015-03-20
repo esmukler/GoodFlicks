@@ -6,6 +6,10 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
 
   className: "review-form",
 
+  initialize: function(options) {
+    this.movie = options.movie;
+  },
+
   events: {
     "click .submit-button" : "submitForm",
     "click button.cancel" : "cancelForm"
@@ -25,6 +29,9 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
     this.model.set(formData.review)
     this.model.save({}, {
       success: function() {
+        if (this.model.get("num_stars")) {
+          this.movie.set("cu_rating", this.model.get("num_stars"))
+        }
         if (isNew) {
           this.collection.add(this.model, {merge: true});
         }

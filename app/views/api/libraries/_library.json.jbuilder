@@ -6,6 +6,10 @@ json.movies library.movies do |movie|
   json.extract! movie, :id, :title, :year
 
   json.poster_url image_url(movie.poster.url)
+
+  if movie.reviews.where(user_id: library.user_id).first
+    json.rating movie.reviews.where(user_id: library.user_id).order(updated_at: :desc).first.num_stars
+  end
 end
 
 json.reviews library.reviews.where(:user_id => library.user_id).order(updated_at: :desc).limit(5) do |review|
