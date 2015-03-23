@@ -8,7 +8,7 @@ GoodFlicks.Views.Header = Backbone.View.extend({
   search: function(event) {
     event.preventDefault();
     var query = this.$(".query").val()
-    Backbone.history.navigate("#/search/" + query, { trigger: true })
+    Backbone.history.navigate("#/search/movies/" + query, { trigger: true })
   },
 
   render: function() {

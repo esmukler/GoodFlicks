@@ -8,61 +8,65 @@ GoodFlicks.Views.Search = Backbone.View.extend({
     this.collection.fetch();
     this.listenTo(this.collection, "sync", this.render)
 
-    if (options.query) {
+// if a search is requested from another page on the site:
+    this.currentQuery = "";
+    if (options.model && options.model === "movies") {
       this.searchAPI(options.query);
+      this.currentQuery = options.query
+    } else if (options.model && options.model === "users") {
       this.userSearch(options.query);
+      this.currentQuery = options.query
+      console.log(options.model, this.currentQuery)
     }
 
     this.subViews = [];
     this.render();
   },
 
-  events: {
-    "change .query": "insideSearch",
-  },
-
   template: JST["search"],
 
-  renderAPIResults: function() {
-    this.apiResults.forEach( function(result) {
-      var resultView = new GoodFlicks.Views.ResultItem({
-        result: result
-      })
-      this.subViews.push(resultView)
-      this.$('ul.movie-results').append(resultView.render().$el)
-    }.bind(this))
+  events: {
+    "submit .search-form": "insideSearch",
   },
 
-  renderUserResults: function() {
-    if (this.userResults.length === 0 && this.userResults.query) {
-      this.$('.empty-user-msg').html("Sorry we couldn't find that username. Please try again.")
-    } else {
-      this.userResults.each( function(user) {
-        var userResult = new GoodFlicks.Views.UserResult({
-          model: user
-        })
-        this.subViews.push(userResult)
-        this.$('ul.user-results').append(userResult.render().$el)
-      }.bind(this))
-    }
-  },
-
-  render: function() {
-    this.$el.html(this.template());
-
-    if (this.apiResults) {
-      this.renderAPIResults();
-    }
-    this.renderUserResults();
-
-    return this;
-  },
 
   insideSearch: function(event) {
     event.preventDefault();
-    var query = this.$(".query").val();
-    this.searchAPI(query);
-    this.userSearch(query);
+    var formData = this.$(".search-form").serializeJSON();
+
+    this.currentQuery = formData.search.query;
+    console.log(formData.search)
+    if (formData.search.model === "movies") {
+      this.userResults.query = null;
+      this.searchAPI(formData.search.query);
+    } else {
+      this.apiResults = [];
+      this.userSearch(formData.search.query);
+    }
+  },
+
+  searchAPI: function(query) {
+    var that = this;
+    $.ajax({
+      url: "http://api.themoviedb.org/3/search/movie?api_key=a1d5f291d84e71e51b248b86ec9c9e2a&query=" + query,
+      type: "GET",
+      success: function(data) {
+        if (data.results.length === 0) {
+          that.apiResults = "noResults";
+        } else {
+          that.apiResults = data.results;
+        }
+        that.render();
+      }
+    })
+  },
+
+  renderEmptyAPI: function() {
+    console.log("renderEmptyAPI")
+    this.apiResults = [];
+    this.$(".results-title").html("Movies that matched '" + this.currentQuery + "'");
+    this.$('.empty-msg').html("Sorry we couldn't find that title. Please try again.");
+    this.$(".results-list").empty();
   },
 
   userSearch: function(query) {
@@ -74,20 +78,52 @@ GoodFlicks.Views.Search = Backbone.View.extend({
     })
   },
 
-  searchAPI: function(query) {
-    var that = this;
-    $.ajax({
-      url: "http://api.themoviedb.org/3/search/movie?api_key=a1d5f291d84e71e51b248b86ec9c9e2a&query=" + query,
-      type: "GET",
-      success: function(data) {
-        if (data.results.length === 0) {
-          that.$('.empty-movie-msg').html("Sorry we couldn't find that title. Please try again.")
-        } else {
-          that.apiResults = data.results;
-          that.render();
-        }
-      }
-    })
+  renderAPIResults: function() {
+    console.log("renderAPIResults")
+    this.$(".results-title").html("Movies that matched '" + this.currentQuery + "'");
+    this.apiResults.forEach( function(result) {
+      var resultView = new GoodFlicks.Views.ResultItem({
+        result: result
+      })
+      this.subViews.push(resultView)
+      this.$('ul.results-list').append(resultView.render().$el)
+    }.bind(this))
+  },
+
+  renderUserResults: function() {
+    this.$(".results-title").html("Users that matched '" + this.currentQuery + "'");
+    if (this.userResults.length === 0 && this.userResults.query) {
+      this.$('.empty-msg').html("Sorry we couldn't find that username. Please try again.")
+    } else {
+      this.$('.empty-msg').empty();
+      this.userResults.each( function(user) {
+        var userResult = new GoodFlicks.Views.UserResult({
+          model: user
+        })
+        this.subViews.push(userResult)
+        this.$('ul.results-list').append(userResult.render().$el)
+      }.bind(this))
+    }
+    console.log(this.userResults.query);
+  },
+
+  render: function() {
+    this.$el.html(this.template());
+    //
+    // console.log("this.apiResults", this.apiResults)
+    // console.log("this.userResults.query", this.userResults.query)
+
+    if (this.userResults.query) {
+      console.log(1, this.userResults.query)
+      this.renderUserResults();
+    } else if (this.apiResults === "noResults") {
+      this.renderEmptyAPI();
+    } else if (this.apiResults.length > 0) {
+      console.log(2)
+      this.renderAPIResults();
+    }
+
+    return this;
   },
 
   remove: function() {

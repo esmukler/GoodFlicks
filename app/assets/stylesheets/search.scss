@@ -18,11 +18,11 @@ header.search {
   width: 100%;
 }
 
-section.movie-results {
+section.results {
   position: relative;
   float:left;
-  width: 590px;
-  margin: 10px 10px 20px 20px;
+  width: 800px;
+  margin: 20px;
   padding: 10px;
   background: $offwhite;
   border: 1px solid $darkbrown;
@@ -31,27 +31,25 @@ section.movie-results {
   color: $darkdarkbrown;
 }
 
-section.user-results {
+h3.results-title {
+  margin-bottom: 0;
+  border-radius: 10px;
+  padding: 5px;
   position: relative;
-  float: right;
-  width: 200px;
-  margin: 10px 20px 20px 10px;
-  padding: 10px;
-  background: $offwhite;
-  border: 1px solid $darkbrown;
-  border-radius: 10px;
+  background: $lightbrown;
+  text-align: center;
   display: block;
-  color: $darkdarkbrown;
 }
 
-.empty-user-msg,
-.empty-movie-msg {
+.empty-msg {
   width: 100%;
   color: $errors;
   font-size: 14px;
   padding: 5px;
   position: relative;
-  margin: auto;
+  margin: 0 auto;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .user-result,

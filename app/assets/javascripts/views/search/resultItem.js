@@ -19,7 +19,8 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
   getInfo: function(event) {
     event.preventDefault();
     $(event.currentTarget).addClass("clicked");
-    this.$('.message').text("Just a second. Let me get that for you...");
+    this.$('.message').html("Just a second. Let me get that for you...  ");
+    this.$('.message').append("<img src='/images/ajax-loader.gif'>")
 
     $.ajax({
       url: "https://api.themoviedb.org/3/movie/" + this.result.id + "?api_key=a1d5f291d84e71e51b248b86ec9c9e2a&append_to_response=credits",

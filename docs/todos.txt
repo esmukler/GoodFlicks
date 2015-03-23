@@ -5,3 +5,12 @@ Features to add:
 - Add more info from movies (i.e. actors, country, more photos)
 - ActionMailer for authentication
 - Paginate (infinite scroll) users index, movie index
+- Different styling for private libraries and reviews
+- Want to See (different styling for review section in lib show)
+- Star live edits
+- Logo Tagline
+- Browsing choices
+- Search with checkboxes
+- links for CanIStreamIt/Amazon
+- predictive search
+- movie quiz (part of the description, the director and the year, what's the title?)

@@ -27,7 +27,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
   searchUsers: function(event) {
     event.preventDefault();
     var query = this.$(".friend-query").val()
-    Backbone.history.navigate("#/search/" + query, { trigger: true })
+    Backbone.history.navigate("#/search/users/" + query, { trigger: true })
   },
 
   renderFollowings: function() {

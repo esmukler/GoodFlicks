@@ -1,19 +1,24 @@
 <header class="search">
-  <label>Search for Movies or Users:
-    <input type="text" class="query">
-  </label>
-  <button type="submit">Search</button>
+  <form class="search-form">
+    <label>Search:
+      <input type="text" name="search[query]" class="query">
+    </label>
+    <label>Movies
+      <input type="radio" name="search[model]" value="movies" checked>
+    </label>
+    <label>Users
+      <input type="radio" name="search[model]" value="users">
+    </label>
+
+    <button type="submit">Search</button>
+  </form>
 </header>
 
 <div class="results-container group">
-  <section class="movie-results">
-    <span class="empty-movie-msg"></span>
-    <ul class="movie-results"></ul>
-  </section>
-
-  <section class="user-results">
-    <span class="empty-user-msg"></span>
-    <ul class="user-results"></ul>
+  <section class="results">
+    <h3 class="results-title"></h3>
+    <span class="empty-msg"></span>
+    <ul class="results-list"></ul>
   </section>
 </div>
 
