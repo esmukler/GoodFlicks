@@ -48,9 +48,13 @@ li.review-item {
   word-wrap: break-word;
 }
 
-p.stars {
+section.rev-stats {
+  max-width: 150px;
+  float: right;
+}
+
+div.stars {
   display: block;
-  text-align: right;
 }
 
 p.user-or-movie {

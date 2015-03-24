@@ -7,7 +7,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
   initialize: function(options) {
     this.subViews = [];
     this.libs = options.libs;
-    this.listenTo(this.model, "sync change:cu_rating", this.render);
+    this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.reviews(), "add remove", this.render);
     this.listenTo(this.model.libraries(), "add remove", this.render);
   },
@@ -60,9 +60,15 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     $('.modal-form').html(addRev.render().$el)
   },
 
-  renderReviews: function() {
+  renderReviews: function(newStarRating) {
     if (this.model.reviews()) {
+      this.$('.reviews-list').empty();
       this.model.reviews().each( function(review) {
+        if (newStarRating && review.get("mine")) {
+          review.set("num_stars", newStarRating);
+          review.save();
+        }
+
         if (review.get("is_public")) {
 
           var revItem = new GoodFlicks.Views.ReviewItem({
@@ -77,14 +83,26 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
   },
 
   renderStars: function() {
+    var that = this;
     if (this.model.get("cu_rating")) {
       this.$('div.stars').raty({
         score: function() {
-          return this.model.get("cu_rating")
-        }.bind(this),
-        readOnly: true
+          return that.model.get("cu_rating")
+        },
+        click: function(score, event) {
+          that.renderReviews(score);
+        }
       })
       this.$('.your-rating').html("Your Rating:")
+    }
+    if (this.model.get("avg_rating")) {
+      this.$('div.avg-stars').raty({
+        score: function() {
+          return that.model.get("avg_rating")
+        },
+        readOnly: true,
+      })
+      this.$('.avg-rating').html("Average Rating:")
     }
   },
 

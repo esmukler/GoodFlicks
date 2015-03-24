@@ -2,13 +2,13 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
 
   template: JST['review_item'],
 
-  className: "review-item",
+  className: "review-item group",
 
   tagName: "li",
 
   initialize: function(options) {
     this.movie = options.movie;
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync change:num_stars", this.render)
     this.subViews = [];
   },
 
@@ -43,6 +43,16 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
     }
   },
 
+  renderStars: function() {
+    var that = this;
+    this.$('div.rev-stars').raty({
+      score: function() {
+        return that.model.get("num_stars")
+      },
+      readOnly: true
+    })
+  },
+
   editReview: function(event) {
     var revForm = new GoodFlicks.Views.ReviewForm({
       model: this.model,
@@ -63,11 +73,11 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   },
 
   render: function() {
-    // debugger
     var content = this.template({ review: this.model })
 
     this.$el.html(content);
     this.userOrMovie();
+    this.renderStars();
     return this
   },
 

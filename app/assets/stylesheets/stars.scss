@@ -1,11 +1,15 @@
+div.avg-stars,
 div.item-stars,
-div.stars {
-  height: 30px;
+div.stars,
+div.rev-stars {
+  height: 20px;
   width: auto;
   float: right;
-  margin: 0 auto;
+  margin-right: 5px;
 }
 
+div.rev-stars img,
+div.avg-stars img,
 div.item-stars img,
 div.stars img {
   height: 100%;
@@ -14,4 +18,12 @@ div.stars img {
 
 div.item-stars {
   margin-top: 70px;
+}
+
+p.your-rating,
+p.avg-rating {
+  display: block;
+  float: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
