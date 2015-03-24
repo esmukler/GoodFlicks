@@ -16,7 +16,6 @@ GoodFlicks.Views.Search = Backbone.View.extend({
     } else if (options.model && options.model === "users") {
       this.userSearch(options.query);
       this.currentQuery = options.query
-      console.log(options.model, this.currentQuery)
     }
 
     this.subViews = [];
@@ -35,7 +34,7 @@ GoodFlicks.Views.Search = Backbone.View.extend({
     var formData = this.$(".search-form").serializeJSON();
 
     this.currentQuery = formData.search.query;
-    console.log(formData.search)
+
     if (formData.search.model === "movies") {
       this.userResults.query = null;
       this.searchAPI(formData.search.query);
@@ -62,7 +61,6 @@ GoodFlicks.Views.Search = Backbone.View.extend({
   },
 
   renderEmptyAPI: function() {
-    console.log("renderEmptyAPI")
     this.apiResults = [];
     this.$(".results-title").html("Movies that matched '" + this.currentQuery + "'");
     this.$('.empty-msg').html("Sorry we couldn't find that title. Please try again.");
@@ -79,7 +77,6 @@ GoodFlicks.Views.Search = Backbone.View.extend({
   },
 
   renderAPIResults: function() {
-    console.log("renderAPIResults")
     this.$(".results-title").html("Movies that matched '" + this.currentQuery + "'");
     this.apiResults.forEach( function(result) {
       var resultView = new GoodFlicks.Views.ResultItem({
@@ -104,22 +101,16 @@ GoodFlicks.Views.Search = Backbone.View.extend({
         this.$('ul.results-list').append(userResult.render().$el)
       }.bind(this))
     }
-    console.log(this.userResults.query);
   },
 
   render: function() {
     this.$el.html(this.template());
-    //
-    // console.log("this.apiResults", this.apiResults)
-    // console.log("this.userResults.query", this.userResults.query)
 
     if (this.userResults.query) {
-      console.log(1, this.userResults.query)
       this.renderUserResults();
     } else if (this.apiResults === "noResults") {
       this.renderEmptyAPI();
     } else if (this.apiResults.length > 0) {
-      console.log(2)
       this.renderAPIResults();
     }
 

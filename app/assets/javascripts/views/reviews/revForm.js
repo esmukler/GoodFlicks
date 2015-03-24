@@ -8,11 +8,21 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
 
   initialize: function(options) {
     this.movie = options.movie;
+    this.num_stars = this.model.get("num_stars") || 3;
   },
 
   events: {
     "click .submit-button" : "submitForm",
     "click button.cancel" : "cancelForm"
+  },
+
+  renderStars: function() {
+    this.$('div.rev-form-stars').raty({
+      score: this.num_stars,
+      click: function(score, event) {
+        this.num_stars = score;
+      }.bind(this)
+    })
   },
 
   cancelForm: function(event) {
@@ -25,6 +35,7 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
     var isNew = this.isNew();
     event.preventDefault();
     var formData = this.$el.serializeJSON();
+    formData.review.num_stars = this.num_stars
 
     this.model.set(formData.review)
     this.model.save({}, {
@@ -75,6 +86,7 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
     this.$el.html(content);
     this.checkPublic();
     this.addButtonText();
+    this.renderStars();
     return this
   }
 
