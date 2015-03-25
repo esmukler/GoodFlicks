@@ -6,10 +6,10 @@ $yellowglow: #F2F2A2;
 $errors: #E07B7B;
 
 body.credentials {
-  background-image: url("/images/et.jpg");
+  background-image: url("/images/bwcinema.jpg");
   background-size: auto 100%;
   background-attachment: fixed;
-  background-position: -70px 0;
+  // background-position: -70px 0;
 }
 
 figure.credentials {
@@ -21,7 +21,6 @@ figure.credentials {
   border-radius: 10px;
   display: block;
   color: $darkdarkbrown
-
 }
 
 figure.credentials h3 {
@@ -32,26 +31,21 @@ figure.credentials h3 {
   padding: 5px;
 }
 
-figure.credentials label,
-figure.credentials p {
-  font-family: courier;
-}
-
 figure.credentials label {
-  margin: 5px;
+  display: block;
+  padding: 2px;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 figure.credentials button {
-  float: left;
-  padding: 10px;
-  margin: 5px;
+  padding: 5px 10px;
 }
 
 figure.credentials p {
-  width: 100%;
+  display: block;
   clear: both;
   text-align: center;
-  margin: auto;
 }
 
 .error-list {
@@ -62,4 +56,12 @@ figure.credentials p {
   border-radius: 10px;
   left: 10px;
   max-width: 200px;
+}
+
+div.attribution {
+  font-size: 12px;
+  position: fixed;
+  color: #B3B1B5;
+  right: 0;
+  bottom: 0;
 }

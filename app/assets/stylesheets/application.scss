@@ -30,7 +30,7 @@
    outline: 0;
    box-sizing: inherit;
    font: inherit;
-   font-family: Helvetica;
+   font-family: "Montserrat";
    text-decoration: inherit;
    text-align: inherit;
    color: inherit;
@@ -38,7 +38,6 @@
  }
 
  button {
-   font-family: Helvetica;
    border-radius: 10px;
    background: $offwhite;
    color: $darkdarkbrown;
@@ -53,16 +52,12 @@
    padding-left: 0;
  }
 
-// input {
-//    -webkit-appearance: none;
-//    -moz-appearance: none;
-//  }
-
  body {
   background: $offwhite;
  }
 
-input[type=text]:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline-color: yellow;
 }
 
