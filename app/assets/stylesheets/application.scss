@@ -56,6 +56,12 @@
   background: $offwhite;
  }
 
+input,
+textarea {
+  color: $darkdarkbrown;
+}
+
+button:focus,
 input:focus,
 textarea:focus {
   outline-color: yellow;

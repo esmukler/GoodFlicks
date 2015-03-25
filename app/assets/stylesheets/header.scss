@@ -52,9 +52,15 @@ div.logo img {
   height: auto;
 }
 
-p.home {
+div.home-link p {
   text-align: center;
+}
+
+p.home {
   margin: 10px;
   font-weight: bold;
-  text-shadow: 3px 3px 3px $yellowglow;
+}
+
+p.home:hover {
+  text-shadow: 5px 5px 5px $yellowglow;
 }
