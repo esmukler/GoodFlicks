@@ -13,8 +13,23 @@
     </label>
 
     <button type="submit">Log In!</button>
-
   </form>
 
   <p>Not yet a user? <a href="<%= new_user_url %>">Sign Up!</a></p>
+
+  <p>Or try us out as a
+    <form action="<%= demo_sign_in_session_url %>" method="get">
+      <button class="submit">Demo User</button>
+    </form>
+  </p>
+
 </figure>
+
+<script>
+$(document).ready(function(){
+  $('button.demo-user').click(function(event) {
+    event.preventDefault();
+    console.log(event)
+  })
+});
+</script>

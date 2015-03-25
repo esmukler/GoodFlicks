@@ -1,6 +1,6 @@
 # GoodFlicks
 
-##[Live Link](http://goodflicks.co)
+##[Live Link](www.goodflicks.co)
 
 A social media website for finding, sharing and reviewing all your favorite movies!
 

@@ -19,6 +19,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def demo_sign_in
+    user = User.find_by_username("demo_user")
+    log_in(user)
+    redirect_to root_url
+  end
+
   def destroy
     logout
     redirect_to new_session_url
