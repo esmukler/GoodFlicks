@@ -13,10 +13,6 @@
 
 <%= yield %>
 
-<% if current_user %>
-  <%= render partial: "layouts/footer" %>
-<% end %>
-
 <script>
 <% if current_user %>
   $(document).ready(function(){

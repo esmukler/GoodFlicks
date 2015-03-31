@@ -16,19 +16,32 @@ section.libraries {
   font-weight: bold;
 }
 
-button.all-movies {
+button.all-movies,
+button.add-library {
   color: $darkdarkbrown;
-  font-size: 18px;
+  box-shadow: 5px 5px 5px $darkbrown;
   font-weight: bold;
   border: none;
   display: block;
   position: relative;
+  background: $lightbrown;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button.all-movies {
+  font-size: 18px;
   padding: 10px 10px;
   width: 230px;
   border-radius: 10px;
   margin: 0 auto;
-  background: $lightbrown;
-  box-shadow: 5px 5px 5px $darkbrown;
+}
+
+button.add-library {
+  font-size: 12px;
+  margin: auto;
+  left: 12px;
+  padding: 10px 40px;
 }
 
 .library-item {
@@ -43,22 +56,6 @@ button.all-movies {
 
 .library-item:hover {
   cursor: -webkit-grab;
-}
-
-
-button.add-library {
-  color: $darkdarkbrown;
-  font-size: 12px;
-  font-weight: bold;
-  border: none;
-  display: block;
-  margin: auto;
-  position: relative;
-  left: 12px;
-  padding: 10px 40px;
-  border-radius: 10px;
-  background: $lightbrown;
-  box-shadow: 5px 5px 5px $darkbrown;
 }
 
 button.all-movies:hover,
