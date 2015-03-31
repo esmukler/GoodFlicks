@@ -21,7 +21,8 @@ GoodFlicks.Views.ReviewForm = Backbone.View.extend({
       score: this.num_stars,
       click: function(score, event) {
         this.num_stars = score;
-      }.bind(this)
+      }.bind(this),
+      hints: ["hated it", "didn't like it", "it was ok", "liked it", "loved it"]
     })
   },
 

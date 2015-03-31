@@ -49,7 +49,8 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
       score: function() {
         return that.model.get("num_stars")
       },
-      readOnly: true
+      readOnly: true,
+      hints: ["hated it", "didn't like it", "it was ok", "liked it", "loved it"]
     })
   },
 

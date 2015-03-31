@@ -75,27 +75,31 @@ p.director,
 figure.lib-buttons {
   width: 150px;
   float:right;
-  display: block;
   padding: 10px;
 }
 
-.lib-buttons a {
-  padding: 5px;
+ul.lib-button-list {
+  margin-top: 0px;
 }
 
-figure.lib-buttons a:hover {
-  background: lightyellow;
+p.lib-button {
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid $darkbrown;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px $darkbrown;
+  margin-bottom: 2px;
+}
+
+p.lib-button:hover {
   top: 2px;
   left: 2px;
   border-radius: 10px;
 }
 
 figure.lib-buttons li {
-  list-style-position: none;
-  padding-left: 0;
-  display: block;
   margin: 10px;
-  text-align: left;
 }
 .movie-reviews {
   background: $offwhite;

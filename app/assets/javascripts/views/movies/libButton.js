@@ -6,7 +6,7 @@ GoodFlicks.Views.LibButton = Backbone.View.extend({
   tagName: "li",
 
   events: {
-    "click a": "goToLibrary",
+    "click p": "goToLibrary",
     "click button.add" : "addToLibrary",
     "click button.remove" : "removeFromLibrary"
   },

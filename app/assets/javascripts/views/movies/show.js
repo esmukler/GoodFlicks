@@ -91,7 +91,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
         },
         click: function(score, event) {
           that.renderReviews(score);
-        }
+        },
+        hints: ["hated it", "didn't like it", "it was ok", "liked it", "loved it"]
       })
       this.$('.your-rating').html("Your Rating:")
     }
