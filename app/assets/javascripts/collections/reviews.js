@@ -1,10 +1,20 @@
 GoodFlicks.Collections.Reviews = Backbone.Collection.extend({
-  url: "/api/reviews",
 
   model: GoodFlicks.Models.Review,
 
   initialize: function(models, options) {
-    if (options) this.movie = options.movie;
+    if (options) {
+      this.movie = options.movie;
+      this.route = options.route;
+    }
+  },
+
+  url: function() {
+    if (this.route == "feed") {
+      return "/api/reviews/feed";
+    } else {
+      return "/api/reviews"
+    }
   },
 
   getOrFetch: function(id) {

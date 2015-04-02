@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     resources :movies
     resources :libraries
-    resources :reviews
+    resources :reviews do
+      collection { get :feed }
+    end
     resources :relationships, only: [:create, :destroy]
     resources :library_movies, only: [:create, :destroy]
   end

@@ -41,6 +41,8 @@ class User < ActiveRecord::Base
 
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :feed_reviews, through: :followings, source: :reviews
+
   def make_default_libs
     self.libraries.create!(title: "Seen")
     self.libraries.create!(title: "Want To See")

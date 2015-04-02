@@ -7,20 +7,24 @@ header.home {
   padding: 10px;
 }
 
-form.header-search {
-  float: left;
-  display: block;
-  margin: 10px 20px 0 20px;
-}
-
-div.header-links {
+form.header-search,
+div.browse-movies,
+div.my-feed {
   background: $offwhite;
   border-radius: 10px;
   border: 1px solid $darkdarkbrown;
   float: left;
   display: block;
   color: $darkdarkbrown;
-  margin: 5px 20px;
+  margin: 5px 10px;
+}
+
+div.browse-movies,
+div.my-feed {
+  padding: 15px;
+}
+
+form.header-search {
   padding: 10px;
 }
 

@@ -49,8 +49,9 @@ GoodFlicks.Views.LibItem = Backbone.View.extend({
       model: this.model,
       $revs: this.$revs
     })
-    this.subViews.push(libShow)
-    this.$show.html(libShow.render().$el)
+    this.subViews.push(libShow);
+    this.$show.html(libShow.render().$el);
+    $(".feed").addClass("hidden");
   },
 
   editLibrary: function(event) {

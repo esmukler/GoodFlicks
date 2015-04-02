@@ -4,6 +4,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     if (options.libId) {
       this.libId = options.libId;
     }
+    this.feed = options.feed;
     this.reviews = options.reviews;
     this.libraries = options.libraries;
     this.followings = options.followings;
@@ -11,6 +12,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     this.listenTo(this.followings, "add remove", this.render)
     this.listenTo(this.libraries, "add remove", this.render);
     this.listenTo(this.reviews, "sync", this.render);
+    this.listenTo(this.feed, "sync", this.render)
   },
 
   template: JST['home'],
@@ -28,6 +30,18 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     event.preventDefault();
     var query = this.$(".friend-query").val()
     Backbone.history.navigate("#/search/users/" + query, { trigger: true })
+  },
+
+  renderFeed: function() {
+    if (!this.libId) {
+      this.feed.each( function(review) {
+        var revItem = new GoodFlicks.Views.ReviewItem({
+          model: review
+        });
+        this.subViews.push(revItem);
+        this.$('.feed-list').append(revItem.render().$el);
+      }.bind(this))
+    }
   },
 
   renderFollowings: function() {
@@ -118,7 +132,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
           $revs: this.$('.reviews'),
           quickStart: true
         });
-
+        this.$(".feed").addClass("hidden");
       } else {
         var libItem = new GoodFlicks.Views.LibItem({
           model: library,
@@ -157,6 +171,8 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     this.renderFollowings();
 
     this.renderReviews();
+
+    this.renderFeed();
 
     return this;
   },
