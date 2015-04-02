@@ -66,12 +66,18 @@ GoodFlicks.Views.UserShow = Backbone.View.extend({
     this.$('figure.follow').html(followButton.render().$el)
   },
 
+  // renderHeader: function() {
+  //   var header = new GoodFlicks.Views.Header({
+  //     user: this.model
+  //   })
+  //   this.subViews.push(header)
+  //   this.$('.search-bar').html(header.render().$el)
+  // },
+
   renderHeader: function() {
-    var header = new GoodFlicks.Views.Header({
-      user: this.model
-    })
+    var header = new GoodFlicks.Views.Header()
     this.subViews.push(header)
-    this.$('.search-bar').html(header.render().$el)
+    this.$('header.home').html(header.render().$el)
   },
 
   renderLibraries: function() {

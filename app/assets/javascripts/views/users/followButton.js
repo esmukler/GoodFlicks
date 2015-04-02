@@ -1,7 +1,5 @@
 GoodFlicks.Views.FollowButton = Backbone.View.extend({
-  className: "follow",
-
-  tagName: "button",
+  className: "follow-button",
 
   initialize: function() {
     this.listenTo(this.model, "sync change:followed", this.render)

@@ -20,7 +20,7 @@ GoodFlicks.Views.Header = Backbone.View.extend({
 
   goToFeed: function(event) {
     event.preventDefault();
-    if ($(".home-content").length > 0) {
+    if ($(".home-content").length > 0 && $("figure.follow").length === 0) {
       console.log("render the Feed straight!")
     } else {
       Backbone.history.navigate("#", { trigger: true })

@@ -1,7 +1,12 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$offwhite: #f4f2e9;
+$darkdarkbrown: #5E411F;
 
-button.follow {
-  margin: 10px;
+div.follow-button {
+  background: $offwhite;
+  border-radius: 10px;
+  border: 1px solid $darkdarkbrown;
+  color: $darkdarkbrown;
+  margin: 5px 10px;
+  cursor: pointer;
+  padding: 15px;
 }

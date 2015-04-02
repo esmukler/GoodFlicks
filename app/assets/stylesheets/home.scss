@@ -3,6 +3,10 @@ $lightbrown: #E3DFC9;
 $darkbrown: #8F7F3D;
 $darkdarkbrown: #5E411F;
 
+.home-container {
+  position: relative;
+}
+
 header.home {
   padding: 10px;
 }
@@ -17,6 +21,7 @@ div.my-feed {
   display: block;
   color: $darkdarkbrown;
   margin: 5px 10px;
+  cursor: pointer;
 }
 
 div.browse-movies,
@@ -33,7 +38,9 @@ figure.search-bar {
 }
 
 figure.follow {
-  float: right;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 button.follow {
