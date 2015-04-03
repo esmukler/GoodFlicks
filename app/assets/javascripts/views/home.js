@@ -28,7 +28,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
 
   searchUsers: function(event) {
     event.preventDefault();
-    var query = this.$(".friend-query").val()
+    var query = event.currentTarget.value
     Backbone.history.navigate("#/search/users/" + query, { trigger: true })
   },
 
@@ -37,13 +37,18 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
       this.$('section.library-show').html(JST["lib_show_prompt"]);
     }
     this.$('.feed-list').removeClass("hidden")
-    this.feed.each( function(review) {
-      var revItem = new GoodFlicks.Views.ReviewItem({
-        model: review
-      });
-      this.subViews.push(revItem);
-      this.$('.feed-list').append(revItem.render().$el);
-    }.bind(this))
+    if (this.feed.length > 0) {
+      this.feed.each( function(review) {
+        var revItem = new GoodFlicks.Views.ReviewItem({
+          model: review
+        });
+        this.subViews.push(revItem);
+        this.$('.feed-list').append(revItem.render().$el);
+      }.bind(this))
+    } else {
+      this.$('.feed-list').html("<p>No one you follow has written any reviews yet.</p>")
+      this.$('.feed-list').append(JST["find_friends"]);
+    }
   },
 
   renderFollowings: function() {
@@ -58,6 +63,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
         this.$('.followings-list').append(userItem.render().$el)
       }.bind(this))
     }
+    this.$('.followings-list').after(JST['find_friends']);
   },
 
   showAllMovies: function(event) {

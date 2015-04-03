@@ -27,13 +27,11 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   },
 
   userOrMovie: function() {
-
     var author = this.$('.author a');
     var movie = this.$('.movie a');
     if (this.model.get("mine")) {
       author.html("Written by: me");
-    }
-    if (this.model.get("username")) {
+    } else if (this.model.get("username")) {
       author.attr("href", "#/users/" + this.model.get("user_id"));
       author.html("Written by: " + this.model.escape("username"));
     }
