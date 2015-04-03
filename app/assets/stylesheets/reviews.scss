@@ -35,8 +35,15 @@ li.review-item {
   margin: 10px auto;
   border-radius: 10px;
   box-shadow: 5px 5px 5px $darkbrown;
-  width: 400px;
+  width: 450px;
   position: relative;
+}
+
+div.review-img {
+  margin-right: 10px;
+  float: left;
+  height: 100%;
+  width: 75px;
 }
 
 .review-item p.body {
@@ -55,17 +62,20 @@ div.stars {
   display: block;
 }
 
-p.user-or-movie {
+p.author,
+p.movie {
   display: block;
   text-align: right;
   font-size: 14px;
 }
 
-p.user-or-movie a {
+p.movie a,
+p.author a {
   text-decoration: none;
 }
 
-p.user-or-movie a:hover {
+p.movie a:hover,
+p.author a:hover {
   text-shadow: 1px 1px 1px $yellowglow, -1px -1px 1px $yellowglow;
 }
 

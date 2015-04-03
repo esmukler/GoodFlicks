@@ -49,7 +49,7 @@ GoodFlicks.Views.LibraryShow = Backbone.View.extend({
     if (this.libAll) {
       this.$revs.find('h3').html("Recent Reviews:")
     } else {
-      this.$revs.find('h3').html("Reviews for movies in " + this.model.escape("title"))
+      this.$revs.find('h3').html("My reviews for movies in " + this.model.escape("title"))
     }
 
     this.$revs.find('.my-review-list').empty();

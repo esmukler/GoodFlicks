@@ -13,9 +13,5 @@ json.movies library.movies do |movie|
 end
 
 json.reviews library.reviews.where(:user_id => library.user_id).order(updated_at: :desc).limit(5) do |review|
-  json.extract! review, :id, :movie_id, :body, :num_stars, :updated_at, :is_public
-
-  json.movie_title review.movie.title
-
-  json.updated_at review.updated_at.to_time.strftime('%b %d %Y %I:%M%P')
+  json.partial! "api/reviews/review", review: review
 end

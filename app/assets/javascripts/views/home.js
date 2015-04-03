@@ -33,15 +33,17 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
   },
 
   renderFeed: function() {
-    if (!this.libId) {
-      this.feed.each( function(review) {
-        var revItem = new GoodFlicks.Views.ReviewItem({
-          model: review
-        });
-        this.subViews.push(revItem);
-        this.$('.feed-list').append(revItem.render().$el);
-      }.bind(this))
+    if (!(this.libId && this.libId > 0)) {
+      this.$('section.library-show').html(JST["lib_show_prompt"]);
     }
+    this.$('.feed-list').removeClass("hidden")
+    this.feed.each( function(review) {
+      var revItem = new GoodFlicks.Views.ReviewItem({
+        model: review
+      });
+      this.subViews.push(revItem);
+      this.$('.feed-list').append(revItem.render().$el);
+    }.bind(this))
   },
 
   renderFollowings: function() {
@@ -172,7 +174,9 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
 
     this.renderReviews();
 
-    this.renderFeed();
+    if (!this.libId || this.libId == 0) {
+      this.renderFeed();
+    }
 
     return this;
   },

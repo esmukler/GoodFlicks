@@ -1,7 +1,9 @@
-<p class="body"><%= review.escape("body") %></p>
+<div class="review-img"><img class="thumbnail" src="<%= review.get('movie_poster') %>"></div>
+<p class="body"><%= review.get("body") %></p>
 <section class="rev-stats">
   <div class="rev-stars"></div>
-  <p class="user-or-movie"><a href="#"></a></p>
+  <p class="author"><a href="#"></a></p>
+  <p class="movie"><a href="#"></a></p>
   <p class="updated-at"><%= review.get("updated_at") %></p>
 </section>
 <button class="edit hidden">Edit Review</button>

@@ -27,19 +27,19 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   },
 
   userOrMovie: function() {
-    var link = this.$('.user-or-movie a');
+
+    var author = this.$('.author a');
+    var movie = this.$('.movie a');
     if (this.model.get("mine")) {
-      link.html("Written by: me");
-
-    } else if (this.model.get("username")) {
-
-      link.attr("href", "#/users/" + this.model.get("user_id"));
-      link.html("Written by: " + this.model.escape("username"));
-
-    } else {
-
-      link.attr("href", "#/movies/" + this.model.get("movie_id"))
-      link.html("Movie: " + this.model.get("movie_title"))
+      author.html("Written by: me");
+    }
+    if (this.model.get("username")) {
+      author.attr("href", "#/users/" + this.model.get("user_id"));
+      author.html("Written by: " + this.model.escape("username"));
+    }
+    if (this.model.get("movie_title")){
+      movie.attr("href", "#/movies/" + this.model.get("movie_id"))
+      movie.html("Movie: " + this.model.get("movie_title"))
     }
   },
 
