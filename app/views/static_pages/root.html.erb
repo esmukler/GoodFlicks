@@ -5,3 +5,12 @@
   <section class="modal-screen"></section>
   <section class="modal-form group"></section>
 </div>
+
+<script>
+<% if current_user %>
+  $(document).ready(function(){
+    GoodFlicks.current_user_id = <%= current_user.id %>
+    GoodFlicks.initialize();
+  });
+<% end %>
+</script>

@@ -46,7 +46,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
         this.$('.feed-list').append(revItem.render().$el);
       }.bind(this))
     } else {
-      this.$('.feed-list').html("<p>No one you follow has written any reviews yet.</p>")
+      this.$('.feed-list').html("<p class='empty-feed'>No one you follow has written any reviews yet.</p>")
       this.$('.feed-list').append(JST["find_friends"]);
     }
   },

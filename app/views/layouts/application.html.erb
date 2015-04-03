@@ -13,13 +13,6 @@
 
 <%= yield %>
 
-<script>
-<% if current_user %>
-  $(document).ready(function(){
-    GoodFlicks.current_user_id = <%= current_user.id %>
-  });
-<% end %>
-</script>
 
 </body>
 </html>

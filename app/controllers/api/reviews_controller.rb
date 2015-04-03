@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-
+  
   def index
     if current_user
       @reviews = current_user.reviews.order(updated_at: :desc).limit(5)
@@ -9,9 +9,11 @@ class Api::ReviewsController < ApplicationController
   end
 
   def feed
-    @reviews = current_user.feed_reviews.order(updated_at: :desc).limit(10)
-    @feed = true
-    render :index
+    if current_user
+      @reviews = current_user.feed_reviews.order(updated_at: :desc).limit(10)
+      @feed = true
+      render :index
+    end
   end
 
   def show
