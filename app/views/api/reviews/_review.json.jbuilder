@@ -6,6 +6,8 @@ else
   json.body simple_format(review.body)
 end
 
+json.movie_title review.movie.title
+
 json.movie_poster image_url(review.movie.poster.url(:thumb))
 
 json.username review.user.username
