@@ -5,14 +5,21 @@ GoodFlicks.Views.UserItem = Backbone.View.extend({
 
   className: "user-item",
 
+  events: {
+    "click": "goToUser"
+  },
+
+  goToUser: function(event) {
+    Backbone.history.navigate("#/users/" + this.model.id, { trigger: true })
+  },
+
   render: function() {
     this.$el.html(this.template({
       user: this.model
     }))
 
     if (this.model.get("is_cu")) {
-      this.$('a').html("me")
-      this.$('a').attr("href", "#")
+      this.$('p').html("me")
     }
     return this
   }

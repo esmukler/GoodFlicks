@@ -27,4 +27,15 @@ section.followings h3 {
 
 li.user-item {
   margin: 5px;
+  text-align: center;
+}
+
+.user-item p {
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.user-item p:hover {
+  background: $lightbrown;
 }

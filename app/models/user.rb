@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   after_create :make_default_libs
 
   include PgSearch
-  pg_search_scope :search_by_username, :against => [:username]
+  pg_search_scope :search_by_username,
+    against: :username,
+    using: { tsearch: { prefix: true } }
 
   has_many :libraries,
     class_name: "Library",

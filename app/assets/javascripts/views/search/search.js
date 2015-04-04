@@ -94,7 +94,7 @@ GoodFlicks.Views.Search = Backbone.View.extend({
     } else {
       this.$('.empty-msg').empty();
       this.userResults.each( function(user) {
-        var userResult = new GoodFlicks.Views.UserResult({
+        var userResult = new GoodFlicks.Views.UserItem({
           model: user
         })
         this.subViews.push(userResult)
