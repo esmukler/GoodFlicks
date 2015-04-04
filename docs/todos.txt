@@ -1,9 +1,5 @@
 Features to add:
 
-- No reviews for movies in "Want To See"
-- Fix UserItemView CSS
-- jQuery to expand text of long reviews 
-- Users can only have one review per movie (?)
 - Movies have an "order" attribute that allows the user to sort them
 - Add more info from movies (i.e. actors, country, more photos)
 - ActionMailer for authentication
@@ -17,3 +13,8 @@ Features to add:
 - links for CanIStreamIt/Amazon
 - predictive search
 - movie quiz (part of the description, the director and the year, what's the title?)
+
+- No reviews for movies in "Want To See"
+- Fix UserItemView CSS
+- jQuery to expand text of long reviews
+- Users can only have one review per movie (?)
