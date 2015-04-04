@@ -6,8 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.create!(username: "guy", password: "password", session_token: "fake123")
+user1 = User.create!(username: "eli", password: "password", session_token: "fake123")
 user2 = User.create!(username: "dude", password: "password", session_token: "fake456")
+user3 = User.create!(username: "demo_user", password: "demo_password", session_token: "fake789")
 
 25.times do |i|
 
@@ -38,7 +39,7 @@ library1 = Library.create!(title: "Favorites", user_id: user1.id)
 library2 = Library.create!(title: "Guilty Pleasures", user_id: user1.id, is_public: false)
 
 
-rev1 = Review.create!(user_id: user1.id, movie_id: movie1.id,
+rev1 = Review.create!(user_id: user3.id, movie_id: movie2.id,
                         num_stars: 5, body: "This movie is great!",
                         is_public: true)
 rev2 = Review.create!(user_id: user2.id, movie_id: movie1.id,
@@ -56,3 +57,6 @@ rev4 = Review.create!(user_id: user2.id, movie_id: movie3.id,
 rev5 = Review.create!(user_id: user1.id, movie_id: movie3.id,
                         num_stars: 3, body: "This movie is super realistic. The end is nigh.",
                         is_public: true)
+
+relationship1 = Relationship.create!(follower_id: user3.id, followed_id: user1.id)
+relationship2 = Relationship.create!(follower_id: user3.id, followed_id: user2.id)
