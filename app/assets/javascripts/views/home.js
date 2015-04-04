@@ -23,7 +23,12 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
     "click button.all-movies": "showAllMovies",
     "click button.add-library": "addLibrary",
     "sortupdate .library-list" : "updateLibOrder",
-    "change .friend-query": "searchUsers"
+    "change .friend-query": "searchUsers",
+    "click .find-friends-btn": "goToUsersIndex"
+  },
+
+  goToUsersIndex: function(event) {
+    Backbone.history.navigate("#/search/users/users_index", { trigger: true })
   },
 
   searchUsers: function(event) {
@@ -47,7 +52,7 @@ GoodFlicks.Views.HomeView = Backbone.View.extend({
       }.bind(this))
     } else {
       this.$('.feed-list').html("<p class='empty-feed'>No one you follow has written any reviews yet.</p>")
-      this.$('.feed-list').append(JST["find_friends"]);
+      this.$('.feed-list').append("<div class='find-friends-btn'>Find More Friends</div>");
     }
   },
 

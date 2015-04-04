@@ -78,6 +78,22 @@ div.home-sidebar {
   text-align: center;
 }
 
+.find-friends-btn {
+  background: $lightbrown;
+  padding: 5px 20px;
+  font-size: 16px;
+  width: 200px;
+  border-radius: 10px;
+  margin: 6px auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.find-friends-btn:hover {
+  border: 1px solid $darkbrown;
+  margin: 4px auto;
+}
+
 form.friend-search {
   padding-left: 50px;
 }
