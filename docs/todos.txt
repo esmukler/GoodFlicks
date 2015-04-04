@@ -15,6 +15,5 @@ Features to add:
 - movie quiz (part of the description, the director and the year, what's the title?)
 
 - No reviews for movies in "Want To See"
-- Fix UserItemView CSS
 - jQuery to expand text of long reviews
 - Users can only have one review per movie (?)

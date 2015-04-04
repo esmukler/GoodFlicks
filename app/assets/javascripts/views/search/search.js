@@ -68,6 +68,7 @@ GoodFlicks.Views.Search = Backbone.View.extend({
   },
 
   userSearch: function(query) {
+    console.log("userSearch query", query)
     this.userResults.query = query;
     this.userResults.fetch({
       data: {
@@ -106,7 +107,7 @@ GoodFlicks.Views.Search = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template());
 
-    if (this.userResults.query) {
+    if (this.userResults.query || this.userResults.query === "") {
       this.renderUserResults();
     } else if (this.apiResults === "noResults") {
       this.renderEmptyAPI();
