@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def demo_sign_in
-    user = User.find_by_username("demo_user")
-    log_in(user)
+    new_demo = reset_demo_user
+    log_in(new_demo)
     redirect_to root_url
   end
 

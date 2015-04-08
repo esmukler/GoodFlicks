@@ -10,7 +10,11 @@ GoodFlicks.Views.UserItem = Backbone.View.extend({
   },
 
   goToUser: function(event) {
-    Backbone.history.navigate("#/users/" + this.model.id, { trigger: true })
+    if (this.model.get("is_cu")) {
+      Backbone.history.navigate("#", { trigger: true });
+    } else {
+      Backbone.history.navigate("#/users/" + this.model.id, { trigger: true })
+    }
   },
 
   render: function() {
@@ -19,7 +23,8 @@ GoodFlicks.Views.UserItem = Backbone.View.extend({
     }))
 
     if (this.model.get("is_cu")) {
-      this.$('p').html("me")
+      this.$('p').html("ME!")
+      this.$el.css("list-style", "none")
     }
     return this
   }

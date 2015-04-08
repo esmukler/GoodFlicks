@@ -17,7 +17,7 @@ GoodFlicks.Views.Search = Backbone.View.extend({
       this.userSearch(options.query);
       this.currentQuery = options.query
     }
-
+    this.busy = false;
     this.subViews = [];
     this.render();
   },
@@ -26,8 +26,8 @@ GoodFlicks.Views.Search = Backbone.View.extend({
 
   events: {
     "submit .search-form": "insideSearch",
+    "click .results-list": "showClick"
   },
-
 
   insideSearch: function(event) {
     event.preventDefault();
@@ -81,14 +81,18 @@ GoodFlicks.Views.Search = Backbone.View.extend({
   },
 
   renderAPIResults: function() {
-    this.$(".results-title").html("Movies that matched '" + this.currentQuery + "'");
-    this.apiResults.forEach( function(result) {
-      var resultView = new GoodFlicks.Views.ResultItem({
-        result: result
-      })
-      this.subViews.push(resultView)
-      this.$('ul.results-list').append(resultView.render().$el)
-    }.bind(this))
+    var view = this;
+    view.$(".results-title").html("Movies that matched '" + view.currentQuery + "'");
+    view.apiResults.forEach( function(result) {
+      if (!!result.release_date) {
+        var resultView = new GoodFlicks.Views.ResultItem({
+          result: result,
+          parentView: view
+        })
+        view.subViews.push(resultView)
+        view.$('ul.results-list').append(resultView.render().$el)
+      }
+    })
   },
 
   renderUserResults: function() {

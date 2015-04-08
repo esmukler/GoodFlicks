@@ -116,7 +116,6 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.renderLibButtons();
     this.renderReviews();
     this.renderStars();
-
     return this
   },
 

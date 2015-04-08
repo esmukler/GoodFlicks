@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def logout
     if current_user == User.find_by_username("demo_user")
-      reset_demo(current_user)
+      reset_demo_user
     else
       if current_user
         current_user.reset_session_token!
@@ -33,7 +33,8 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless is_logged_in
   end
 
-  def reset_demo(user)
+  def reset_demo_user
+    user = User.find_by_username("demo_user")
     user.destroy
     new_demo = User.create!(username: "demo_user", password: "demo_password")
     relationship = Relationship.create!(follower_id: new_demo.id, followed_id: 1)
@@ -49,7 +50,7 @@ class ApplicationController < ActionController::Base
     other_review = Review.create!(user_id: new_demo.id, movie_id: vertigo.id,
                                 num_stars: 5, body: "This is a great San Francisco movie!",
                                 is_public: true)
-
+    new_demo
   end
 
 

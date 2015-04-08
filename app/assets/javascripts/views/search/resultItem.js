@@ -1,7 +1,8 @@
 GoodFlicks.Views.ResultItem = Backbone.View.extend({
 
   initialize: function(options) {
-    this.result = options.result
+    this.parentView = options.parentView;
+    this.result = options.result;
     this.result.year = parseInt(this.result.release_date.slice(0,4));
   },
 
@@ -11,24 +12,26 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
 
   template: JST['result'],
 
-
   events: {
     "click": "getInfo",
   },
 
   getInfo: function(event) {
     event.preventDefault();
-    $(event.currentTarget).addClass("clicked");
-    this.$('.message').html("Just a second. Let me get that for you...  ");
-    this.$('.message').append("<img src='/images/ajax-loader.gif'>")
+    if (!this.parentView.busy) {
+      this.parentView.busy = true;
+      $(event.currentTarget).addClass("clicked");
+      this.$('.message').html("Just a second. Let me get that for you...  ");
+      this.$('.message').append("<img src='/images/ajax-loader.gif'>")
 
-    $.ajax({
-      url: "https://api.themoviedb.org/3/movie/" + this.result.id + "?api_key=a1d5f291d84e71e51b248b86ec9c9e2a&append_to_response=credits",
-      type: "GET",
-      success: function(data) {
-        this.makeOrGet(data)
-      }.bind(this)
-    })
+      $.ajax({
+        url: "https://api.themoviedb.org/3/movie/" + this.result.id + "?api_key=a1d5f291d84e71e51b248b86ec9c9e2a&append_to_response=credits",
+        type: "GET",
+        success: function(data) {
+          this.makeOrGet(data)
+        }.bind(this)
+      })
+    }
   },
 
   makeOrGet: function(fullResult) {
@@ -39,7 +42,7 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
       }
     })
     if (fullResult.poster_path) {
-      fullResult.poster = "http://image.tmdb.org/t/p/w500/" + fullResult.poster_path
+      fullResult.poster = "http://image.tmdb.org/t/p/w500" + fullResult.poster_path
     } else {
       fullResult.poster = null
     }
