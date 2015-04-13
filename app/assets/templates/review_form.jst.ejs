@@ -1,7 +1,7 @@
 <h3>So what'd ya think?</h3>
 <ul class="errors-list"></ul>
 <div class="textarea">
-  <textarea class="review" rows="10" cols="40" name="review[body]"><%= review.get("body") %></textarea>
+  <textarea class="review" rows="10" cols="40" name="review[body]"><%= review.escape("form_body") %></textarea>
 </div>
 
 <div class="form-items group">

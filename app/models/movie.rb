@@ -32,7 +32,7 @@ class Movie < ActiveRecord::Base
   has_many :reviewing_users, through: :reviews, source: :user
 
   def check_file_size
-    if self.poster_file_size > 524288
+    if self.poster_file_size > 1048576
       self.poster.url = "/images/oscar-statue.jpg"
     end
   end

@@ -105,6 +105,39 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       })
       this.$('.avg-rating').html("Average Rating:")
     }
+    if (this.model.escape("title")) {
+      this.renderCritics();
+    }
+  },
+
+  renderCritics: function() {
+    var title = this.model.escape("title");
+    var year = this.model.get("year");
+    var yearplusone = this.model.get("year") + 1;
+    $.ajax({
+      url: 'https://byroredux-metacritic.p.mashape.com/search/movie',
+      type: 'POST',
+      headers: {
+        'X-Mashape-Key': '3WkDBcbCfBmshCiGHzGRcea5Fyopp1tuYtWjsnZaQs9WVXYrhT',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      data: {
+        'max_pages': '1',
+        'retry': '4',
+        'title': title,
+        'year_from': year,
+        'year_to': yearplusone
+      },
+      success: function(data) {
+        if (data.count > 0) {
+          var result = data.results[0]
+          this.$('.metacritic').removeClass("hidden");
+          this.$('.metacritic-rating').html(result.score);
+          this.$('.metacritic a').attr("href", result.url);
+        }
+      }.bind(this)
+    })
   },
 
   render: function() {

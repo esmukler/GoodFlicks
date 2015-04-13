@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-  
+
   def index
     if current_user
       @reviews = current_user.reviews.order(updated_at: :desc).limit(5)
