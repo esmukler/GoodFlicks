@@ -11,6 +11,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.listenTo(this.model.reviews(), "add remove", this.render);
     this.listenTo(this.model.libraries(), "add remove", this.render);
     this.metacritic = null;
+    this.imdb = null;
   },
 
   events: {
@@ -106,17 +107,30 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       })
       this.$('.avg-rating').html("Average Rating:")
     }
-    if (this.metacritic) {
-      this.renderCritics();
-    } else if (this.model.escape("title")) {
+    if (this.metacritic && this.metacritic !== "none") {
+      this.renderMetacritic();
+    }
+    if (this.imdb && this.imdb !== "none") {
+      this.renderImdb();
+    }
+
+    if (this.model.escape("title") && !this.metacritic && !this.imdb) {
       this.fetchCritics();
     }
   },
 
-  renderCritics: function() {
+  renderMetacritic: function() {
     this.$('.metacritic-rating').html(this.metacritic.score);
     this.$('.metacritic a').attr("href", this.metacritic.url);
     this.$('.metacritic').removeClass("hidden");
+  },
+
+  renderImdb: function() {
+    this.$('.imdb-rating').html(this.imdb.imdbRating);
+    this.$('.imdb a').attr(
+      "href", "http://imdb.com/title/" + this.imdb.imdbID
+      );
+    this.$('.imdb').removeClass("hidden");
   },
 
   fetchCritics: function() {
@@ -126,9 +140,17 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       url: "api/movies/" + this.model.id + "/metacritic",
       type: 'GET',
       success: function(data) {
-        if (data.body.result) {
-          this.metacritic = data.body.result;
-          this.renderCritics();
+        if (data.metacritic.body.result) {
+          this.metacritic = data.metacritic.body.result;
+          this.renderMetacritic();
+        } else {
+          this.metacritic = "none";
+        }
+        if (data.imdb.body.Response === "True") {
+          this.imdb = data.imdb.body
+          this.renderImdb();
+        } else {
+          this.imdb = "none";
         }
       }.bind(this)
     })

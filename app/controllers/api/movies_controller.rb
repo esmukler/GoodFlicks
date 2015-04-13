@@ -33,6 +33,14 @@ class Api::MoviesController < ApplicationController
   end
 
   def metacritic
+    movie = Movie.find(params[:id])
+
+    @imdb = Unirest.get "http://www.omdbapi.com/",
+    parameters:{
+      "t" => movie.title,
+      "y" => movie.year
+    }
+
     @metacritic = Unirest.post "https://byroredux-metacritic.p.mashape.com/find/movie",
       headers:{
         "X-Mashape-Key" => ENV["MASHAPE_KEY"],
@@ -41,9 +49,10 @@ class Api::MoviesController < ApplicationController
       },
       parameters:{
         "retry" => 4,
-        "title" => Movie.find(params[:id]).title
+        "title" => movie.title
       }
-    render json: @metacritic
+      
+    render json: { metacritic: @metacritic, imdb: @imdb}
   end
 
   private
