@@ -14,4 +14,8 @@ end
 
 json.reviews library.reviews.where(:user_id => library.user_id).order(updated_at: :desc).limit(5) do |review|
   json.partial! "api/reviews/review", review: review
+
+  json.movie_title review.movie.title
+
+  json.movie_poster image_url(review.movie.poster.url(:thumb))
 end

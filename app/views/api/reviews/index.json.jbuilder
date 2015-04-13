@@ -4,6 +4,7 @@ json.array! @reviews do |review|
   if @feed
     json.username review.user.username
   end
+  json.movie_poster image_url(review.movie.poster.url(:thumb))
 
   json.movie_title review.movie.title
 

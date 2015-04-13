@@ -44,6 +44,7 @@ div.review-img {
   float: left;
   height: 100%;
   width: 75px;
+  cursor: pointer;
 }
 
 .review-item p.body {
@@ -87,13 +88,7 @@ p.updated-at {
   font-style: italic;
 }
 
-.review-item button.edit {
-  position: absolute;
-  bottom: 10px;
-}
-
+.review-item button.edit,
 .review-item button.delete {
-  position: absolute;
-  bottom: 10px;
-  left: 100px;
+  margin: 5px;
 }

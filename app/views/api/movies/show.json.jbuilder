@@ -4,8 +4,6 @@ json.reviews @movie.reviews.order(updated_at: :desc) do |review|
   if review.is_public
     json.partial! "api/reviews/review", review: review
   end
-  json.movie_title nil
-  json.movie_poster nil
 end
 
 json.libraries current_user.libraries do |library|

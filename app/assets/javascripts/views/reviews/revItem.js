@@ -13,10 +13,16 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   },
 
   events: {
+    "click img": "goToMovie",
     "mouseenter": "showOwnerButtons",
     "mouseleave": "showOwnerButtons",
     "click button.edit": "editReview",
     "click button.delete": "deleteReview"
+  },
+
+  goToMovie: function() {
+    Backbone.history.navigate("#/movies/" + this.model.get("movie_id"),
+      { trigger: true } );
   },
 
   showOwnerButtons: function() {
@@ -66,8 +72,7 @@ GoodFlicks.Views.ReviewItem = Backbone.View.extend({
   deleteReview: function(event) {
     if (confirm("Are you sure you want to delete this review?")) {
       this.model.destroy();
-      Backbone.history.navigate("#/movies/" + this.model.get("movie_id"),
-        { trigger: true } );
+      this.goToMovie();
     }
   },
 

@@ -10,6 +10,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.reviews(), "add remove", this.render);
     this.listenTo(this.model.libraries(), "add remove", this.render);
+    this.metacritic = null;
   },
 
   events: {
@@ -105,17 +106,25 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       })
       this.$('.avg-rating').html("Average Rating:")
     }
-    if (this.model.escape("title")) {
+    if (this.metacritic) {
       this.renderCritics();
+    } else if (this.model.escape("title")) {
+      this.fetchCritics();
     }
   },
 
   renderCritics: function() {
-    var title = this.model.escape("title");
+    this.$('.metacritic-rating').html(this.metacritic.score);
+    this.$('.metacritic a').attr("href", this.metacritic.url);
+    this.$('.metacritic').removeClass("hidden");
+  },
+
+  fetchCritics: function() {
+    this.fetchCritic = true;
+    var title = this.model.get("title");
     var year = this.model.get("year");
-    var yearplusone = this.model.get("year") + 1;
     $.ajax({
-      url: 'https://byroredux-metacritic.p.mashape.com/search/movie',
+      url: 'https://byroredux-metacritic.p.mashape.com/find/movie',
       type: 'POST',
       headers: {
         'X-Mashape-Key': '3WkDBcbCfBmshCiGHzGRcea5Fyopp1tuYtWjsnZaQs9WVXYrhT',
@@ -125,16 +134,12 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       data: {
         'max_pages': '1',
         'retry': '4',
-        'title': title,
-        'year_from': year,
-        'year_to': yearplusone
+        'title': title
       },
       success: function(data) {
-        if (data.count > 0) {
-          var result = data.results[0]
-          this.$('.metacritic').removeClass("hidden");
-          this.$('.metacritic-rating').html(result.score);
-          this.$('.metacritic a').attr("href", result.url);
+        if (data.result) {
+          this.metacritic = data.result;
+          this.renderCritics();
         }
       }.bind(this)
     })

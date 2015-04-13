@@ -11,7 +11,7 @@ class Movie < ActiveRecord::Base
   validates :year, numericality: { only_integer: true }
   validates_inclusion_of :year, in: 1896..(Time.now.year + 10)
 
-  has_attached_file :poster, styles: {thumb: "75x100"}, convert_options: {thumb: "-resize 75x100"}, default_url: "/images/oscar-statue.jpg"
+  has_attached_file :poster, styles: {thumb: "75x100"}, convert_options: {thumb: "-resize 75x100"}, default_url: "/images/:style/oscar-statue.jpg"
   validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
   before_post_process :check_file_size
 

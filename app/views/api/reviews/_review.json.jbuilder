@@ -8,10 +8,6 @@ end
 
 json.form_body review.body
 
-json.movie_title review.movie.title
-
-json.movie_poster image_url(review.movie.poster.url(:thumb))
-
 json.username review.user.username
 
 json.mine (review.user == current_user)
