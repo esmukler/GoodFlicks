@@ -120,25 +120,14 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
   },
 
   fetchCritics: function() {
-    this.fetchCritic = true;
     var title = this.model.get("title");
-    var year = this.model.get("year");
+
     $.ajax({
-      url: 'https://byroredux-metacritic.p.mashape.com/find/movie',
-      type: 'POST',
-      headers: {
-        'X-Mashape-Key': '3WkDBcbCfBmshCiGHzGRcea5Fyopp1tuYtWjsnZaQs9WVXYrhT',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      data: {
-        'max_pages': '1',
-        'retry': '4',
-        'title': title
-      },
+      url: "api/movies/" + this.model.id + "/metacritic",
+      type: 'GET',
       success: function(data) {
-        if (data.result) {
-          this.metacritic = data.result;
+        if (data.body.result) {
+          this.metacritic = data.body.result;
           this.renderCritics();
         }
       }.bind(this)

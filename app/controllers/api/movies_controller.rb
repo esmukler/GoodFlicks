@@ -32,6 +32,20 @@ class Api::MoviesController < ApplicationController
     render :show
   end
 
+  def metacritic
+    @metacritic = Unirest.post "https://byroredux-metacritic.p.mashape.com/find/movie",
+      headers:{
+        "X-Mashape-Key" => ENV["MASHAPE_KEY"],
+        "Content-Type" => "application/x-www-form-urlencoded",
+        "Accept" => "application/json"
+      },
+      parameters:{
+        "retry" => 4,
+        "title" => Movie.find(params[:id]).title
+      }
+    render json: @metacritic
+  end
+
   private
 
     def movie_params
