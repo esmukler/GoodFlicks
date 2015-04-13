@@ -19,7 +19,7 @@ A social media website for finding, sharing and reviewing all your favorite movi
 * jQuery UI allows for draggable and sortable library list items.
 * Custom AJAX requests made to Rails controllers and the main third-party API, [The Movie DB](https://www.themoviedb.org/documentation/api).
 * Does not duplicate movie models on subsequent user requests.
-* Fetches each movie's [Metacritic](http://www.metacritic.com/) rating using third-party API service, [Mashape](https://www.mashape.com/byroredux/metacritic) and its HTTP request library, [Unirest](http://unirest.io/).
+* Fetches each movie's [IMDb](http://imdb.com) and [Metacritic](http://www.metacritic.com/) ratings using third-party API service, [Mashape](https://www.mashape.com/byroredux/metacritic) and its HTTP request library, [Unirest](http://unirest.io/).
 * File upload of poster images supported by [paperclip](https://github.com/thoughtbot/paperclip) gem, automatically creates a thumbnail size photo to be displayed in list items.
 * Automatic cloud file storage using AWS' S3 database.
 * Users search supported by [pg_search](https://github.com/Casecommons/pg_search) gem.
