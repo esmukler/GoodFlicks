@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get "/search", to: "static_pages#search"
     resources :users, only: [:index, :show]
     resources :movies do
-      member { get :metacritic }
+      member { get :critics }
     end
     resources :libraries
     resources :reviews do

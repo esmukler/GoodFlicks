@@ -32,9 +32,8 @@ class Api::MoviesController < ApplicationController
     render :show
   end
 
-  def metacritic
+  def critics
     movie = Movie.find(params[:id])
-
     @imdb = Unirest.get "http://www.omdbapi.com/",
     parameters:{
       "t" => movie.title,
@@ -51,7 +50,7 @@ class Api::MoviesController < ApplicationController
         "retry" => 4,
         "title" => movie.title
       }
-      
+
     render json: { metacritic: @metacritic, imdb: @imdb}
   end
 
