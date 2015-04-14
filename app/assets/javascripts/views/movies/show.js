@@ -134,12 +134,14 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
   },
 
   fetchCritics: function() {
-    var title = this.model.get("title");
-
+    this.imdb = "none";
+    this.metacritic = "none";
     $.ajax({
       url: "api/movies/" + this.model.id + "/critics",
       type: 'GET',
       success: function(data) {
+        console.log(data)
+      
         if (data.metacritic.body.result) {
           this.metacritic = data.metacritic.body.result;
           this.renderMetacritic();
@@ -152,7 +154,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
         } else {
           this.imdb = "none";
         }
-      }.bind(this)
+      }.bind(this),
     })
   },
 
