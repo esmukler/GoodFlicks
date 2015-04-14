@@ -101,18 +101,31 @@ p.lib-button:hover {
 figure.lib-buttons li {
   margin: 10px;
 }
+
+.movie-ratings,
 .movie-reviews {
   background: $offwhite;
   position: relative;
-  width: 550px;
   display: block;
-  float: right;
   border: 1px solid $darkbrown;
   border-radius: 10px;
-  margin: 10px 20px 20px 20px;
   padding: 10px 10px 20px 10px;
   color: $darkdarkbrown;
 }
+
+.movie-ratings {
+  margin: 10px 10px 20px 20px;
+  width: 245px;
+  float: left;
+}
+
+.movie-reviews {
+  margin: 10px 20px 20px 10px;
+  width: 550px;
+  float: right;
+}
+
+.movie-ratings h3,
 .movie-reviews h3 {
   border-radius: 10px;
   padding: 5px;
@@ -120,6 +133,7 @@ figure.lib-buttons li {
   background: $lightbrown;
   text-align: center;
   bottom: 20px;
+  margin-bottom: 0;
 }
 
 button.add-review {

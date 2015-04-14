@@ -5,30 +5,6 @@
 
   <div class="visuals group">
     <img class="poster" src="<%= movie.escape("poster_url") %>">
-
-    <p class="your-rating"></p>
-    <div class="stars"></div>
-
-    <p class="avg-rating"></p>
-    <div class="avg-stars"></div>
-
-    <div class="imdb hidden">
-      <a href="" target="_blank">
-        <div class="critic-logo">
-          <img src="images/imdb-logo.png">
-        </div>
-        IMDb rating: <span class="imdb-rating"></span>/10
-      </a>
-    </div>
-
-    <div class="metacritic hidden">
-      <a href="" target="_blank">
-        <div class="critic-logo">
-          <img src="images/metacritic-logo.png">
-        </div>
-        Metacritic rating: <span class="metacritic-rating"></span>/100
-      </a>
-    </div>
   </div>
 
   <div class="movie-details group">
@@ -43,6 +19,39 @@
       <p>Your Libraries</p>
       <ul class="lib-button-list"></ul>
     </figure>
+  </div>
+
+</section>
+
+<section class="movie-ratings">
+  <h3>Ratings:</h3>
+
+  <div class="ratings-container group">
+    <p class="your-rating"></p>
+    <div class="stars"></div>
+
+    <p class="avg-rating"></p>
+    <div class="avg-stars"></div>
+
+    <div class="imdb hidden">
+      <a href="" target="_blank">
+        <p>IMDb rating:</p>
+        <div class="critic-logo">
+          <img src="images/imdb-logo.png">
+          <p><span class="imdb-rating"></span>/10</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="metacritic hidden">
+      <a href="" target="_blank">
+        <p>Metacritic rating:</p>
+        <div class="critic-logo">
+          <img src="images/metacritic-logo.png">
+          <p><span class="metacritic-rating"></span>/100</p>
+        </div>
+      </a>
+    </div>
   </div>
 
 </section>
