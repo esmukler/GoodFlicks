@@ -53,8 +53,25 @@ class Api::MoviesController < ApplicationController
         "title" => movie.title
       }
 
+    metacritic = Hash.new
+    if @metacritic.body["result"]
+      metacritic["rating"] = @metacritic.body["result"]["score"]
+      metacritic["url"] = @metacritic.body["result"]["url"]
+    else
+      metacritic["rating"] = "none"
+      metacritic["url"] = "none"
+    end
 
-    render json: { metacritic: @metacritic, imdb: @imdb}
+    imdb = Hash.new
+    if @imdb.body["Response"] == "True"
+      imdb["rating"] = @imdb.body["imdbRating"]
+      imdb["url"] = "http://www.imdb.com/title/" + @imdb.body["imdbID"]
+    else
+      imdb["rating"] = "none"
+      imdb["url"] = "none"
+    end
+
+    render json: {metacritic: metacritic, imdb: imdb}
   end
 
   private
