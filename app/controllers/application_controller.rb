@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     user.destroy
     new_demo = User.create!(username: "demo_user", password: "demo_password")
     relationship = Relationship.create!(follower_id: new_demo.id, followed_id: 1)
-    # relationship2 = Relationship.create!(follower_id: new_demo.id, followed_id: 74)
+    relationship2 = Relationship.create!(follower_id: new_demo.id, followed_id: 74)
     hitchcock = Library.create!(user_id: new_demo.id, title: "Hitchcock",
                                 is_public: true)
     vertigo = Movie.find_by_title("Vertigo")
