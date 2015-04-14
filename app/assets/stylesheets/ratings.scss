@@ -1,7 +1,6 @@
 div.ratings-container {
-  margin: 5px;
-  padding: 5px;
-  width: 170px;
+  margin: 0 auto;
+  width: 165px;
 }
 
 div.avg-stars,
@@ -40,7 +39,7 @@ div.metacritic {
   width: 150px;
 }
 
-div.visuals a {
+div.ratings-container a {
   text-decoration: none;
 }
 

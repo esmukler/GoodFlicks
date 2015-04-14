@@ -105,7 +105,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
         },
         readOnly: true,
       })
-      this.$('.avg-rating').html("Average Rating:")
+      this.$('.avg-rating').html("Avg. GoodFlicks rating:")
     }
     if (this.metacritic && this.metacritic !== "none") {
       this.renderMetacritic();
