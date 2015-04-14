@@ -31,14 +31,18 @@ p.avg-rating {
 div.imdb,
 div.metacritic {
   margin-top: 5px;
-  line-height: 30px;
+  line-height: 25px;
   float: right;
 }
 
+div.visuals a {
+  text-decoration: none;
+}
 .critic-logo {
-  height: 30px;
+  height: 25px;
   width: auto;
   float: left;
+  margin-right: 5px;
 }
 
 .critic-logo img {
