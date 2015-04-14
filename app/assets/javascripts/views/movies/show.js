@@ -139,9 +139,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     $.ajax({
       url: "api/movies/" + this.model.id + "/critics",
       type: 'GET',
-      success: function(data) {
-        console.log(data)
-      
+      success: function(data) {      
         if (data.metacritic.body.result) {
           this.metacritic = data.metacritic.body.result;
           this.renderMetacritic();
