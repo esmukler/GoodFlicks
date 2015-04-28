@@ -28,6 +28,7 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
         url: "https://api.themoviedb.org/3/movie/" + this.result.id + "?api_key=a1d5f291d84e71e51b248b86ec9c9e2a&append_to_response=credits",
         type: "GET",
         success: function(data) {
+          console.log(data)
           this.makeOrGet(data)
         }.bind(this)
       })

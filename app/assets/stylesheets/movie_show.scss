@@ -80,8 +80,15 @@ p.writer,
 p.director,
 .lib-buttons > p {
   font-weight: bold;
-  padding: 10px;
-  text-align: center;
+  padding: 10px 0;
+}
+
+#cast-title {
+  font-weight: bold;
+}
+
+ul.cast {
+  margin-top: 5px;
 }
 
 figure.lib-buttons {
