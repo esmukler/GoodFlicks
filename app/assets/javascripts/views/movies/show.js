@@ -21,36 +21,34 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var writers = this.model.get("writer")
     var cast = this.model.get("cast")
 
-    this.renderMultPeople("Director", directors)
-    this.renderMultPeople("Writer", writers)
+    directors = this.renderMultPeople(directors);
+    writers = this.renderMultPeople(writers);
+    this.$('.director').html("Directed by: " + directors)
+    this.$('.writer').html("Written by: " + writers)
 
-    if (cast) {
-      for (var i = 0; i < cast.length; i++) {
-        if (cast[i]) {
-          var role = cast[i][0] + " as " + cast[i][1];
-          this.$(".cast").append("<li>" + role + "</li>");
-        }
+
+    for (var i = 0; i < cast.length; i++) {
+      if (cast[i]) {
+        var role = cast[i][0] + " as " + cast[i][1];
+        this.$(".cast").append("<li>" + role + "</li>");
       }
     }
 
   },
 
-  renderMultPeople: function(jobName, people) {
-    if (people) {
-      people = people.split("/")
-      if (people.length === 1) {
-        var text = people[0];
-      } else if (people.length == 2) {
-        var text = people[0] + " and " + people[1];
-      } else {
-        var text = people[0];
-        for (var i = 1; i < people.length - 1; i++) {
-          text += ", " + people[i]
-        }
-        text += ", and " + people[people.length - 1]
+  renderMultPeople: function(people) {
+    people = people.split("/")
+    var text = people[0];
+
+    if (people.length == 2) {
+      text += " and " + people[1];
+    } else if (people.length > 2) {
+      for (var i = 1; i < people.length - 1; i++) {
+        text += ", " + people[i]
       }
-      this.$('.' + jobName.toLowerCase()).html(jobName + ": " + text)
+      text += ", and " + people[people.length - 1]
     }
+    return text
   },
 
   renderAttrs: function() {
@@ -60,22 +58,11 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var budget = this.model.get("budget");
     var revenue = this.model.get("revenue");
 
-
-    if (description) {
-      this.$('.description').html(description);
-    }
-    if (tagline) {
-      this.$('.tagline').html("\"" + tagline + "\"");
-    }
-    if (runtime) {
-      this.$('.runtime').html(runtime + " minutes")
-    }
-    if (budget) {
-      this.$('.budget').html("Budget: " + this.renderMoney(budget));
-    }
-    if (revenue) {
-      this.$('.revenue').html("Revenue: " + this.renderMoney(revenue));
-    }
+    this.$('.description').html(description);
+    this.$('.tagline').html("\"" + tagline + "\"");
+    this.$('.runtime').html(runtime + " minutes")
+    this.$('.budget').html("Budget: " + this.renderMoney(budget));
+    this.$('.revenue').html("Revenue: " + this.renderMoney(revenue));
   },
 
   renderMoney: function(num) {
@@ -198,30 +185,15 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.$('.imdb').removeClass("hidden");
   },
 
-  // fetchCritics: function() {
-  //   $.ajax({
-  //     url: "api/movies/" + this.model.id + "/critics",
-  //     type: 'GET',
-  //     success: function(data) {
-  //       var critics = this.model.get("critics");
-  //       console.log("fetchC success", critics)
-  //       if (critics.metacritic) {
-  //         this.renderMetacritic();
-  //       }
-  //       if (critics.imdb) {
-  //         this.renderImdb();
-  //       }
-  //     }.bind(this),
-  //   })
-  // },
-
   render: function() {
     var baseContent = this.template({ movie: this.model })
     this.$el.html(baseContent);
 
     this.renderHeader();
-    this.renderPeople();
-    this.renderAttrs();
+    if (this.model.get("description")) {
+      this.renderAttrs();
+      this.renderPeople();
+    }
     this.renderLibButtons();
     this.renderReviews();
     this.renderStars();

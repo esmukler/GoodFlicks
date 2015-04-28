@@ -33,7 +33,6 @@ class Api::MoviesController < ApplicationController
 
       if @movie.save
         critics(@movie)
-
         render "show"
       else
         render json: @movie.errors.full_messages, status: :unprocessable_entity
