@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319141044) do
+ActiveRecord::Schema.define(version: 20150428062006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20150319141044) do
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
+    t.integer  "budget"
+    t.integer  "revenue"
+    t.text     "tagline"
+    t.integer  "runtime"
+    t.string   "cast1_actor"
+    t.string   "cast1_character"
+    t.string   "cast2_actor"
+    t.string   "cast2_character"
+    t.string   "cast3_actor"
+    t.string   "cast3_character"
+    t.string   "writer"
   end
 
   create_table "relationships", force: :cascade do |t|

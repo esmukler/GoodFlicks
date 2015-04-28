@@ -18,10 +18,44 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     "click .add-review": "addReview"
   },
 
-  renderAttrs: function() {
-    if (this.model.escape("director")) {
-      this.$('.director').html("Director: " + this.model.escape("director"))
+  renderPeople: function() {
+    var directors = this.model.escape("director")
+    var writers = this.model.get("writer")
+    var cast = this.model.get("cast")
+
+    this.renderMultPeople("Director", directors)
+    this.renderMultPeople("Writer", writers)
+
+    if (cast) {
+      for (var i = 0; i < cast.length; i++) {
+        if (cast[i]) {
+          var role = cast[i][0] + " as " + cast[i][1];
+          this.$(".cast").append("<li>" + role + "</li>");
+        }
+      }
     }
+
+  },
+
+  renderMultPeople: function(jobName, people) {
+    if (people) {
+      people = people.split(",")
+      if (people.length === 1) {
+        var text = people[0];
+      } else if (people.length == 2) {
+        var text = people[0] + " and " + people[1];
+      } else {
+        var text = people[0];
+        for (var i = 1; i < people.length - 1; i++) {
+          text += ", " + people[i]
+        }
+        text += ", and " + people[people.length - 1]
+      }
+      this.$('.' + jobName.toLowerCase()).html(jobName + ": " + text)
+    }
+  },
+
+  renderAttrs: function() {
     if (this.model.escape("description")) {
       this.$('.description').html(this.model.escape("description"))
     }
@@ -156,6 +190,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.$el.html(baseContent);
 
     this.renderHeader();
+    this.renderPeople();
     this.renderAttrs();
     this.renderLibButtons();
     this.renderReviews();

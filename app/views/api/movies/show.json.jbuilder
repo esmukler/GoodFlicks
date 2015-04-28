@@ -1,4 +1,8 @@
-json.extract! @movie, :title, :description, :year, :director, :id
+json.partial! "api/movies/movie", movie: @movie
+
+json.extract! @movie, :budget, :revenue
+
+json.cast @movie.cast
 
 json.reviews @movie.reviews.order(updated_at: :desc) do |review|
   if review.is_public

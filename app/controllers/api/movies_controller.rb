@@ -13,9 +13,18 @@ class Api::MoviesController < ApplicationController
     movie_results = Movie.where(title: params[:movie][:title],
                                 year: params[:movie][:year])
 
-    if movie_results.first
+    if movie_results.first && movie_results.first.cast1_actor
       @movie = movie_results.first
       render "show"
+    elsif movie_results.first
+      @movie = movie_results.first
+
+      if @band.update(movie_params)
+        render "show"
+      else
+        render json: @movie.errors.full_messages, status: :unprocessable_entity
+      end
+
     else
       @movie = Movie.new(movie_params)
 
@@ -25,7 +34,6 @@ class Api::MoviesController < ApplicationController
         render json: @movie.errors.full_messages, status: :unprocessable_entity
       end
     end
-
   end
 
   def show
@@ -78,7 +86,10 @@ class Api::MoviesController < ApplicationController
 
     def movie_params
       params.require(:movie)
-            .permit(:title, :description, :director, :year, :poster)
+            .permit(:title, :description, :director, :year, :poster, :budget,
+                    :revenue, :tagline, :runtime, :cast1_actor, :cast1_character,
+                    :cast2_actor, :cast2_character, :cast3_actor, :cast3_character,
+                    :writer)
     end
 
 

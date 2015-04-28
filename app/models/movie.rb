@@ -37,4 +37,10 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  def cast
+    [[self.cast1_actor, self.cast1_character],
+     [self.cast2_actor, self.cast2_character],
+     [self.cast3_actor, self.cast3_character]]
+  end
+
 end

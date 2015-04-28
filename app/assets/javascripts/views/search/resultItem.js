@@ -35,30 +35,54 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
   },
 
   makeOrGet: function(fullResult) {
-    var crew = fullResult.credits.crew
-    crew.forEach( function(person) {
+    var movie = {};
+    movie.title = fullResult.title;
+    movie.year = parseInt(fullResult.release_date.slice(0,4));
+    movie.description = fullResult.overview;
+    movie.tagline = fullResult.tagline;
+    movie.budget = fullResult.budget;
+    movie.revenue = fullResult.revenue;
+    movie.runtime = fullResult.runtime;
+
+    var directors = [];
+    var writers = [];
+
+    fullResult.credits.crew.forEach( function(person) {
       if (person.job === "Director") {
-        fullResult.director = person.name
+        if (directors.indexOf(person.name) === -1) {
+          directors.push(person.name);
+        }
+      }
+
+      if (person.department === "Writing") {
+        if (writers.indexOf(person.name) === -1) {
+          writers.push(person.name);
+        }
       }
     })
+    movie.director = directors.join(",")
+    movie.writer = writers.join(",")
+
+    var cast = fullResult.credits.cast;
+    for (var i = 0; i<= 2; i++) {
+      if (cast[i]) {
+        movie["cast" + (i + 1) + "_actor"] = cast[i].name
+        if (cast[i].character) {
+          movie["cast" + (i + 1) + "_character"] = cast[i].character
+        }
+      }
+    }
+
     if (fullResult.poster_path) {
-      fullResult.poster = "http://image.tmdb.org/t/p/w500" + fullResult.poster_path
+      movie.poster = "http://image.tmdb.org/t/p/w500" + fullResult.poster_path
     } else {
-      fullResult.poster = null
+      movie.poster = null
     }
 
     $.ajax({
       url: "/api/movies",
       type: "POST",
-      data: {
-        movie: {
-          title: fullResult.title,
-          year: parseInt(fullResult.release_date.slice(0,4)),
-          description: fullResult.overview,
-          director: fullResult.director,
-          poster: fullResult.poster
-        }
-      },
+      data: { movie: movie },
       success: function(data) {
         Backbone.history.navigate("#movies/" + data.id, { trigger: true })
       }
