@@ -26,9 +26,12 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.$('.director').html("Directed by: " + directors)
     this.$('.writer').html("Written by: " + writers)
 
+    if (cast[0] && cast[0][0] && cast[0][1]) {
+      this.$("#cast-title").html("Cast:");
+    }
 
     for (var i = 0; i < cast.length; i++) {
-      if (cast[i]) {
+      if (cast[i] && cast[i][0] && cast[i][1]) {
         var role = cast[i][0] + " as " + cast[i][1];
         this.$(".cast").append("<li>" + role + "</li>");
       }
@@ -48,7 +51,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       }
       text += ", and " + people[people.length - 1]
     }
-    return text
+    return (text === "") ? "unknown" : text
   },
 
   renderAttrs: function() {
@@ -59,10 +62,18 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var revenue = this.model.get("revenue");
 
     this.$('.description').html(description);
-    this.$('.tagline').html("\"" + tagline + "\"");
-    this.$('.runtime').html(runtime + " minutes")
-    this.$('.budget').html("Budget: " + this.renderMoney(budget));
-    this.$('.revenue').html("Revenue: " + this.renderMoney(revenue));
+    if (tagline) {
+      this.$('.tagline').html("\"" + tagline + "\"");
+    }
+    if (runtime) {
+      this.$('.runtime').html(runtime + " minutes")
+    }
+    if ((typeof budget === "number") & (budget > 0)) {
+      this.$('.budget').html("Budget: " + this.renderMoney(budget));
+    }
+    if ((typeof revenue === "number") & (revenue > 0)) {
+      this.$('.revenue').html("Revenue: " + this.renderMoney(revenue));
+    }
   },
 
   renderMoney: function(num) {
