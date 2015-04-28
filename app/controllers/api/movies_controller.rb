@@ -19,7 +19,7 @@ class Api::MoviesController < ApplicationController
     elsif movie_results.first
       @movie = movie_results.first
 
-      if @band.update(movie_params)
+      if @movie.update(movie_params)
         render "show"
       else
         render json: @movie.errors.full_messages, status: :unprocessable_entity

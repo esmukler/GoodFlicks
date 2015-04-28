@@ -48,6 +48,13 @@ h2.title {
   margin: 10px 0;
 }
 
+h4.tagline {
+  font-style: italic;
+  text-align: center;
+  display: block;
+  margin: 0;
+}
+
 .movie-details {
   background: $lightbrown;
   box-shadow: 5px 5px 5px $darkbrown;
@@ -63,6 +70,10 @@ div.credits {
   float: left;
   max-width: 350px;
   padding: 10px
+}
+
+div.numbers {
+  margin-top: 10px;
 }
 
 p.writer,

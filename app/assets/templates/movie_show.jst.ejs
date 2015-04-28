@@ -2,6 +2,7 @@
 
 <section class="movie-show-info">
   <h2 class="title"><%= movie.escape("title") %> (<%= movie.escape("year") %>)</h2>
+  <h4 class="tagline"></h4>
 
   <div class="visuals group">
     <img class="poster" src="<%= movie.escape("poster_url") %>">
@@ -12,11 +13,23 @@
     <div class="credits">
       <p class="director"></p>
       <p class="writer"></p>
+
       <p>Cast:</p>
       <ul class="cast"></ul>
+
+      <p class="description"></p>
+
+
+      <div class="numbers">
+        <p class="runtime"></p>
+        <p class="budget"></p>
+        <p class="revenue"></p>
+      </div>
+      
     </div>
 
-    <p class="description"></p>
+
+
 
     <figure class="lib-buttons">
       <p>Your Libraries</p>

@@ -1,17 +1,15 @@
 Features to add:
 
 - Movies have an "order" attribute that allows the user to sort them
-- Add more info from movies (i.e. actors, country, more photos)
+- Add more photos for movies or actors.
 - ActionMailer for authentication
 - Paginate (infinite scroll) users index, movie index
 - Different styling for private libraries and reviews
 - Want to See (different styling for review section in lib show)
-- Star live edits
-- Logo Tagline
-- Browsing choices
-- Search with checkboxes
+- Logo Tagline changes movie quotes and header is bigger
+- Browsing choices (i.e. alpha, director, writer)
 - links for CanIStreamIt/Amazon
-- predictive search
+- predictive search (just of movies in the db)
 - movie quiz (part of the description, the director and the year, what's the title?)
 
 - No reviews for movies in "Want To See"

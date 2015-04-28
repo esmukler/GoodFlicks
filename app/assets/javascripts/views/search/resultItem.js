@@ -78,7 +78,6 @@ GoodFlicks.Views.ResultItem = Backbone.View.extend({
     } else {
       movie.poster = null
     }
-
     $.ajax({
       url: "/api/movies",
       type: "POST",

@@ -56,9 +56,41 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
   },
 
   renderAttrs: function() {
-    if (this.model.escape("description")) {
-      this.$('.description').html(this.model.escape("description"))
+    var description = this.model.escape("description");
+    var tagline = this.model.get("tagline");
+    var runtime = this.model.get("runtime");
+    var budget = this.model.get("budget");
+    var revenue = this.model.get("revenue");
+
+
+    if (description) {
+      this.$('.description').html(description);
     }
+    if (tagline) {
+      this.$('.tagline').html("\"" + tagline + "\"");
+    }
+    if (runtime) {
+      this.$('.runtime').html(runtime + " minutes")
+    }
+    if (budget) {
+      this.$('.budget').html("Budget: " + this.renderMoney(budget));
+    }
+    if (revenue) {
+      this.$('.revenue').html("Revenue: " + this.renderMoney(revenue));
+    }
+  },
+
+  renderMoney: function(num) {
+    num = num.toString();
+    if (num.length > 3) {
+      var arr = [];
+      while (num.length > 0) {
+        arr.unshift(num.slice(-3))
+        num = num.slice(0, -3)
+      }
+      num = arr.join(",")
+    }
+    return "$" + num
   },
 
   renderHeader: function() {
