@@ -10,8 +10,6 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.reviews(), "add remove", this.render);
     this.listenTo(this.model.libraries(), "add remove", this.render);
-    this.metacritic = null;
-    this.imdb = null;
   },
 
   events: {
@@ -39,7 +37,7 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
 
   renderMultPeople: function(jobName, people) {
     if (people) {
-      people = people.split(",")
+      people = people.split("/")
       if (people.length === 1) {
         var text = people[0];
       } else if (people.length == 2) {
@@ -173,49 +171,49 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
       })
       this.$('.avg-rating').html("Avg. GoodFlicks rating:")
     }
-    if (this.metacritic && this.metacritic !== "none") {
-      this.renderMetacritic();
-    }
-    if (this.imdb && this.imdb !== "none") {
-      this.renderImdb();
-    }
 
-    if (this.model.escape("title") && !this.metacritic && !this.imdb) {
-      this.fetchCritics();
+
+    var critics = this.model.get("critics");
+    if (critics) {
+      if (critics.imdb.rating) {
+        this.renderImdb();
+      }
+      if (critics.metacritic.rating) {
+        this.renderMetacritic();
+      }
     }
   },
 
   renderMetacritic: function() {
-    this.$('.metacritic-rating').html(this.metacritic.rating);
-    this.$('.metacritic a').attr("href", this.metacritic.url);
+    var metacritic = this.model.get("critics").metacritic
+    this.$('.metacritic-rating').html(metacritic.rating);
+    this.$('.metacritic a').attr("href", metacritic.url);
     this.$('.metacritic').removeClass("hidden");
   },
 
   renderImdb: function() {
-    this.$('.imdb-rating').html(this.imdb.rating);
-    this.$('.imdb a').attr("href", this.imdb.url);
+    var imdb = this.model.get("critics").imdb
+    this.$('.imdb-rating').html(imdb.rating);
+    this.$('.imdb a').attr("href", imdb.url);
     this.$('.imdb').removeClass("hidden");
   },
 
-  fetchCritics: function() {
-    this.imdb = "none";
-    this.metacritic = "none";
-    $.ajax({
-      url: "api/movies/" + this.model.id + "/critics",
-      type: 'GET',
-      success: function(data) {
-        if (data.metacritic.rating !== "none") {
-          this.metacritic = data.metacritic
-          this.renderMetacritic();
-        }
-
-        if (data.imdb.rating !== "none") {
-          this.imdb = data.imdb
-          this.renderImdb();
-        }
-      }.bind(this),
-    })
-  },
+  // fetchCritics: function() {
+  //   $.ajax({
+  //     url: "api/movies/" + this.model.id + "/critics",
+  //     type: 'GET',
+  //     success: function(data) {
+  //       var critics = this.model.get("critics");
+  //       console.log("fetchC success", critics)
+  //       if (critics.metacritic) {
+  //         this.renderMetacritic();
+  //       }
+  //       if (critics.imdb) {
+  //         this.renderImdb();
+  //       }
+  //     }.bind(this),
+  //   })
+  // },
 
   render: function() {
     var baseContent = this.template({ movie: this.model })

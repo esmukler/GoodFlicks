@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     get "/search", to: "static_pages#search"
     resources :users, only: [:index, :show]
-    resources :movies do
-      member { get :critics }
-    end
+    resources :movies
     resources :libraries
     resources :reviews do
       collection { get :feed }

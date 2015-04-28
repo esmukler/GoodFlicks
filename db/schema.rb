@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428062006) do
+ActiveRecord::Schema.define(version: 20150428204635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150428062006) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title",               null: false
+    t.string   "title",                         null: false
     t.text     "description"
     t.integer  "year"
     t.string   "director"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 20150428062006) do
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
-    t.integer  "budget"
-    t.integer  "revenue"
+    t.integer  "budget",              limit: 8
+    t.integer  "revenue",             limit: 8
     t.text     "tagline"
     t.integer  "runtime"
     t.string   "cast1_actor"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 20150428062006) do
     t.string   "cast3_actor"
     t.string   "cast3_character"
     t.string   "writer"
+    t.string   "imdb_rating"
+    t.string   "imdb_url"
+    t.string   "metacritic_rating"
+    t.string   "metacritic_url"
   end
 
   create_table "relationships", force: :cascade do |t|

@@ -4,6 +4,17 @@ json.extract! @movie, :budget, :revenue
 
 json.cast @movie.cast
 
+json.critics do
+  json.metacritic do
+    json.rating @movie.metacritic_rating
+    json.url @movie.metacritic_url
+  end
+  json.imdb do
+    json.rating @movie.imdb_rating
+    json.url @movie.imdb_url
+  end
+end
+
 json.reviews @movie.reviews.order(updated_at: :desc) do |review|
   if review.is_public
     json.partial! "api/reviews/review", review: review
