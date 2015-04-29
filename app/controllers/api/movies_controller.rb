@@ -42,6 +42,11 @@ class Api::MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+
+    if !@movie.imdb_rating && !@movie.metacritic_rating
+      critics(@movie)
+    end
+    
     render :show
   end
 
