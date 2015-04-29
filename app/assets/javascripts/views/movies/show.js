@@ -21,19 +21,23 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var writers = this.model.get("writer")
     var cast = this.model.get("cast")
 
-    directors = this.renderMultPeople(directors);
-    writers = this.renderMultPeople(writers);
-    this.$('.director').html("Directed by: " + directors)
-    this.$('.writer').html("Written by: " + writers)
-
-    if (cast[0] && cast[0][0] && cast[0][1]) {
-      this.$("#cast-title").html("Cast:");
+    if (directors) {
+      directors = this.renderMultPeople(directors);
+      this.$('.director').html("Directed by: " + directors)
+    }
+    if (writers) {
+      writers = this.renderMultPeople(writers);
+      this.$('.writer').html("Written by: " + writers);
     }
 
-    for (var i = 0; i < cast.length; i++) {
-      if (cast[i] && cast[i][0] && cast[i][1]) {
-        var role = cast[i][0] + " as " + cast[i][1];
-        this.$(".cast").append("<li>" + role + "</li>");
+    if (cast && cast[0] && cast[0][0] && cast[0][1]) {
+      this.$("#cast-title").html("Cast:");
+
+      for (var i = 0; i < cast.length; i++) {
+        if (cast[i] && cast[i][0] && cast[i][1]) {
+          var role = cast[i][0] + " as " + cast[i][1];
+          this.$(".cast").append("<li>" + role + "</li>");
+        }
       }
     }
 
@@ -61,7 +65,9 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     var budget = this.model.get("budget");
     var revenue = this.model.get("revenue");
 
-    this.$('.description').html(description);
+    if (description) {
+      this.$('.description').html(description);
+    }
     if (tagline) {
       this.$('.tagline').html("\"" + tagline + "\"");
     }
@@ -201,10 +207,8 @@ GoodFlicks.Views.MovieShow = Backbone.View.extend({
     this.$el.html(baseContent);
 
     this.renderHeader();
-    if (this.model.get("description")) {
-      this.renderAttrs();
-      this.renderPeople();
-    }
+    this.renderAttrs();
+    this.renderPeople();
     this.renderLibButtons();
     this.renderReviews();
     this.renderStars();
